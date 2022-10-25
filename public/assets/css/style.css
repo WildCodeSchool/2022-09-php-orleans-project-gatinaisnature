@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
 :root{
     /* Color Main Dark */
     --bs-primary-rgb: 30, 45, 33;
@@ -12,7 +14,5 @@
     --bs-success: rgb(var(--bs-success-rgb));
 
     /* Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
-
     --bs-font-family: 'Raleway', sans-serif;
 }
