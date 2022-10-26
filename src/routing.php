@@ -16,8 +16,11 @@ if (!key_exists($route, $routes)) {
 // Get the matching route in $routes array
 $matchingRoute = $routes[$route];
 
+
 // Get the FQCN of controller associated to the matching route
 $controller = 'App\\Controller\\' . $matchingRoute[0];
+//var_dump($controller);
+//exit();
 // Get the method associated to the matching route
 $method = $matchingRoute[1];
 // Get the queryString values configured for the matching route (in $_GET superglobal).
