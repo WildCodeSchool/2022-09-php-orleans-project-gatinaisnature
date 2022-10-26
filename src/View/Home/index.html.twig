@@ -1,6 +1,13 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/index.css">
+{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+<section class="container-fluid d-flex">
+    <img src="/assets/images/home-forest.png">
+    <img src="/assets/images/home-bird.png">
+</section>
+
 {% endblock %}
