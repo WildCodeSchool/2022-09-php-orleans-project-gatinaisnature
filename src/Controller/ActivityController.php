@@ -2,13 +2,25 @@
 
 namespace App\Controller;
 
+use App\Model\EventManager;
+use App\Model\ActivityManager;
+use App\Controller\AbstractController;
+
 class ActivityController extends AbstractController
 {
     /**
      * Display home page
      */
-    public function activity(): string
+    public function index(): string
     {
-        return $this->twig->render('Activity/activity.html.twig');
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEventsDateDetails();
+
+        $activityManager = new ActivityManager();
+        $activities = [];
+        $activities = $activityManager->selectAll();
+
+
+        return $this->twig->render('Activity/activity.html.twig', ['events' => $events, 'activities' => $activities]);
     }
 }

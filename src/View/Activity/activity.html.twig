@@ -32,66 +32,46 @@
 	</nav>
 
 	{# events  area#}
-	<h1 class="text-center m-3">
-		Les evenements</h1>
-	<div class="row justify-content-around text-light">
-		<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
-			<img class="rounded-top" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title text-center">Vendredi 21 Janvier</h5>
-				<p class="card-text text-center">Visite de la foret de Longchamps</p>
-				<p class="card-text fw-bold text-center">15€/pers</p>
+	<h1 class="text-center m-3">Les evenements</h1>
+	<div class="row justify-content-evenly text-light">
+		{% for event in events %}
+
+			<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
+				<img class="rounded-top" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title text-center">{{event.dayOfWeek}}
+						{{event.day}}
+						{{event.month}}
+						{{event.year}}</h5>
+					<p class="card-text text-center fst-italic">{{event.title}}</p>
+					<p class="card-text fw-bold text-center">{{event.cost}}€/pers</p>
+				</div>
 			</div>
-		</div>
-		<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
-			<img class="rounded-top" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title text-center">Jeudi 2 Avril</h5>
-				<p class="card-text text-center">Reparation des nids de chouette</p>
-				<p class="card-text text-center">5€/pers</p>
-			</div>
-		</div>
-		<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
-			<img class="rounded-top" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title text-center">Lundi 15 Décembre</h5>
-				<p class="card-text text-center">Repas de noel avec l'association</p>
-				<p class="card-text text-center">12€/pers</p>
-			</div>
-		</div>
+
+		{% endfor %}
+
 	</div>
 	{# birds protection activity area #}
-	<div class="activitySection row justify-content-around align-items-center m-5">
+	<div class="activitySection row justify-content-evenly align-items-center m-5">
 		<div class="col-lg-4">
-			<h2 class="text-center m-5 essai">Protection de la chouette</h2>
-			<p class="text-center">entore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-			</p>
+			<h2 class="text-center m-5 essai">{{ activities[0].title}}</h2>
+			<p class="text-center text-primary">{{ activities[0].description}}</p>
 		</div>
 		<div class="col-lg-4">
-			<img class="activityImg rounded" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" alt="" srcset="">
+			<img class="activityImg rounded" src="{{ activities[0].picture_link}}" alt="" srcset="">
 		</div>
 
 	</div>
 
 	{# counting activity area #}
-	<div class="activitySection row justify-content-around align-items-center m-5">
+	<div class="activitySection row justify-content-evenly align-items-center m-5">
 		<div class="col-lg-4">
-			<h2 class="text-center m-5 essai">Comptage des nids de rapaces</h2>
-			<p class="text-center">entore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-																																																																																																																																			 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia c
-			</p>
+			<img class="activityImg rounded" src="{{ activities[1].picture_link}}" alt="" srcset="">
 		</div>
 		<div class="col-lg-4">
-			<img class="activityImg rounded" src="https://img.freepik.com/photos-gratuite/route-etroite-dans-champ-herbeux-vert-entoure-arbres-verts-soleil-eclatant-arriere-plan_181624-9968.jpg?w=2000" alt="" srcset="">
+			<h2 class="text-center m-5 essai">{{ activities[1].title}}</h2>
+			<p class="text-center text-primary">{{ activities[1].description}}</p>
 		</div>
-
 	</div>
 
 {% endblock %}
