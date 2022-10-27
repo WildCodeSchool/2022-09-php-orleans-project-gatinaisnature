@@ -1,5 +1,5 @@
 body {
-    font-family: var(--bs-font-family);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container-fluid {
@@ -7,10 +7,12 @@ body {
     padding-right: 0px;
 }
 
-h2 {
-    font-size: 1.25rem;
-}
-
 footer {
     position: absolute;
+}
+
+button {
+    width: 13rem;
+    height: 2.5rem;
+    opacity: 15%;
 }
