@@ -10,3 +10,12 @@ body {
 footer {
     position: absolute;
 }
+
+button.bg-secondary {
+    --bs-bg-opacity: 0.2;
+}
+
+button {
+    width: 13rem;
+    height: 2.5rem;
+}
