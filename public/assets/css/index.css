@@ -1,12 +1,17 @@
+.container {
+    position: relative;
+    width: 50%;
+}
+
 img {
     width: 50%;
     height: auto;
-}
-
-.container {
     position: relative;
 }
 
-.btn {
+.button {
     position: absolute;
+    border-radius: 10px;
+    padding: 10px 20px;
+    --bs-bg-opacity: 0.2;
 }
