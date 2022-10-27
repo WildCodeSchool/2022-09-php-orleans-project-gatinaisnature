@@ -2,3 +2,11 @@ img {
     width: 50%;
     height: auto;
 }
+
+.container {
+    position: relative;
+}
+
+.btn {
+    position: absolute;
+}
