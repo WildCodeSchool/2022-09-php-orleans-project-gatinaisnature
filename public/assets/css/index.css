@@ -1,17 +1,10 @@
-.container {
-    position: relative;
+.forest {
     width: 50%;
+    float: left;
 }
 
-img {
+.bird {
     width: 50%;
-    height: auto;
-    position: relative;
+    float: right;
 }
 
-.button {
-    position: absolute;
-    border-radius: 10px;
-    padding: 10px 20px;
-    --bs-bg-opacity: 0.2;
-}
