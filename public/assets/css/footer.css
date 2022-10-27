@@ -1,5 +1,5 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--bs-font-family);
 }
 
 .container-fluid {
@@ -11,8 +11,12 @@ footer {
     position: absolute;
 }
 
+button.bg-secondary {
+    --bs-bg-opacity: 0.2;
+}
+
 button {
     width: 13rem;
     height: 2.5rem;
-    opacity: 15%;
+    font-weight: 900;
 }

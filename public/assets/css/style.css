@@ -9,6 +9,7 @@
     --bs-secondary-rgb: 188, 200, 193;
     --bs-secondary: rgb(var(--bs-secondary-rgb));
     
+    
     /* Color Main intermediaire */
     --bs-success-rgb: 60, 83, 60;
     --bs-success: rgb(var(--bs-success-rgb));
