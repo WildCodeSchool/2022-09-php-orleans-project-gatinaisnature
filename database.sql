@@ -147,3 +147,105 @@ VALUES (
         'Le départ du circuit se situe sur la route D32 (Ferrières - Courtenay), entre Chantecoq et Saint-Hilaire-les-Andrésis, au lieu-dit les Roches (2 km à l\’Est de Chantecoq), un ancien virage de la D32 servira de parking.Le Circuit de base, de 6,5 km en jaune, se situe sur un sold\’alluvions récentes, départ vers l\’est, le long de la D32, rourner à droite au premier  chemin vers la Valetterie, puis descendre jusqu\’au Marteau et longer vers l\’amont le ruisseau (sans nom, c\’est un affluent de la Cléry) jusqu\’à la passerelle ; de la Valetterie, on domine la vallée, la présence de haies et de zones cultivées permet d\’observer et d\’entendre au printemps, quand ils sont les plus actifs, une bonne vingtaine d\’espèces d\’oiseaux communs, tôt le matin, des Chevreuils se nourrissent dans la vallée.',
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard'
     );
+--
+
+-- Structure de la table `event`
+
+--
+
+--
+
+--
+
+-- Structure de la table `activity`
+
+--
+
+CREATE TABLE
+    `activity` (
+        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` varchar(255) NOT NULL,
+        `description` TEXT NOT NULL,
+        `picture_link` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+CREATE TABLE
+    `event` (
+        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` varchar(255) NOT NULL,
+        `date` DATE NOT NULL,
+        `description` TEXT NOT NULL,
+        `cost` DECIMAL(5, 2),
+        `picture_link` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
+
+-- Contenu de la table `activity`
+
+-- Contenu de la table `event`
+
+--
+
+INSERT INTO
+    `activity` (
+        `title`,
+        `description`,
+        `picture_link`
+    )
+VALUES (
+        'Protection de la chouette',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        null
+    ), (
+        'Comptage des nids de rapaces',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        null
+    );
+
+--
+
+-- Index pour les tables exportées
+
+--
+
+--
+
+-- Index pour la table `item`
+
+INSERT INTO
+    `event` (
+        `title`,
+        `date`,
+        `description`,
+        `cost`,
+        `picture_link`
+    )
+VALUES (
+        'Reparation des nids de chouette',
+        '2022-12-22',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '15',
+        null
+    ), (
+        'Repas de Noel avec l\'association',
+        '2023-12-23',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '20',
+        null
+    ), (
+        'Visite de la foret de Longchamps',
+        '2023-01-02',
+        'visite en foret',
+        '12',
+        null
+    ), (
+        'Visite des forets alentours',
+        '2023-02-28',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '8.50',
+        null
+    );
+
+--
+
