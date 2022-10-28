@@ -106,9 +106,27 @@ ALTER TABLE
 
 ;
 
+--
+
 -- Structure de la table `event`
 
 --
+
+--
+
+--
+
+-- Structure de la table `activity`
+
+--
+
+CREATE TABLE
+    `activity` (
+        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` varchar(255) NOT NULL,
+        `description` TEXT NOT NULL,
+        `picture_link` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 CREATE TABLE
     `event` (
@@ -122,9 +140,37 @@ CREATE TABLE
 
 --
 
+-- Contenu de la table `activity`
+
 -- Contenu de la table `event`
 
 --
+
+INSERT INTO
+    `activity` (
+        `title`,
+        `description`,
+        `picture_link`
+    )
+VALUES (
+        'Protection de la chouette',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        null
+    ), (
+        'Comptage des nids de rapaces',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        null
+    );
+
+--
+
+-- Index pour les tables exportées
+
+--
+
+--
+
+-- Index pour la table `item`
 
 INSERT INTO
     `event` (

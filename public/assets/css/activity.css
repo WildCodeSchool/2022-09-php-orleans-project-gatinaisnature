@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(var(--bs-secondary-rgb));
+
+}
+
+.activityImg {
+    width: 18rem;
+}
