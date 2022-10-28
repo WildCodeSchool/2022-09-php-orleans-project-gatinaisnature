@@ -14,9 +14,9 @@ class EventManager extends AbstractManager
      */
     public function selectEventsDateDetails(): array
     {
-        $query = 'SELECT title,cost,description,date
+        $query = 'SELECT title,cost,picture_link,description,date
         FROM ' . self::TABLE . '
-        ORDER BY date DESC LIMIT 3';
+        ORDER BY date DESC';
 
         return $this->pdo->query($query)->fetchAll();
     }
