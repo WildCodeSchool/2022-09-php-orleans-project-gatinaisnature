@@ -128,9 +128,21 @@ CREATE TABLE
         `picture_link` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
+CREATE TABLE
+    `event` (
+        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` varchar(255) NOT NULL,
+        `date` DATE NOT NULL,
+        `description` TEXT NOT NULL,
+        `cost` DECIMAL(5, 2),
+        `picture_link` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
 --
 
 -- Contenu de la table `activity`
+
+-- Contenu de la table `event`
 
 --
 
@@ -159,3 +171,39 @@ VALUES (
 --
 
 -- Index pour la table `item`
+
+INSERT INTO
+    `event` (
+        `title`,
+        `date`,
+        `description`,
+        `cost`,
+        `picture_link`
+    )
+VALUES (
+        'Reparation des nids de chouette',
+        '2022-12-22',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '15',
+        null
+    ), (
+        'Repas de Noel avec l\'association',
+        '2023-12-23',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '20',
+        null
+    ), (
+        'Visite de la foret de Longchamps',
+        '2023-01-02',
+        'visite en foret',
+        '12',
+        null
+    ), (
+        'Visite des forets alentours',
+        '2023-02-28',
+        'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
+        '8.50',
+        null
+    );
+
+--
