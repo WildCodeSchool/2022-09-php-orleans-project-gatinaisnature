@@ -1,7 +1,5 @@
-img {
-    width: 50%;
-    height: auto;
-    position: relative;
+p, h1, h2, h3 {
+    font-family: var(--bs-font-family);
 }
 
 .rounded-circle {
@@ -11,6 +9,6 @@ img {
 }
 
 .card-img {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
 }
