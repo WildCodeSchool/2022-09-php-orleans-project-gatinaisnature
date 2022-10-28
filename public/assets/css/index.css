@@ -2,22 +2,21 @@ img {
     position: relative;
 }
 
-div {
+div.links {
+    display: flex;
     position: absolute;
 }
 
 .link1 {
- /*    position: absolute; */
+    position: absolute;
     width: 15%;
- /*    bottom: 0; */
- /*    left: 0;
-    margin-inline-start: 20rem; */
+    bottom: 5em;
+    left: 20em;
 }
 
 .link2 {
     position: absolute;
     width: 15%;
-   /*  bottom: 0; */
-   /*  right: 0;
-    margin-inline-end: 20rem; */
+    bottom: 5em;
+    right: 20em;
 }
