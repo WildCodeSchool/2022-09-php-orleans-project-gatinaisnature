@@ -10,8 +10,7 @@ button.bg-secondary {
     --bs-bg-opacity: 0.2;
 }
 
-button {
+.button-footer {
     width: 13rem;
     height: 2.5rem;
-    font-weight: 900;
 }
