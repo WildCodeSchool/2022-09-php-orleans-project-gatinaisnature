@@ -1,10 +1,5 @@
-body {
+p, li {
     font-family: var(--bs-font-family);
-}
-
-.container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
 }
 
 footer {
