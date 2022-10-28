@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\CircuitManager;
 
 class CircuitsController extends AbstractController
@@ -14,6 +15,6 @@ class CircuitsController extends AbstractController
         $circuits = [];
         $circuits = $circuitManager->selectAll();
 
-        return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits'=>$circuits]);
+        return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
     }
 }

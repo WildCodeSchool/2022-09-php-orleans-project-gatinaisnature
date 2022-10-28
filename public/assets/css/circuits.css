@@ -6,3 +6,6 @@ h1 {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
+section{
+    min-height: 100vh;
+}
