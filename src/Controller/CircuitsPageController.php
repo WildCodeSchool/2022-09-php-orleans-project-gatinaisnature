@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class CircuitsController extends AbstractController
+class CircuitsPageController extends AbstractController
 {
     /**
      * Display circuits page
