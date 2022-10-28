@@ -13,5 +13,6 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'circuits' => ['CircuitsController', 'index',]
+    'circuits' => ['CircuitsController', 'index',],
+    'circuit-page' => ['CircuitPageController', 'index'],
 ];
