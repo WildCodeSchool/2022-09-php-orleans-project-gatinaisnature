@@ -2,11 +2,7 @@ p, li {
     font-family: var(--bs-font-family);
 }
 
-footer {
-    position: absolute;
-}
-
-button.bg-secondary {
+a.bg-secondary {
     --bs-bg-opacity: 0.2;
 }
 
