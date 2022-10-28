@@ -1,0 +1,7 @@
+body {
+    background-color: var(--bs-secondary);
+}
+
+.activityImg {
+    width: 18rem;
+}
