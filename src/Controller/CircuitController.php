@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\CircuitManager;
 
-class CircuitsController extends AbstractController
+class CircuitController extends AbstractController
 {
     /**
      * Display circuits page
