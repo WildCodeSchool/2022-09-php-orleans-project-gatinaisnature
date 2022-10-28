@@ -10,13 +10,19 @@ div.links {
 .link1 {
     position: absolute;
     width: 15%;
-    bottom: 5em;
-    left: 20em;
+    bottom: 3em;
+    left: 10em;
+    border: 1.5px solid white;
 }
 
 .link2 {
     position: absolute;
     width: 15%;
-    bottom: 5em;
-    right: 20em;
+    bottom: 3em;
+    right: 10em;
+    border: 1.5px solid white;
+}
+
+button.bg-dark {
+    --bs-bg-opacity: 0.9;
 }
