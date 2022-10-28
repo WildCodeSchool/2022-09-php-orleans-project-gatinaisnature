@@ -12,10 +12,13 @@
 		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
 		</head>
 
-		<body>
-			{% block header %}{% endblock %}
+<body>
 
-			{% block content %}{% endblock %}
+    {% block header %}
+    {% include 'Home/_navbar.html.twig' %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
 
 			{% block footer %}{% endblock %}
 
