@@ -3,7 +3,7 @@
 :root{
     /* Color Main Dark */
     --bs-primary-rgb: 30, 45, 33;
-    --bs-primary: rgb(var(--bs-green-dark-rgb));
+    --bs-primary: rgb(var(--bs-primary-rgb));
 
     /* Color Main Light */
     --bs-secondary-rgb: 188, 200, 193;
@@ -16,3 +16,4 @@
     /* Fonts */
     --bs-font-family: 'Raleway', sans-serif;
 }
+
