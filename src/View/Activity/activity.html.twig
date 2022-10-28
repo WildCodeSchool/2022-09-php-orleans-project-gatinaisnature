@@ -5,28 +5,20 @@
 {% endblock %}
 
 {% block content %}
-
 	{# events  area#}
-	{# birds protection activity area #}
-		<div class="activitySection row justify-content-evenly align-items-center m-5"> <div class="col-lg-4">
-			<h2 class="text-center m-5 essai">{{ activities[0].title}}</h2>
-			<p class="text-center text-primary">{{ activities[0].description}}</p>
+	{# activities area #}
+		{% for activity in activities %}
+			<div class="activitySection row justify-content-evenly align-items-center m-5"> <div class="col-lg-4">
+				<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
+				<p class="text-center text-primary">{{ activity.description}}</p>
+			</div>
+			<div class="col-lg-4">
+				{% if activity.picture_link == null %}
+					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+				{% else %}
+					<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
+				{% endif %}
+			</div>
 		</div>
-		<div class="col-lg-4">
-			<img class="activityImg rounded" src="{{ activities[0].picture_link}}" alt="" srcset="">
-		</div>
-
-	</div>
-
-	{# counting activity area #}
-	<div class="activitySection row justify-content-evenly align-items-center m-5">
-		<div class="col-lg-4">
-			<img class="activityImg rounded" src="{{ activities[1].picture_link}}" alt="" srcset="">
-		</div>
-		<div class="col-lg-4">
-			<h2 class="text-center m-5 essai">{{ activities[1].title}}</h2>
-			<p class="text-center text-primary">{{ activities[1].description}}</p>
-		</div>
-	</div>
-
+	{% endfor %}
 {% endblock %}
