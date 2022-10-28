@@ -1,3 +1,18 @@
-body {
-    color: #f76c6c;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;700;800&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;0,800;1,200&display=swap');
+
+:root{
+    /* Color Main Dark */
+    --bs-primary-rgb: 30, 45, 33;
+    --bs-primary: rgb(var(--bs-green-dark-rgb));
+
+    /* Color Main Light */
+    --bs-secondary-rgb: 188, 200, 193;
+    --bs-secondary: rgb(var(--bs-secondary-rgb));
+    
+    /* Color Main intermediaire */
+    --bs-success-rgb: 60, 83, 60;
+    --bs-success: rgb(var(--bs-success-rgb));
+
+    /* Fonts */
+    --bs-font-family: 'Merriweather Sans', 'Raleway', sans-serif;
 }
