@@ -1,0 +1,13 @@
+section {
+    height: 100vh;
+    background-image: var(--bg-texture);
+    font-family: var(--bs-font-family);
+}
+
+h2 {
+    font-family: var(--bs-font-family);
+}
+
+button:hover{
+    color: var(--bs-success-rgb);
+}

@@ -1,0 +1,47 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/../assets/css/form.css">
+{% endblock %}
+
+{% block content %}
+	<section class="container-fluid d-flex flex-column h-auto bg-secondary">
+		<h2 class="text-center m-5">Formulaire de Contact</h2>
+		<div class="container-fluid d-flex flex-column flex-sm-row justify-content-evenly">
+			<div class="h-100 w-md-50 w-100">
+				<img src="/../assets/images/imgPlaceHolder.jpg" alt="Image du Formulaire de contact" class="img-fluid">
+			</div>
+			<div form class="h-100 w-md-50 w-100">
+				<form class="container">
+					<div class="mb-4 mt-4">
+						<label for="lastname" class="form-label">Nom:</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Cécile">
+					</div>
+					<div class="mb-4">
+						<label for="firstname" class="form-label">Prénom:</label>
+						<input type="text" class="form-control" id="firstname" placeholder="Houinkça">
+					</div>
+					<div class="mb-4">
+						<label class="form-label" for="email">Adresse E-mail:</label>
+						<input type="email" class="form-control" id="email" placeholder="cecile.houinkca@forest.fr">
+					</div>
+					<div class="mb-4">
+						<select class="form-select" aria-label="Default select example">
+							<option selected>Choisissez votre Question?</option>
+							<option value="1">Question à l'Association</option>
+							<option value="2">Adhérer à l'Association</option>
+							<option value="3">Oiseaux Blessés</option>
+							<option value="4">Nouveaux Circuits</option>
+							<option value="5">Nouvelles Espèces</option>
+						</select>
+					</div>
+					<div class="mb-4">
+						<label class="form-label" for="email">Message:</label>
+						<textarea class="form-control" id="email" rows="6" placeholder="Je souhaite adhérer à votre association."></textarea>
+					</div>
+					<button type="submit" class="btn bg-primary text-white mb-4">ENVOYER</button>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}
