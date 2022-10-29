@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+
+{% block content %}
+	{# events  area#}
+	<h1 class="text-center m-3">Les évènements</h1>
+	<div class="row justify-content-evenly text-light">
+		{% for event in events %}
+
+			<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
+				{% if event.picture_link == null %}
+					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="eventPicture" srcset="">
+				{% else %}
+					<img class="activityImg rounded" src={{ event.picture_link }} alt="eventPicture" srcset="">
+				{% endif %}
+				<div class="card-body">
+					<h5 class="card-title text-center">{{event.date}}</h5>
+					<p class="card-text text-center fst-italic">{{event.title}}</p>
+					<p class="card-text fw-bold text-center">{{event.cost}}€/pers</p>
+				</div>
+			</div>
+
+		{% endfor %}
+	</div>
+
+	{# activities area #}
+	{% for activity in activities %}
+		<div class="activitySection row justify-content-evenly align-items-center m-5">
+			<div class="col-lg-4">
+				<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
+				<p class="text-center text-primary">{{ activity.description}}</p>
+			</div>
+			<div class="col-lg-4">
+				{% if activity.picture_link == null %}
+					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+				{% else %}
+					<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}
