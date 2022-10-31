@@ -11,3 +11,7 @@ h2 {
 button:hover{
     color: var(--bs-success-rgb);
 }
+
+li {
+    list-style: none;
+}
