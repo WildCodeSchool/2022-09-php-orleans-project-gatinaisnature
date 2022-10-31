@@ -1,0 +1,24 @@
+.carousel-indicators{
+    position: relative;
+}
+
+.img-wrapper{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.wrapper-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    max-width: 100%;
+    /* max-height: 100%; */
+}
+
+@media screen and (min-width:576px) {
+    .carousel-inner{
+        display: flex;
+    }
+}

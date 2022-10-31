@@ -9,6 +9,6 @@ class CircuitsPageController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Circuits/chooseCircuits.html.twig');
+        return $this->twig->render('Circuits/circuitPage.html.twig');
     }
 }

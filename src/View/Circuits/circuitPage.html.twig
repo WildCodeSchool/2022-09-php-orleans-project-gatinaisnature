@@ -1,28 +1,100 @@
 {% extends "layout.html.twig" %}
 
-{% block stylesheet %}{% endblock %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/circuitPage.css">
+{% endblock %}
 
 {% block content %}
-    <section>
-	<div class="card mb-3" style="max-width: 540px;">
-		<div class="row g-0">
-			<div class="col-md-4">
-				<img src="..." class="img-fluid rounded-start" alt="...">
-			</div>
-			<div class="col-md-8">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					<p class="card-text">
-						<small class="text-muted">Last updated 3 mins ago</small>
-					</p>
+	<section>
+		<div class="container-fluid bg-secondary p-0 text-center">
+			<h2 class="p-4">Circuit: Nom de Circuit</h2>
+			<div class="card w-auto">
+				<div class="row g-0">
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title mb-4">NOM CIRCUIT</h5>
+							<p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem debitis ut esse totam minus modi fuga mollitia dolor iusto asperiores porro quidem velit accusantium tempora ex sequi, ipsam molestias quis deserunt error rem perspiciatis? Harum perspiciatis doloremque quis nisi dicta voluptas minus aspernatur eveniet cumque aperiam, facilis nam ex animi laudantium officia cum deleniti saepe rerum molestiae? Blanditiis, placeat obcaecati. Vitae, fugiat? Quas itaque at accusantium distinctio rerum dignissimos repudiandae quidem nihil aspernatur culpa ipsum odit delectus perferendis molestias impedit perspiciatis earum doloribus nisi ex consequatur doloremque excepturi, expedita laborum. Nihil in rerum quas tenetur recusandae expedita ex nobis porro.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<img src="/assets/images/fall-g02112eec4_1280.jpg" class="h-100  w-100 rounded-end" alt="Image du Circuit">
+					</div>
 				</div>
 			</div>
+			<div class="row g-0">
+				<h2 class="p-4">Espèce Rencontrées</h2>
+				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="card h-100">
+										<div class="wrapper-flex h-100">
+											<div class="img-wrapper">
+												<img src="/assets/images/20150424_163613__DSC0006.webp" class="card-img-top" alt="Images Espèces">
+											</div>
+											<div class="card-body">
+												<h3 class="card-title">OISEAUX</h3>
+												<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+												<a href="#" class="btn btn-primary">En Savoir +</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card h-100">
+										<div class="wrapper-flex h-100">
+											<div class="img-wrapper">
+												<img src="/assets/images/20130407-125421-_DSC2347.webp" class="card-img-top" alt="Images Espèces">
+											</div>
+											<div class="card-body">
+												<h3 class="card-title">OISEAUX</h3>
+												<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+												<a href="#" class="btn btn-primary">En Savoir +</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card">
+										<div class="wrapper-flex h-100">
+											<div class="img-wrapper">
+												<img src="/assets/images/20121223-112920-_DSC9881_01.webp" class="card-img-top" alt="Images Espèces">
+											</div>
+											<div class="card-body">
+												<h3 class="card-title">OISEAUX</h3>
+												<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+												<a href="#" class="btn btn-primary">En Savoir +</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+			<div class="row g-0">
+				<h2 class="p-4">Paysage Rencontrés</h2>
+
+			</div>
 		</div>
-	</div>
-	<h2></h2>
-	carrousel
-	<h2></h2>
-	carrousel
-    </section>
+	</section>
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/js/carousel.js"></script>
 {% endblock %}
