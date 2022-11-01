@@ -1,0 +1,12 @@
+p, li {
+    font-family: var(--bs-font-family);
+}
+
+a.bg-secondary {
+    --bs-bg-opacity: 0.2;
+}
+
+.button-footer {
+    width: 13rem;
+    height: 2.5rem;
+}

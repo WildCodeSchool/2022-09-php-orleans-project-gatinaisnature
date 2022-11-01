@@ -1,0 +1,14 @@
+p, h1, h2, h3 {
+    font-family: var(--bs-font-family);
+}
+
+.rounded-circle {
+    width: 200px;
+    height: auto;
+    gap: 40px;
+}
+
+.card-img {
+    height: auto;
+    width: 100%;
+}
