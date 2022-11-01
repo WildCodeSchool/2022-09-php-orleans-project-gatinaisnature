@@ -9,12 +9,11 @@
 	<h1 class="text-center m-3">Les évènements</h1>
 	<div class="row justify-content-evenly text-light">
 		{% for event in events %}
-
 			<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
 				{% if event.picture_link == null %}
-					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="eventPicture" srcset="">
+					<img class="eventsImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="eventPicture" srcset="">
 				{% else %}
-					<img class="activityImg rounded" src={{ event.picture_link }} alt="eventPicture" srcset="">
+					<img class="eventsImg rounded" src={{ event.picture_link }} alt="eventPicture" srcset="">
 				{% endif %}
 				<div class="card-body">
 					<h5 class="card-title text-center">{{event.date}}</h5>
@@ -25,22 +24,38 @@
 
 		{% endfor %}
 	</div>
-
 	{# activities area #}
+	{% set counter = 0 %}
 	{% for activity in activities %}
-		<div class="activitySection row justify-content-evenly align-items-center m-5">
-			<div class="col-lg-4">
-				<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
-				<p class="text-center text-primary">{{ activity.description}}</p>
+		{% if counter%2 != 0 %}
+			<div class="activitySection row justify-content-evenly align-items-center m-5">
+				<div class="col-lg-4">
+					{% if activity.picture_link == null %}
+						<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+					{% else %}
+						<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
+					{% endif %}
+				</div>
+				<div class="col-lg-4">
+					<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
+					<p class="text-center text-primary">{{ activity.description}}</p>
+				</div>
 			</div>
-			<div class="col-lg-4">
-				{% if activity.picture_link == null %}
-					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
-				{% else %}
-					<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
-				{% endif %}
+		{% else %}
+			<div class="activitySection row justify-content-evenly align-items-center m-5">
+				<div class="col-lg-4">
+					<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
+					<p class="text-center text-primary">{{ activity.description}}</p>
+				</div>
+				<div class="col-lg-4">
+					{% if activity.picture_link == null %}
+						<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+					{% else %}
+						<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
+					{% endif %}
+				</div>
 			</div>
-		</div>
+		{% endif %}
+	{% set counter = counter + 1 %}
 	{% endfor %}
-
 {% endblock %}

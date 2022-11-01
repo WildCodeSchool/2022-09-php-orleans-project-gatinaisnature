@@ -2,6 +2,10 @@ body {
     background-color: var(--bs-secondary);
 }
 
-.activityImg {
+.eventsImg {
     width: 18rem;
+}
+
+.activityImg {
+    width: 30rem;
 }
