@@ -16,7 +16,10 @@
 		</head>
 
 		<body>
-			{% block header %}{% endblock %}
+			
+			{% block body %}
+			{% include 'Home/_carousel.html.twig' %}
+			{% endblock %}
 
 			{% block content %}{% endblock %}
 
