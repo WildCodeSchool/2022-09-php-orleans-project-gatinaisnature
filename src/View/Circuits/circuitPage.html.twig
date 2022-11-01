@@ -1,5 +1,9 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}
+	{{parent()}}| Page-Circuit
+{% endblock %}
+
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/circuitPage.css">
 {% endblock %}
@@ -7,13 +11,16 @@
 {% block content %}
 	<section>
 		<div class="container-fluid bg-secondary p-0 text-center">
-			<h2 class="p-4">Circuit: Nom de Circuit</h2>
-			<div class="card w-auto">
+			<h2 class="p-5">Circuit:
+				{{circuitName}}</h2>
+			{# Carte type pour ajout circuit #}
+			<div class="card card-circuit m-auto w-auto">
 				<div class="row g-0">
 					<div class="col-md-6">
 						<div class="card-body">
-							<h5 class="card-title mb-4">NOM CIRCUIT</h5>
-							<p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem debitis ut esse totam minus modi fuga mollitia dolor iusto asperiores porro quidem velit accusantium tempora ex sequi, ipsam molestias quis deserunt error rem perspiciatis? Harum perspiciatis doloremque quis nisi dicta voluptas minus aspernatur eveniet cumque aperiam, facilis nam ex animi laudantium officia cum deleniti saepe rerum molestiae? Blanditiis, placeat obcaecati. Vitae, fugiat? Quas itaque at accusantium distinctio rerum dignissimos repudiandae quidem nihil aspernatur culpa ipsum odit delectus perferendis molestias impedit perspiciatis earum doloribus nisi ex consequatur doloremque excepturi, expedita laborum. Nihil in rerum quas tenetur recusandae expedita ex nobis porro.</p>
+							<p class="card-text text-start p-4">{{content}}
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad fugit molestias quasi, maxime corrupti vel mollitia tenetur voluptatem ipsam blanditiis laudantium velit deleniti ex ab cumque molestiae distinctio consequuntur quas?
+							</p>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -21,9 +28,9 @@
 					</div>
 				</div>
 			</div>
-
+			{# Carrousel Espèces - prévoir ajout de data#}
 			<div class="row g-0">
-				<h2 class="p-4">Espèces Rencontrés</h2>
+				<h2 class="p-5">Espèces Rencontrés</h2>
 				<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
@@ -36,13 +43,13 @@
 												<div class="content-card bg-success">
 													<p class="card-text text-white">
 														<span class="fw-bold">Nom:</span>
-														{{name}}---
+														{{name}}
 														<br>
 														<span class="fw-bold">Espèce:</span>
-														{{espece}}---
+														{{espece}}
 														<br>
 														<span class="fw-bold">Paysage:</span>
-														{{paysage}}---</p>
+														{{paysage}}</p>
 												</div>
 											</div>
 										</div>
@@ -56,13 +63,13 @@
 												<div class="content-card bg-success">
 													<p class="card-text text-white">
 														<span class="fw-bold">Nom:</span>
-														{{name}}---
+														{{name}}
 														<br>
 														<span class="fw-bold">Espèce:</span>
-														{{espece}}---
+														{{espece}}
 														<br>
 														<span class="fw-bold">Paysage:</span>
-														{{paysage}}---</p>
+														{{paysage}}</p>
 												</div>
 											</div>
 										</div>
@@ -76,13 +83,13 @@
 												<div class="content-card bg-success">
 													<p class="card-text text-white">
 														<span class="fw-bold">Nom:</span>
-														{{name}}---
+														{{name}}
 														<br>
 														<span class="fw-bold">Espèce:</span>
-														{{espece}}---
+														{{espece}}
 														<br>
 														<span class="fw-bold">Paysage:</span>
-														{{paysage}}---</p>
+														{{paysage}}</p>
 												</div>
 											</div>
 										</div>
@@ -171,10 +178,10 @@
 				</div>
 			</div>
 
-			{# Test 2 1/1 #}
+			{# Carrousel Paysages - prévoir ajout de data#}
 			<div class="row g-0">
-				<h2 class="p-4">Paysage Rencontrés</h2>
-				<div id="carouselExampleControls2" class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<h2 class="p-5">Paysage Rencontrés</h2>
+				<div id="carouselExampleControls2" class="carousel carousel-dark slide mb-5" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="row justify-content-center">
