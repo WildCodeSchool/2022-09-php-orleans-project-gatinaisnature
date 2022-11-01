@@ -1,6 +1,5 @@
 body {
-    background-color: rgb(var(--bs-secondary-rgb));
-
+    background-color: var(--bs-secondary);
 }
 
 .activityImg {
