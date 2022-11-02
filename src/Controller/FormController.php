@@ -19,7 +19,7 @@ class FormController extends AbstractController
             $addSub = array_map('trim', $_POST);
 
             if (strlen($addSub['lastname']) > self::LASTNAME_LENGTH) {
-                $errors[] = 'Le nom est trop long, il doit être inférieur à ' . self::LASTNAME_LENGTH . 'caractères !';
+                $errors[] = 'Le nom doit être inférieur à ' . self::LASTNAME_LENGTH . 'caractères !';
             }
 
             if (strlen($addSub['firstname']) > self::FIRSTNAME_LENGTH) {
@@ -27,11 +27,11 @@ class FormController extends AbstractController
             }
 
             if (strlen($addSub['email']) > self::EMAIL_LENGTH) {
-                $errors[] = 'L\'adresse E-mail doit être inférieure à ' . self::EMAIL_LENGTH . 'caractères !';
+                $errors[] = 'L\'adresse e-mail doit être inférieure à ' . self::EMAIL_LENGTH . 'caractères !';
             }
 
             if (!filter_var(($addSub['email']), FILTER_VALIDATE_EMAIL)) {
-                $errors[] = 'Ceci n\'est pas un format d\'adresse Email';
+                $errors[] = 'Ceci n\'est pas un format d\'adresse e-mail';
             }
 
             $errors = $this->isEmpty($addSub, $errors);
@@ -58,7 +58,7 @@ class FormController extends AbstractController
         }
 
         if (empty($addSub['email'])) {
-            $errors[] = 'L\'adresse email est obligatoire';
+            $errors[] = 'L\'adresse e-mail est obligatoire';
         }
 
         if (empty($addSub['subject'])) {
