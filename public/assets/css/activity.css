@@ -9,3 +9,7 @@ body {
 .activityImg {
     width: 30rem;
 }
+
+.activitySection:nth-child(even){
+    flex-direction: row-reverse;
+}

@@ -20,7 +20,6 @@ class ActivityController extends AbstractController
         $activities = [];
         $activities = $activityManager->selectAll();
 
-
         return $this->twig->render('Activity/activity.html.twig', ['events' => $events, 'activities' => $activities]);
     }
 }
