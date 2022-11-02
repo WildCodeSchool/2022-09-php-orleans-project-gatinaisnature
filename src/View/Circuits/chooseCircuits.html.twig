@@ -11,27 +11,29 @@
 
 {% block content %}
 	<section>
-		<div class="container-fluid bg-secondary py-5 vh-100">
+		<div class="container-fluid bg-secondary py-5">
 			<div class="d-flex justify-content-center p-4">
 				<h1>Nos Circuits</h1>
 			</div>
 			<div class="container">
-			<div class="px-5 py-3">
-				<p>L'association vous propose de découvrir le Gâtinais au travers de différents circuits, durant lesquels vous aurez l'occasion d'explorer la faune et la flore de notre région</p>
-			</div>
+				<div class="card px-5 py-3 mb-4">
+					<p>L'association vous propose de découvrir le Gâtinais au travers de différents circuits, durant lesquels vous aurez l'occasion d'explorer la faune et la flore de notre région</p>
+				</div>
 			</div>
 			<div class="container">
 				<div class="row">
-				{% for circuit in circuits %}	
-					<div class="card bg-primary text-white col-lg-4 p-0 rounded-3 m-4 w-25 h-25">
-						<img src="/../assets/images/fall-g02112eec4_1280_11zon.jpg" class="card-img img-responsive" alt="image_circuits">
-						<div class="card-img-overlay">
-							<h5 class="card-title">{{circuit.title}}</h5>
-							<p class="card-text">{{circuit.size}}</p>
-							<p class="card-text">{{circuit.trace}}</p>
+					{% for circuit in circuits %}
+						<div class="col-12 col-sm-8 col-lg-4 m-auto">
+							<div class="card mb-4 text-white">
+								<img src="/../assets/images/{{circuit.picture_circuit}}" class="card-img img-responsive" alt="image_circuits">
+								<div class="card-img-overlay d-flex flex-column justify-content-start align-item-center">
+									<h3 class="card-title fs-5">{{circuit.title}}</h3>
+									<p class="card-text">{{circuit.size}}</p>
+									<p class="card-text">{{circuit.trace}}</p>
+								</div>
+							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>
