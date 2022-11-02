@@ -1,6 +1,47 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/index.css">
+{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+	<body class="bg-secondary">
+
+		<div class="d-flex justify-content-center mt-5">
+			<div class="card border-0 mb-5 mt-5 w-75">
+				<div class="row no-gutters">
+					<div class="col-md-4">
+						<img src="/assets/images/asso-presentation.png" class="card-img bg-secondary" alt="Randonneurs en forêt">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h1 class="card-title text-center fw-bold mt-3 mb-5">Présentation de l'association</h1>
+							<p class="card-text">L’association Les Corbeaux - Gâtinais Nature, fondée en décembre 1981, a pour but de faire connaître et respecter la nature, de faciliter les études et recherches dans le domaine des sciences naturelles, de préserver la faune, la flore et les sites nécessaires à leur conservation, et d’éduquer le public dans tous les domaines touchant la nature. Son terrain d’étude couvre le Gâtinais de l’Est du Loiret. Elle organise également des sorties sur le terrain, des expositions et des animations.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h2 class="text-center fw-bold mt-5">Membres de l'association</h2>
+
+		<div class="d-flex flex-row justify-content-around text-center mt-5 mb-5">
+			<div>
+				<img src="/assets/images/president.png" alt="Photo du président" class="rounded-circle">
+				<h2 class="mt-4 fw-bold">Philippe Doré</h2>
+				<h3 class="fst-italic">Président</h3>
+			</div>
+			<div>
+				<img src="/assets/images/tresorier.png" alt="Photo du trésorier" class="rounded-circle">
+				<h2 class="mt-4 fw-bold">John Doe</h2>
+				<h3 class="fst-italic">Trésorier</h3>
+			</div>
+			<div>
+				<img src="/assets/images/secretaire.png" alt="Photo de la secrétaire" class="rounded-circle">
+				<h2 class="mt-4 fw-bold">Jane Doe</h2>
+				<h3 class="fst-italic">Secrétaire</h3>
+			</div>
+		</div>
+
+	</body>
 {% endblock %}
