@@ -36,3 +36,15 @@
     --line-height-body: 150%;
     --bg-texture: url('/../assets/images/purty-wood.png');
 }
+
+body{
+    line-height: var(--line-height-body);
+    background-image: var(--bg-texture);
+    background-color: var(--bs-secondary);
+
+    font-family: var(--bs-font-family-body);
+}
+
+h1, h2, h3 {
+    font-family: var(--bs-font-family-title);
+}

@@ -1,0 +1,8 @@
+.title-nav a {
+    text-decoration: none;
+    color: var(--bs-white);
+}
+
+.title-nav a:hover{
+    color: var(--bs-secondary);
+}
