@@ -10,3 +10,12 @@ section{
     min-height: 100vh;
     background-color: var(--bs-secondary);
 }
+
+div a {
+    text-decoration: none;
+    color: white;
+}
+
+div a:hover{
+    color: var(--bs-secondary);
+}
