@@ -6,3 +6,8 @@
 .title-nav a:hover{
     color: var(--bs-secondary);
 }
+
+.nav-link:hover {
+    background-color: var(--bs-success);
+    border-radius: 4px;
+}
