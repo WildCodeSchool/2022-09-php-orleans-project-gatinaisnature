@@ -3,11 +3,11 @@
     background-color: var(--bs-secondary);
 }
 
-div a {
+.link-cards {
     text-decoration: none;
     color: var(--bs-white);
 }
 
-div a:hover{
+.link-cards:hover{
     color: var(--bs-secondary);
 }
