@@ -200,6 +200,21 @@ VALUES (
 
 --
 
+-- Index pour le form Si on veux récuperer les DB des users
+/* TABLE OF CONTACTS */
+
+CREATE TABLE
+    `form`(
+        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `lastname` VARCHAR(80) NOT NULL,
+        `firstname` VARCHAR(80),
+        `email` VARCHAR(255) NOT NULL,
+        `subject` VARCHAR(200) NOT NULL,
+        `content_form` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
+
 /* TABLE OF CIRCUITS */
 
 CREATE TABLE
