@@ -31,7 +31,7 @@ class ContactController extends AbstractController
             }
 
             if (!filter_var(($contact['email']), FILTER_VALIDATE_EMAIL)) {
-                $errors[] = 'Ceci n\'est pas un format d\'adresse e-mail';
+                $errors[] = 'Ceci n\'est pas un format d\'adresse e-mail !';
             }
 
             $errors = $this->isEmpty($contact, $errors);
