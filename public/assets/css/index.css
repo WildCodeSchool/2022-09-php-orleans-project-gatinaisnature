@@ -1,14 +1,28 @@
-p, h1, h2, h3 {
-    font-family: var(--bs-font-family);
+img {
+    position: relative;
 }
 
-.rounded-circle {
-    width: 200px;
-    height: auto;
-    gap: 40px;
+div.links {
+    display: flex;
+    position: absolute;
 }
 
-.card-img {
-    height: auto;
-    width: 100%;
+.link1 {
+    position: absolute;
+    width: 15%;
+    bottom: 3em;
+    left: 10em;
+    border: 1.5px solid white;
+}
+
+.link2 {
+    position: absolute;
+    width: 15%;
+    bottom: 3em;
+    right: 10em;
+    border: 1.5px solid white;
+}
+
+button.bg-dark {
+    --bs-bg-opacity: 0.9;
 }
