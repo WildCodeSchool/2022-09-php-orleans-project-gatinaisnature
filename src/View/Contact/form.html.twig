@@ -20,18 +20,18 @@
 			<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 		</symbol>
 	</svg>
-	<section class="container-fluid d-flex flex-column h-auto bg-secondary">
+	<section class="container-fluid content-form d-flex flex-column h-auto">
 		<h2 class="text-center m-5">Formulaire de Contact</h2>
 		{% for error in errors %}
 			<ul class="alert alert-danger d-flex align-items-center">
-				<li class="">
+				<li class="list-errors">
 					<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
 					{{error}}</li>
 			</ul>
 		{% endfor %}
-		<div class="container-fluid d-flex flex-column flex-sm-row justify-content-evenly mb-4">
-			<div class="h-100 w-md-50 w-100">
-				<img src="/../assets/images/imgPlaceHolder.jpg" alt="Image du Formulaire de contact" class="img-fluid">
+		<div class="container-fluid d-flex flex-column flex-sm-row mb-4">
+			<div class="h-100 w-md-50 w-100 m-auto">
+				<img src="/../assets/images/imgPlaceHolder.jpg" alt="Image du formulaire de contact" class="img-fluid rounded">
 			</div>
 			<div form class="h-100 w-md-50 w-100">
 				{% if answer == 'good' %}
@@ -45,20 +45,20 @@
 				<form class="container" method="post">
 					<div class="mb-4 mt-4">
 						<label for="lastname" class="form-label">Nom:</label>
-						<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Cécile" value="{{addSub.lastname ?? ''}}" required>
+						<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Cécile" value="{{contact.lastname ?? ''}}" required>
 					</div>
 					<div class="mb-4">
 						<label for="firstname" class="form-label">Prénom:</label>
-						<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Houinkça" value="{{addSub.firstname ?? '' }}" required>
+						<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Houinkça" value="{{contact.firstname ?? '' }}" required>
 					</div>
 					<div class="mb-4">
 						<label class="form-label" for="email">Adresse E-mail:</label>
-						<input type="email" class="form-control" name="email" id="email" placeholder="cecile.houinkca@forest.fr" value="{{addSub.email ?? ''}}" required>
+						<input type="email" class="form-control" name="email" id="email" placeholder="cecile.houinkca@forest.fr" value="{{contact.email ?? ''}}" required>
 					</div>
 					<div class="mb-4">
 						<label class="form-label" for="subject">Sujet du Message</label>
 						<select class="form-select" name="subject" id="subject" aria-label="Default select example" required>
-							<option selected>Choisissez votre Question?</option>
+							<option selected>Choisissez votre question:</option>
 							<option value="1">Question à l'Association</option>
 							<option value="2">Adhérer à l'Association</option>
 							<option value="3">Oiseaux Blessés</option>
@@ -68,9 +68,9 @@
 					</div>
 					<div class="mb-4">
 						<label class="form-label" for="message">Message:</label>
-						<textarea class="form-control" id="message" name="message" rows="6" placeholder="Je souhaite adhérer à votre association." value="{{addSub.message ?? ''}}" required></textarea>
+						<textarea class="form-control" id="message" name="message" rows="6" placeholder="Je souhaite adhérer à votre association." value="{{contact.message ?? ''}}" required></textarea>
 					</div>
-					<button type="submit" class="btn bg-primary text-white mb-4">ENVOYER</button>
+					<button type="submit" class="btn bg-primary text-white col-12 col-md-2 mb-4">ENVOYER</button>
 				</form>
 			</div>
 		</div>
