@@ -13,6 +13,12 @@
     --bs-success-rgb: 60, 83, 60;
     --bs-success: rgb(var(--bs-success-rgb));
 
+    /* Color white */
+    --bs-white: rgb(231, 231, 231);
+
+    /* Color black */
+    --bs-black: rgb(32, 32, 32);
+
     /* Fonts Family*/
     --bs-font-family-body: 'Raleway', sans-serif;
     --bs-font-family-title: 'Merriweather Sans', sans-serif;
