@@ -1,11 +1,3 @@
-body {
-    font-family: 'Raleway', sans-serif;
-}
-
-h1 {
-    font-family: 'Merriweather Sans', sans-serif;
-}
-
 section{
     min-height: 100vh;
     background-color: var(--bs-secondary);
@@ -13,7 +5,7 @@ section{
 
 div a {
     text-decoration: none;
-    color: white;
+    color: #f3f3f3;
 }
 
 div a:hover{
