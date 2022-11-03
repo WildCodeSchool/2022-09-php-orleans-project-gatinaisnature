@@ -1,11 +1,11 @@
-section{
+.content-section{
     min-height: 100vh;
     background-color: var(--bs-secondary);
 }
 
 div a {
     text-decoration: none;
-    color: #f3f3f3;
+    color: var(--bs-white);
 }
 
 div a:hover{
