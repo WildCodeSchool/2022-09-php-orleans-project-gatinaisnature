@@ -1,0 +1,12 @@
+.content-section{
+    min-height: 100vh;
+}
+
+.link-cards {
+    text-decoration: none;
+    color: var(--bs-white);
+}
+
+.link-cards:hover{
+    color: var(--bs-secondary);
+}
