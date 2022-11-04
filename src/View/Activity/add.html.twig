@@ -1,0 +1,35 @@
+
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+  <fieldset class="container">
+    <legend class="row">AJOUT ADMIN</legend>
+    <div class="mb-3">	
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="Titre à renseigner">
+    </div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" name="description" id="description" class="form-control" placeholder="Ajouter Descriptif">
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Images</label>
+      <input type="file" name="picture" id="picture" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary">Ajouter</input>
+  </fieldset>
+</form>
+
+<h3>{{ messages[0] }}</h3>
+
+<ul>
+{% for error in errors %}
+  <li>{{error}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
