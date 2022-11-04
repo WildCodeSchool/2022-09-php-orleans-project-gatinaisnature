@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Admin - Circuits</title>
+	</head>
+	<body>
+		<h1>Ajoute un circuit !</h1>
+
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+		<form method="post">
+			<label for="title">Titre</label>
+			<input type="text" name="title" id="title" value="{{ circuit.title ?? '' }}">
+
+            <label for="size">Longueur</label>
+			<input type="text" name="size" id="size" value="{{ circuit.size ?? '' }}">
+
+			<label for="content">Description</label>
+			<input type="text" name="content" id="content" value="{{ circuit.content ?? '' }}">
+
+            <label for="map">Carte</label>
+			<input type="text" name="map" id="map" value="{{ circuit.map ?? '' }}">
+
+            <label for="trace">Tracé</label>
+			<input type="text" name="trace" id="trace" value="{{ circuit.trace ?? '' }}">
+
+			<button>Submit</button>
+			{% for circuit in circuits %}
+            <p>{{ circuit }}</p>
+        {% endfor %}
+		</form>
+	</body>
+</html>
