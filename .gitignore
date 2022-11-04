@@ -5,3 +5,5 @@
 db.php
 .idea
 .vscode
+/public/assets/upload/**
+!/public/assets/upload/**
