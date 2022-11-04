@@ -55,8 +55,9 @@ class ActivityController extends AbstractController
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
             $targetDir = "./assets/upload/";
-            $targetFile = $targetDir . basename($_FILES['picture']['name']);
-            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
+            $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
+            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
             //check à rajouter ensuite ici !
             //taille/extension/mettre un unique id pour ne pas ecraser les images.
             $allowedExtension = ['jpg','png'];
