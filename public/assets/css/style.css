@@ -24,7 +24,6 @@
     --bs-font-family-title: 'Merriweather Sans', sans-serif;
 
     /* Fonts Size Title - Bold*/
-    --font-size-title: 34px;
     --font-size-header-title: 40px;
     --font-weight-title: bold;
 
@@ -41,8 +40,19 @@ body{
     line-height: var(--line-height-body);
     background-image: var(--bg-texture);
     background-color: var(--bs-secondary);
+    background-attachment: fixed;
 
     font-family: var(--bs-font-family-body);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+}
+
+nav h1 a{
+    font-size: var(--font-size-header-title);
+}
+
+nav div a{
+    font-size: var(--font-size-header-nav);
 }
 
 h1, h2, h3 {
