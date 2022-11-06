@@ -47,6 +47,14 @@ class ActivityController extends AbstractController
         return $errors;
     }
 
+    public function show(int $id)
+    {
+        $activityManager = new ActivityManager();
+        $activity = $activityManager->selectOneById($id);
+
+        return $this->twig->render('Activity/show.html.twig', ['activity' => $activity]);
+    }
+
     public function add()
     {
 

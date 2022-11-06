@@ -10,6 +10,7 @@ return [
 
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
+    'activity/show' => ['ActivityController', 'show', ['id']],
     'activity/add' => ['ActivityController', 'add',],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],

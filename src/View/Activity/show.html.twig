@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+{% block content %}
+    <h1>Voir une activité</h1>
+	<div class="activitySection row justify-content-evenly align-items-center m-5">
+		<div class="col-lg-4">
+		<h2 class="text-center m-5 essai">{{ activity.title}}</h2>
+			<p class="text-center text-primary">{{ activity.description}}</p>
+		</div>
+		<div class="col-lg-4">
+			{% if activity.picture == null %}
+				<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+			{% else %}
+				<img class="activityImg rounded" src={{ activity.picture|trim('.')}} alt="activityPicture" srcset="">
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
