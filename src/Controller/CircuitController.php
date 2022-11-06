@@ -24,6 +24,7 @@ class CircuitController extends AbstractController
     public function addCircuit()
     {
         $circuitManager = new CircuitManager;
+        $errors = [];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
@@ -36,36 +37,35 @@ class CircuitController extends AbstractController
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $uploadFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $uploadFile = $uploadDir . uniqid($uploadFileName) . '.' . $uploadFileType;
-    
+
             $authorizedExtensions = ['jpg', 'jpeg', 'png'];
-    
+
             if ((!in_array($uploadFileType, $authorizedExtensions))) {
                 $errors[] = 'Veuillez sélectionner une image de type jpg ou jpeg ou png !';
             }
-    
+
             $maxFileSize = 2000000;
-    
+
             if (file_exists($_FILES['picture']['tmp_name']) && filesize($_FILES['picture']['tmp_name']) > $maxFileSize) {
                 $errors[] = 'Votre fichier doit faire moins de ' . ($maxFileSize / 10000) . ' ko !';
             }
-    
+
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
-    
+
                 return $errors ?? [];
             }
 
             //Si validation OK : insertion BDD + redirection
             if (empty($errors)) {
                 $circuit = $circuitManager->save($circuit);
-                header('Location: /circuits');
+                header('Location: /admin/circuits');
             }
-
-            return $this->twig->render('admin-circuits.html.twig', [
-                'circuit' => $circuit,
-                'errors' => $errors,
-            ]);
         }
+
+        return $this->twig->render('admin-circuits.html.twig', [
+            'errors' => $errors,
+        ]);
     }
 
     private function validate(array $circuit)
@@ -99,7 +99,5 @@ class CircuitController extends AbstractController
         if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
             $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
-
-       
     }
 }
