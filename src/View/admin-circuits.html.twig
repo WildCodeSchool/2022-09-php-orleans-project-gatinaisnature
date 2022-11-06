@@ -1,37 +1,53 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Admin - Circuits</title>
-	</head>
-	<body>
-		<h1>Ajoute un circuit !</h1>
+{% extends "layout-admin.html.twig" %}
 
-        {% for error in errors %}
-            <p>{{ error }}</p>
-        {% endfor %}
+{% block subtitle %}
+	<h1 class="d-flex justify-content-center my-5 fw-bold">Circuits - {{ parent() }}</h1>
+{% endblock %}
 
-		<form method="post">
-			<label for="title">Titre</label>
-			<input type="text" name="title" id="title" value="{{ circuit.title ?? '' }}">
+{% block content %}
+	<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+			<title>Admin - Circuits</title>
+		</head>
+		<body class="bg-secondary">
+			<section class="m-5 d-flex flex-column align-items-center">
 
-            <label for="size">Longueur</label>
-			<input type="text" name="size" id="size" value="{{ circuit.size ?? '' }}">
+				<h1>Ajoutez un circuit :</h1>
 
-			<label for="content">Description</label>
-			<input type="text" name="content" id="content" value="{{ circuit.content ?? '' }}">
+				{% for error in errors %}
+					<p>{{ error }}</p>
+				{% endfor %}
 
-            <label for="map">Carte</label>
-			<input type="text" name="map" id="map" value="{{ circuit.map ?? '' }}">
 
-            <label for="trace">Tracé</label>
-			<input type="text" name="trace" id="trace" value="{{ circuit.trace ?? '' }}">
+				<div class="d-flex justify-content-center col-8 bg-light h-75 mt-5">
+					<form class="d-flex flex-column" method="post" enctype="multipart/form-data">
+						<label for="title">Titre:</label>
+						<input class="form-control" type="text" name="title" id="title" value="{{ circuit.title ?? '' }}">
 
-			<button>Submit</button>
-			{% for circuit in circuits %}
-            <p>{{ circuit }}</p>
-        {% endfor %}
-		</form>
-	</body>
-</html>
+						<label for="size">Longueur:</label>
+						<input class="form-control" type="text" name="size" id="size" value="{{ circuit.size ?? '' }}">
+
+						<label for="content">Description:</label>
+						<input class="form-control" type="text" name="content" id="content" value="{{ circuit.content ?? '' }}">
+
+						<label for="map">Carte:</label>
+						<input class="form-control" type="text" name="map" id="map" value="{{ circuit.map ?? '' }}">
+
+						<label for="trace">Tracé:</label>
+						<input class="form-control" type="text" name="trace" id="trace" value="{{ circuit.trace ?? '' }}">
+
+						<label for="picture">Image:</label>
+						<input class="form-control" type="file" name="picture" id="picture" value="{{ circuit.picture ?? '' }}">
+
+						<button>Submit</button>
+					</form>
+
+					
+				</div>
+			</section>
+		</body>
+	</html>
+{% endblock %}

@@ -246,3 +246,6 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'fall-g02112eec4_1280_11zon.jpg'
     );
+
+    ALTER TABLE
+    `circuit` CHANGE `picture_circuit` `picture` TEXT;

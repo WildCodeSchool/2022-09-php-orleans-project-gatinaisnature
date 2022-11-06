@@ -10,14 +10,14 @@ class CircuitManager extends AbstractManager
 
     public function save(array $circuit): void
     {
-        $query = 'INSERT INTO circuit(title, size, content, map, trace/* , picture_circuit */) VALUES (:title, :size, :content, :map, :trace/* , :picture_circuit */)';
+        $query = "INSERT INTO" .  self::TABLE . "(`title`, `size`, `content`, `map`, `trace`, `picture`) VALUES (:title, :size, :content, :map, :trace, :picture)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $circuit['title'], \PDO::PARAM_STR);
         $statement->bindValue(':size', $circuit['size'], \PDO::PARAM_STR);
         $statement->bindValue(':content', $circuit['content'], \PDO::PARAM_STR);
         $statement->bindValue(':map', $circuit['map'], \PDO::PARAM_STR);
         $statement->bindValue(':trace', $circuit['trace'], \PDO::PARAM_STR);
-        /* $statement->bindValue(':picture_circuit', $circuit['picture_circuit'], \PDO::PARAM_LOB); */
+        $statement->bindValue(':picture', $circuit['picture'], \PDO::PARAM_LOB);
         $statement->execute();
     }
 }
