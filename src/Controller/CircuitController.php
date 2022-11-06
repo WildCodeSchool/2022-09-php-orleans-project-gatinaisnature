@@ -20,7 +20,6 @@ class CircuitController extends AbstractController
         return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
     }
 
-    /* Create a circuit */
     public function addCircuit()
     {
         $circuitManager = new CircuitManager;
