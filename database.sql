@@ -261,3 +261,13 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'fall-g02112eec4_1280_11zon.jpg'
     );
+
+/* TABLE OF RACES */
+
+CREATE TABLE
+    `races` (
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(255) NOT NULL,
+        `link` TEXT NOT NULL,
+        `picture` TEXT NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
