@@ -265,7 +265,7 @@ VALUES (
 /* TABLE OF RACES */
 
 CREATE TABLE
-    `races` (
+    `race` (
         `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `name` VARCHAR(255) NOT NULL,
         `link` TEXT NOT NULL,
