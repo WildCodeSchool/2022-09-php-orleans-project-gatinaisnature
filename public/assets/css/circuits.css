@@ -12,14 +12,14 @@
     height: 276px;
 }
 
-.card-title:hover{
+.card-title-circuit:hover{
     text-decoration: underline;
 }
 
-.card-img-overlay:hover{
+.card-img-circuit:hover{
     color: var(--bs-white);
 }
 
-.card-img-overlay{
+.card-img-circuit{
     text-shadow: 2px 2px 2px var(--bs-dark);
 }
