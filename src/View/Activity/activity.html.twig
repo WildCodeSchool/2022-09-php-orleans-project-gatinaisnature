@@ -34,10 +34,10 @@
 				<p class="text-center text-primary">{{ activity.description}}</p>
 			</div>
 			<div class="col-lg-4">
-				{% if activity.picture_link == null %}
+				{% if activity.picture == null %}
 					<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
 				{% else %}
-					<img class="activityImg rounded" src={{ activity.picture_link }} alt="activityPicture" srcset="">
+					<img class="activityImg rounded" src={{ activity.picture }} alt="activityPicture" srcset="">
 				{% endif %}
 			</div>
 		</div>
