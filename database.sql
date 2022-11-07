@@ -108,14 +108,6 @@ ALTER TABLE
 
 --
 
--- Structure de la table `event`
-
---
-
---
-
---
-
 -- Structure de la table `activity`
 
 --
@@ -125,8 +117,14 @@ CREATE TABLE
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
-        `picture_link` TEXT
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
+
+-- Structure de la table `event`
+
+--
 
 CREATE TABLE
     `event` (
@@ -142,15 +140,13 @@ CREATE TABLE
 
 -- Contenu de la table `activity`
 
--- Contenu de la table `event`
-
 --
 
 INSERT INTO
     `activity` (
         `title`,
         `description`,
-        `picture_link`
+        `picture`
     )
 VALUES (
         'Protection de la chouette',
@@ -164,13 +160,9 @@ VALUES (
 
 --
 
--- Index pour les tables exportées
+-- Contenu pour la table `event`
 
 --
-
---
-
--- Index pour la table `item`
 
 INSERT INTO
     `event` (
@@ -207,3 +199,65 @@ VALUES (
     );
 
 --
+
+-- Index pour le form Si on veux récuperer les DB des users
+/* TABLE OF CONTACTS */
+
+CREATE TABLE
+    `form`(
+        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `lastname` VARCHAR(80) NOT NULL,
+        `firstname` VARCHAR(80),
+        `email` VARCHAR(255) NOT NULL,
+        `subject` VARCHAR(200) NOT NULL,
+        `content_form` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
+
+/* TABLE OF CIRCUITS */
+
+CREATE TABLE
+    `circuit` (
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` VARCHAR(255) NOT NULL,
+        `size` DECIMAL(4, 1) NOT NULL,
+        `content` TEXT,
+        `map` TEXT,
+        `trace` VARCHAR(20),
+        `picture_circuit` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+/* INSERT CIRCUITS */
+
+INSERT INTO
+    `circuit` (
+        `title`,
+        `size`,
+        `trace`,
+        `content`,
+        `map`,
+        `picture_circuit`
+    )
+VALUES (
+        'Le Loing et le canal de Briare à Montcresson',
+        5.5,
+        'Tracé Jaune',
+        'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
+        'Carte IGN 1/25.000 ème Est, Montargis',
+        'fall-g02112eec4_1280_11zon.jpg'
+    ), (
+        'Canal de Briare',
+        7,
+        'Tracé Orange',
+        'Le circuit complémentaire, 7 km, tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest, il permettra d\’observer des paysages typiques plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois, dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
+        'Carte IGN 1/25.000 ème Est, Montargis',
+        'fall-g02112eec4_1280_11zon.jpg'
+    ), (
+        'La vallée de la Cléry à Saint-Hilaire-les-Andrésis et Chantecoq',
+        6.5,
+        'Tracé Jaune',
+        'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
+        'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
+        'fall-g02112eec4_1280_11zon.jpg'
+    );

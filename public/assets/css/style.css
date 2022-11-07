@@ -9,11 +9,52 @@
     --bs-secondary-rgb: 188, 200, 193;
     --bs-secondary: rgb(var(--bs-secondary-rgb));
     
-    
     /* Color Main intermediaire */
     --bs-success-rgb: 60, 83, 60;
     --bs-success: rgb(var(--bs-success-rgb));
 
-    /* Fonts */
-    --bs-font-family: 'Merriweather Sans', 'Raleway', sans-serif;
+    /* Color white */
+    --bs-white: rgb(231, 231, 231);
+
+    /* Color black */
+    --bs-black: rgb(32, 32, 32);
+
+    /* Fonts Family*/
+    --bs-font-family-body: 'Raleway', sans-serif;
+    --bs-font-family-title: 'Merriweather Sans', sans-serif;
+
+    /* Fonts Size Title - Bold*/
+    --font-size-header-title: 40px;
+    --font-weight-title: bold;
+
+    /* Fonts Size body - Regular*/
+    --font-size-body: 25px;
+    --font-size-header-nav: 33px;
+
+    /* Body */
+    --line-height-body: 150%;
+    --bg-texture: url('/../assets/images/purty-wood.png');
+}
+
+body{
+    line-height: var(--line-height-body);
+    background-image: var(--bg-texture);
+    background-color: var(--bs-secondary);
+    background-attachment: fixed;
+
+    font-family: var(--bs-font-family-body);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+}
+
+nav h1 a{
+    font-size: var(--font-size-header-title);
+}
+
+nav div a{
+    font-size: var(--font-size-header-nav);
+}
+
+h1, h2, h3 {
+    font-family: var(--bs-font-family-title);
 }
