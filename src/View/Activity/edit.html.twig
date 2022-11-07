@@ -1,0 +1,41 @@
+
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+{% block content %}
+<h1>Mettre à jour une activité admin</h1>
+<form action="" method="post" enctype="multipart/form-data">
+  <fieldset class="container">
+    <legend class="row">AJOUT ADMIN</legend>
+    <input type="hidden" value="{{ activity.id }}" name="id">
+    <div class="mb-3">	
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" name="title" id="title" class="form-control" value ="{{activity.title}}" placeholder="Titre à renseigner">
+    </div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" name="description" id="description" class="form-control" value ="{{activity.description}}" placeholder="Ajouter Descriptif">
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Images</label>
+      <input type="file" name="picture" id="picture" value ="{{activity.picture}}" class="form-control">
+    </div>
+			{% if activity.picture == null %}
+				<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="activityPicture" srcset="">
+			{% else %}
+				<img class="activityImg rounded" src={{ activity.picture|trim('.')}} alt="activityPicture" srcset="">
+			{% endif %}
+    <input type="submit" class="btn btn-primary">Mettre à jour</input>
+  </fieldset>
+</form>
+
+<h2>{{ messages[0] }}</h2>
+
+<ul>
+{% for error in errors %}
+  <li>{{error}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
