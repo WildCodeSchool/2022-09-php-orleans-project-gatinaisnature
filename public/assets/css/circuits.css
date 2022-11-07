@@ -8,6 +8,18 @@
     color: var(--bs-white);
 }
 
-.link-cards:hover{
-    color: var(--bs-secondary);
+.img-circuit{
+    height: 276px;
+}
+
+.card-title:hover{
+    text-decoration: underline;
+}
+
+.card-img-overlay:hover{
+    color: var(--bs-white);
+}
+
+.card-img-overlay{
+    text-shadow: 2px 2px 2px var(--bs-dark);
 }
