@@ -9,12 +9,13 @@
 return [
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
-    'landscape' => ['LandscapeController', 'index',],
+    'activity/add' => ['ActivityController', 'add',],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'contact' => ['ContactController', 'index',['answer']],
+    'landscape' => ['LandscapeController', 'index',],
     'circuits' => ['CircuitController', 'index',]
 ];
