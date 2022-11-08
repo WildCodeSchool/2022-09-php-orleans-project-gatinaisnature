@@ -25,7 +25,7 @@ class CircuitController extends AbstractController
     public function addCircuit()
     {
         $circuitManager = new CircuitManager;
-        $errors = $circuit = [];
+        $errors = [];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
