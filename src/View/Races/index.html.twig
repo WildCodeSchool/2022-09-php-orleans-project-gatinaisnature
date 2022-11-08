@@ -1,0 +1,24 @@
+{% extends "layoutAdmin.html.twig" %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/races.css">
+{% endblock %}
+
+{% block title %}
+	{{parent()}}
+	| Espèces
+{% endblock %}
+
+{% block content %}
+	<div class="card">
+		<ul>
+		{% for race in races %}
+			<li>
+				{{race.name}}
+				<a href="#">Editer</a>
+				<a href="#">Supprimer</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
