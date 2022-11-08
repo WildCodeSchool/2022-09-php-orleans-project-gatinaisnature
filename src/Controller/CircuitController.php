@@ -12,8 +12,6 @@ class CircuitController extends AbstractController
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 1000000;
 
-    private CircuitManager $model;
-
     public function index(): string
     {
         $circuitManager = new CircuitManager();
