@@ -7,11 +7,13 @@ use App\Model\CircuitManager;
 
 class CircuitController extends AbstractController
 {
+
+    private const MAX_LENGTH_TITLE = 100;
+    private const MAX_LENGTH_DESCRIPTION = 200;
+    private const MAX_PICTURE_SIZE = 1000000;
+
     private CircuitManager $model;
 
-    /**
-     * Display circuits page
-     */
     public function index(): string
     {
         $circuitManager = new CircuitManager();
@@ -23,51 +25,47 @@ class CircuitController extends AbstractController
     public function addCircuit()
     {
         $circuitManager = new CircuitManager;
-        $errors = [];
+        $errors = $circuit = [];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
             $circuit = array_map('htmlentities', $circuit);
 
-            //Validation
-            $errors = $this->validate($circuit);
+            $errors = $this->validate($circuit, $errors);
 
-            $uploadDir = "./assets/upload";
+            $uploadDir = "./assets/upload/";
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
-            $uploadFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $uploadFile = $uploadDir . uniqid($uploadFileName) . '.' . $uploadFileType;
+            $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
+            $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;
+            $uploadFileDest = $uploadDir . $uploadFinalName;
 
-            $authorizedExtensions = ['jpg', 'jpeg', 'png'];
+            if (!file_exists($_FILES['picture']['tmp_name'])) {
+                $errors[] = 'L\'image est requise !';
+            }
+        
+            $authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
-            if ((!in_array($uploadFileType, $authorizedExtensions))) {
-                $errors[] = 'Veuillez sélectionner une image de type jpg ou jpeg ou png !';
+            if (file_exists($_FILES['picture']['tmp_name']) && (!in_array($uploadFileType, $authorizedExtensions))) {
+                $errors[] = 'Veuillez sélectionner une image de type .jpg, .jpeg, .png ou .webp !';
             }
 
-            $maxFileSize = 2000000;
-
-            if (file_exists($_FILES['picture']['tmp_name']) && filesize($_FILES['picture']['tmp_name']) > $maxFileSize) {
-                $errors[] = 'Votre fichier doit faire moins de ' . ($maxFileSize / 10000) . ' ko !';
+            if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE || $_FILES['picture']['error'] == 1) {
+                $errors[] = 'Votre fichier doit faire moins de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
-                move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
-
-                return $errors ?? [];
-            }
-
-            //Si validation OK : insertion BDD + redirection
-            if (empty($errors)) {
-                $circuit = $circuitManager->save($circuit);
-                header('Location: /admin/circuits');
+                move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
+                $circuitManager->save($circuit['title'], $circuit['size'], $circuit['content'], $circuit['map'], $circuit['trace'], $uploadFinalName);
+                header('Location: /circuits');
             }
         }
 
-        return $this->twig->render('admin-circuits.html.twig', [
+        return $this->twig->render('Circuits/circuits-add.html.twig', [
             'errors' => $errors,
         ]);
     }
 
-    private function validate(array $circuit)
+    public function validate($circuit, $errors)
     {
         if (empty($circuit['title'])) {
             $errors[] = 'Le nom du circuit est requis !';
@@ -98,5 +96,7 @@ class CircuitController extends AbstractController
         if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
             $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
+
+        return $errors;
     }
 }

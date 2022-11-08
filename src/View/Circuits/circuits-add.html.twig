@@ -1,7 +1,8 @@
 {% extends "layout-admin.html.twig" %}
 
 {% block subtitle %}
-	<h1 class="d-flex justify-content-center my-5 fw-bold">Circuits - {{ parent() }}</h1>
+	<h1 class="d-flex justify-content-center my-5 fw-bold">Circuits -
+		{{ parent() }}</h1>
 {% endblock %}
 
 {% block content %}
@@ -45,7 +46,10 @@
 						<button>Submit</button>
 					</form>
 
-					
+					{% for circuit in circuits %}
+						<p>{{ circuit }}</p>
+					{% endfor %}
+
 				</div>
 			</section>
 		</body>
