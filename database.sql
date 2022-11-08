@@ -117,7 +117,7 @@ CREATE TABLE
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
-        `picture_link` TEXT
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
@@ -146,7 +146,7 @@ INSERT INTO
     `activity` (
         `title`,
         `description`,
-        `picture_link`
+        `picture`
     )
 VALUES (
         'Protection de la chouette',
@@ -198,6 +198,15 @@ VALUES (
         null
     );
 
+CREATE TABLE
+    'landscape'(
+        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` varchar(255) NOT NULL,
+        `description` TEXT NOT NULL,
+        `picture_link` TEXT
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    
+    
 --
 
 -- Index pour le form Si on veux récuperer les DB des users
