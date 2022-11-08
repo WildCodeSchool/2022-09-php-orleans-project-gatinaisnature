@@ -25,22 +25,12 @@ class RaceController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $race = array_map('trim', $_POST);
 
-            if (!isset($race['name']) || empty($race['name'])) {
-                $errors[] = 'Le nom est obligatoire';
-            }
-
-            if (!isset($race['link']) || empty($race['link'])) {
-                $errors[] = 'Le lien wikipédia est obligatoire';
-            }
-
-            if (!isset($race['picture']) || empty($race['picture'])) {
-                $errors[] = 'Le lien d\'une photo est obligatoire';
-            }
-
             $maxCharRaceName = 255;
-            if (strlen($race['name'] < $maxCharRaceName)) {
+            if (strlen($race['name']) < $maxCharRaceName) {
                 $errors[] = 'Le nom doit être inférieur à ' . $maxCharRaceName . ' caractères.';
             }
+
+            $errors = $this->isEmpty($race, $errors);
 
             if (empty($errors)) {
                 $raceManager = new RaceManager();
@@ -50,5 +40,22 @@ class RaceController extends AbstractController
             }
         }
         return $this->twig->render('Races/add.html.twig', ['errors' => $errors]);
+    }
+
+    public function isEmpty(array $race, array $errors): array
+    {
+        if (!isset($race['name']) || empty($race['name'])) {
+            $errors[] = 'Le nom est obligatoire';
+        }
+
+        if (!isset($race['link']) || empty($race['link'])) {
+            $errors[] = 'Le lien wikipédia est obligatoire';
+        }
+
+        if (!isset($race['picture']) || empty($race['picture'])) {
+            $errors[] = 'Le lien d\'une photo est obligatoire';
+        }
+
+        return $errors;
     }
 }
