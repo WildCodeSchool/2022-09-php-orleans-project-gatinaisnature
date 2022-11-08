@@ -19,5 +19,5 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'circuits' => ['CircuitController', 'index',],
     'races' => ['RaceController', 'index'],
-    'races/add' => ['RaceController', 'add']
+    'races/add' => ['RaceController', 'add'],
 ];
