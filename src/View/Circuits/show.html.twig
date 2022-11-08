@@ -10,7 +10,7 @@
 
 {% block content %}
 	<section>
-		<div class="container-fluid bg-secondary p-0 text-center">
+		<div class="container-fluid bg-secondary p-0 text-center min-vh-100">
 			<h2 class="p-5">{{circuit.title}}</h2>
 			{# Carte type pour ajout circuit #}
 			<div class="card-container">
@@ -28,7 +28,7 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<img src="/assets/images/{{circuit.picture is null ? '/imgPlaceHolder.jpg' : circuit.picture}}" class="img-fluid card-img" alt="Image du circuit">
+								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="img-fluid card-img" alt="Image du circuit">
 							</div>
 						</div>
 					</div>
