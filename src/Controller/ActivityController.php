@@ -90,4 +90,15 @@ class ActivityController extends AbstractController
         }
         return $this->twig->render('Activity/add.html.twig', ['errors' => $errors]);
     }
+
+        /**
+     * List items
+     */
+    public function indexAdmin(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('title');
+
+        return $this->twig->render('Activity/index.html.twig', ['activities' => $activities]);
+    }
 }
