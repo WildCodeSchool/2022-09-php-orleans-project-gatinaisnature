@@ -11,7 +11,6 @@ return [
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
     'activity/indexAdmin' => ['ActivityController', 'indexAdmin'],
-    'activity/add' => ['ActivityController', 'add',],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
