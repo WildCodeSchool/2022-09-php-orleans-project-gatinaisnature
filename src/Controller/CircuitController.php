@@ -85,7 +85,7 @@ class CircuitController extends AbstractController
         return $errors;
     }
 
-    public function validateB()
+    public function validateB($circuit, $errors)
     {
         if (empty($circuit['content'])) {
             $errors[] = 'La description du circuit est requise !';
