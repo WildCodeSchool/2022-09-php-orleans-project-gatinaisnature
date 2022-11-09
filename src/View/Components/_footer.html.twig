@@ -4,9 +4,35 @@
 
 {% block footer %}
 
-	<footer class="container-fluid p-0">
-		<div class="row bg-primary">
-			<div class="container p-4">
+	<footer class="container-fluid bg-primary">
+		<div class="row">
+			<div class="col-12 col-sm-4 text-white text-center p-4">
+				<h2 class="mb-3">E-MAIL</h2>
+				<p class="pt-4 mb-0">gatinaisnature@orange.fr</p>
+			</div>
+			<div class="col-12 col-sm-4 text-white text-center p-4">
+				<h2 class="mb-3">ADRESSE</h2>
+				<p class="mb-0 fst-italic">Association</p>
+				<p class="mb-0">Les Corbeaux - Gâtinais Nature</p>
+				<p class="mb-0">B.P : 924 - 45200 Amilly</p>
+			</div>
+			<div class="col-12 col-sm-4 text-white text-center p-4">
+				<h2 class="mb-3">TELEPHONE</h2>
+				<p class="pt-4 mb-0">06.71.47.52.21</p>
+			</div>
+		</div>
+		<div class="row bg-black">
+			<div class="col-12 col-sm-4 m-auto text-center">
+				<a class="text-decoration-none fst-italic text-white" href="#">Se connecter</a>
+				<span class="text-white">|</span>
+				<a class="text-decoration-none text-white" href="#">Mention légales</a>
+			</div>
+		</div>
+	</footer>
+
+{% endblock %}
+
+{# <div class="container p-4">
 				<div class="row">
 					<div class="col-6">
 						<address class="text-white text-center mt-3 text-decoration-none">
@@ -26,8 +52,4 @@
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
-	</footer>
-
-{% endblock %}
+			</div> #}
