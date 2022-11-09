@@ -1,28 +1,58 @@
-img {
-    position: relative;
-}
-
 div.links {
     display: flex;
     position: absolute;
 }
 
 .link1 {
-    position: absolute;
-    width: 15%;
-    bottom: 3em;
-    left: 10em;
     border: 1.5px solid white;
 }
 
 .link2 {
-    position: absolute;
-    width: 15%;
-    bottom: 3em;
-    right: 10em;
     border: 1.5px solid white;
 }
 
 button.bg-dark {
     --bs-bg-opacity: 0.9;
+}
+
+.home-wrapper-left {
+    width: 100%;
+    height: 50%;
+}
+
+.home-img-left {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.home-wrapper-right {
+    width: 100%;
+    height: 50%;
+}
+
+.home-img-right {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    flex-direction: column;
+}
+
+@media screen and (min-width: 678px) {
+    .home-wrapper-left {
+        width: 50%;
+        height: 100%;
+    }
+
+    .home-wrapper-right {
+        width: 50%;
+        height: 100%;
+    }
+
+    section {
+        flex-direction: row;
+    }
 }
