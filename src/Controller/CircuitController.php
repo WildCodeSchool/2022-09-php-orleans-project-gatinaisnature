@@ -6,8 +6,6 @@ use App\Model\CircuitManager;
 
 class CircuitController extends AbstractController
 {
-    private const MAX_LENGTH_TITLE = 100;
-    private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 1000000;
 
     public function index(): string
