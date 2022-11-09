@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Model\CircuitManager;
 
-
 class CircuitController extends AbstractController
 {
-
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 1000000;
@@ -53,7 +51,8 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->save($circuit['title'], $circuit['size'], $circuit['content'], $circuit['map'], $circuit['trace'], $uploadFinalName);
+                $circuitManager->save($circuit['title'], $circuit['size'], $circuit['content'], 
+                $circuit['map'], $circuit['trace'], $uploadFinalName);
                 header('Location: /circuits');
             }
         }
