@@ -17,5 +17,6 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'contact' => ['ContactController', 'index',['answer']],
     'landscape' => ['LandscapeController', 'index',],
-    'circuits' => ['CircuitController', 'index',]
+    'circuits' => ['CircuitController', 'index',],
+    'admin/circuits/indexAdmin' => ['CircuitController', 'indexCircuitsAdmin']
 ];
