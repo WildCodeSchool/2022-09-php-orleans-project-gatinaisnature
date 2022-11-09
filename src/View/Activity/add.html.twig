@@ -6,9 +6,12 @@
 {% endblock %}
 {% block content %}
 <h1>Ajout activité admin</h1>
-<form action="" method="post" enctype="multipart/form-data">
-  <fieldset class="container">
-    <legend class="row">AJOUT ADMIN</legend>
+<ul>
+{% for error in errors %}
+  <li>{{error}}</li>
+{% endfor %}
+</ul>
+<form action="" method="post" enctype="multipart/form-data" class="container">
     <div class="mb-3">	
       <label for="title" class="form-label">Titre</label>
       <input type="text" name="title" id="title" class="form-control" placeholder="Titre à renseigner">
@@ -21,15 +24,5 @@
       <input type="file" name="picture" id="picture" class="form-control">
     </div>
     <button class="btn btn-primary">Ajouter</input>
-  </fieldset>
 </form>
-
-<h2>{{ messages[0] }}</h2>
-
-<ul>
-{% for error in errors %}
-  <li>{{error}}</li>
-{% endfor %}
-</ul>
-
 {% endblock %}
