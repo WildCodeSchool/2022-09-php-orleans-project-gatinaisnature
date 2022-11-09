@@ -20,7 +20,7 @@ class CircuitController extends AbstractController
 
     public function addCircuit()
     {
-        $circuitManager = new CircuitManager;
+        $circuitManager = new CircuitManager();
         $errors = [];
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -38,7 +38,7 @@ class CircuitController extends AbstractController
             if (!file_exists($_FILES['picture']['tmp_name'])) {
                 $errors[] = 'L\'image est requise !';
             }
-        
+
             $authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
             if (file_exists($_FILES['picture']['tmp_name']) && (!in_array($uploadFileType, $authorizedExtensions))) {
@@ -51,8 +51,14 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->save($circuit['title'], $circuit['size'], $circuit['content'], 
-                $circuit['map'], $circuit['trace'], $uploadFinalName);
+                $circuitManager->save(
+                    $circuit['title'], 
+                    $circuit['size'], 
+                    $circuit['content'], 
+                    $circuit['map'], 
+                    $circuit['trace'], 
+                    $uploadFinalName
+                );
                 header('Location: /circuits');
             }
         }
