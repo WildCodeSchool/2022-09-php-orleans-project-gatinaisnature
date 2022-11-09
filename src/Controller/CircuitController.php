@@ -25,7 +25,8 @@ class CircuitController extends AbstractController
             $circuit = array_map('trim', $_POST);
             $circuit = array_map('htmlentities', $circuit);
 
-            $errors = $this->validate($circuit, $errors);
+            $errors = $this->validateA($circuit, $errors);
+            $errors = $this->validateB($circuit, $errors);
 
             $uploadDir = "./assets/upload/";
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
@@ -66,7 +67,7 @@ class CircuitController extends AbstractController
         ]);
     }
 
-    public function validate($circuit, $errors)
+    public function validateA($circuit, $errors)
     {
         if (empty($circuit['title'])) {
             $errors[] = 'Le nom du circuit est requis !';
@@ -81,6 +82,11 @@ class CircuitController extends AbstractController
             $errors[] = 'La distance du circuit est requise !';
         }
 
+        return $errors;
+    }
+
+    public function validateB()
+    {
         if (empty($circuit['content'])) {
             $errors[] = 'La description du circuit est requise !';
         }
