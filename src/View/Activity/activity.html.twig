@@ -23,7 +23,7 @@
 	{% for activity in activities %}
 			<div class="activitySection row justify-content-evenly align-items-center m-5">
 				<div class="col-lg-4">
-					<img class="activityImg rounded" src={{ activity.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture_link }}   alt="activityPicture" srcset="">
+					<img class="activityImg rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }}   alt="activityPicture" srcset="">
 				</div>
 				<div class="col-lg-4">
 					<h2 class="text-center m-5">{{ activity.title}}</h2>
