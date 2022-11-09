@@ -16,6 +16,5 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'circuits' => ['CircuitController', 'index',],
-
     'admin/circuits' => ['CircuitController', 'addCircuit']
 ];
