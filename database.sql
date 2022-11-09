@@ -199,14 +199,44 @@ VALUES (
     );
 
 CREATE TABLE
-    'landscape'(
+    `landscape`(
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
         `picture_link` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
     
-    
+INSERT INTO
+    `landscape` (
+        `title`,
+        `description`,
+        `picture_link`
+    )
+VALUES (
+        'Le Loing et le canal de Briare à Montcresson',
+        'Carte IGN 1/25.000 ème Est, Montargis Montcresson : 1307 habitants, 12 km au Sud Sud-Est de Montargis sur la D93 Montargis - Châtillon Coligny, commerce, La Poste, église du XIII ème. Ce circuit est recommandé pour ses points de vue sur la vallée du Loing et pour la diversité des espèces d’oiseaux rencontrés grâce à la variété des milieux naturels ; en hiver, on pourra par exemple observer les quatre espèces de grives (draine, litorne, mauvis, musicienne).
+Page suivante
+Le départ du circuit se situe à l’église  de Montcresson, se garer sur le parking derrière l’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l’argile à silx vers la ferme de Toisy',
+        'home-forest.jpg'
+    ), (
+        'Le circuit complémentaire,',
+        '7 km, tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest, il permettra d’observer des paysages typiques du plateau Gâtinais ains que la flore et la faune des zones mélangées de cultures et de bois, dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.', 
+        'racine.jpg'
+    ),(
+        ' La vallée de la Cléry à Saint Hilaire les Andrésis et Chantecoq',
+        ' Carte IGN 1/25.000 ème 2519 Ouest Château-Renard Saint Hilaire les Andresis : 558 habitants, commerce, restaurant, camping intercommunal, moulins, église XIIème-XVI ème. Chantecoq : 355 habitants, 8 km à l’Ouest de Courtenay, boulangerie, café- restaurant, La Poste, église, caves voûtées de l’ancien château XIIIème (propriété privée), menhir et polissoirs près du hameau de Coinche.
+Vallée de la Cléry
+Nos circuits
+Ce circuit offre la visite d’une belle et riche vallée avec de nombreuses prairies humides, une grande diversité de plantes et d’animaux fera la joie du promeneur, c’est sur ce circuit que l’on pourra observer le plus facilement, avec un peu d’attention tout de même, l’Ecureuil roux, la Pie grièche écorcheur (en été) et le Bruant jaune',
+    'chemin.jpg'
+    ),(
+        'Le circuit complémentaire,',
+        ' Le circuit complémentaire, de 5,5 km en orange, suit le GR132 un petit moment et longe la Cléry vers l’amont, puis traverse une zone de culture et emprunte de nouveau le GR132 pour le retour, les prairies humides feront la joie des botanistes et des ornithologistes en toutes saisons. ',
+        'maisonete.jpg'
+    );
+
+        
 --
 
 -- Index pour le form Si on veux récuperer les DB des users
@@ -270,3 +300,5 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'fall-g02112eec4_1280_11zon.jpg'
     );
+
+
