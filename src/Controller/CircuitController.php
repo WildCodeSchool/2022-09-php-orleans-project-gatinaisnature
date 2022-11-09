@@ -52,11 +52,11 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->save(
-                    $circuit['title'], 
-                    $circuit['size'], 
-                    $circuit['content'], 
-                    $circuit['map'], 
-                    $circuit['trace'], 
+                    $circuit['title'],
+                    $circuit['size'],
+                    $circuit['content'],
+                    $circuit['map'],
+                    $circuit['trace'],
                     $uploadFinalName
                 );
                 header('Location: /circuits');
