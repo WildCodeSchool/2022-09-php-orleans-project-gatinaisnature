@@ -6,29 +6,52 @@
 
 {% block content %}
 	{# events  area#}
-	<h1 class="text-center p-4">Les évènements</h1>
-	<div class="row justify-content-evenly text-light">
-		{% for event in events %}
-			<div class="card bg-success col-3 m-3 p-0" style="width: 18rem;">
-				<img class="eventsImg rounded" src={{ event.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : event.picture_link}} alt="eventPicture" srcset="">
-				<div class="card-body">
-					<h5 class="card-title text-center">{{event.date}}</h5>
-					<p class="card-text text-center fst-italic">{{event.title}}</p>
-					<p class="card-text fw-bold text-center">{{event.cost}}€/pers</p>
+	<div class="container">
+		<h1 class="text-center p-4">Les évènements</h1>
+		<div class="row text-light">
+			{% for event in events %}
+				<div class="card card-event bg-success col-10 col-sm-3 p-0 m-auto mb-4">
+					<img class="eventsImg img-responsive rounded" src={{ event.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : event.picture_link}} alt="eventPicture">
+					<div class="card-body">
+						<h3 class="card-title text-center">{{event.date}}</h3>
+						<p class="card-text text-center fst-italic">{{event.title}}</p>
+						<p class="card-text fw-bold text-center">{{event.cost}}€/pers</p>
+					</div>
 				</div>
+			{% endfor %}
+		</div>
+	</div>
+	{# activities area #}
+	<div class="container mt-4">
+		<h1 class="text-center p-4">Les activités</h1>
+		{% for activity in activities %}
+			<div class="activitySection">
+				{% if loop.index is even %}
+					<div class="card p-0 mb-5">
+						<div class="row">
+							<div class="col-10 col-lg-5">
+								<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture">
+							</div>
+							<div class="col-10 col-lg-7 m-auto">
+								<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
+								<p class="px-5 py-3">{{ activity.description}}</p>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="card p-0 mb-5">
+						<div class="row">
+							<div class="col-10 col-lg-7 m-auto">
+								<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
+								<p class="px-5 py-3">{{ activity.description}}</p>
+							</div>
+							<div class="col-10 col-lg-5">
+								<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture" srcset="">
+							</div>
+						</div>
+					</div>
+				{% endif %}
 			</div>
 		{% endfor %}
 	</div>
-	{# activities area #}
-	{% for activity in activities %}
-			<div class="activitySection row justify-content-evenly align-items-center m-5">
-				<div class="col-lg-4">
-					<img class="activityImg rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }}   alt="activityPicture" srcset="">
-				</div>
-				<div class="col-lg-4">
-					<h2 class="text-center m-5">{{ activity.title}}</h2>
-					<p class="text-center text-primary">{{ activity.description}}</p>
-				</div>
-			</div>
-	{% endfor %}
 {% endblock %}
