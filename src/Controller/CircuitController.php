@@ -27,7 +27,8 @@ class CircuitController extends AbstractController
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
-            $uploadDir = "/assets/upload/";
+            $uploadDir = "assets/upload/";
+            /* var_dump($uploadDir); exit(); */
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
             $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;
@@ -44,7 +45,7 @@ class CircuitController extends AbstractController
             }
 
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE || $_FILES['picture']['error'] == 1) {
-                $errors[] = 'Votre fichier doit faire moins de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
+                $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
@@ -101,6 +102,14 @@ class CircuitController extends AbstractController
 
         if (empty($circuit['size'])) {
             $errors[] = 'La distance du circuit est requise !';
+        }
+
+        if (empty($circuit['size'])) {
+            $errors[] = 'La distance du circuit est requise !';
+        }
+
+        if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT)) {
+            $errors[] = 'La longueur du circuit doit être un nombre !';
         }
 
         return $errors;
