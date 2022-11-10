@@ -7,6 +7,18 @@
     color: var(--bs-white);
 }
 
-.link-cards:hover{
-    color: var(--bs-secondary);
+.img-circuit{
+    height: 276px;
+}
+
+.card-title-circuit:hover{
+    text-decoration: underline;
+}
+
+.card-img-circuit:hover{
+    color: var(--bs-white);
+}
+
+.card-img-circuit{
+    text-shadow: 2px 2px 2px var(--bs-dark);
 }
