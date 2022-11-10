@@ -10,7 +10,7 @@ class ActivityController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
-    private const MAX_PICTURE_SIZE = 200000;
+    private const MAX_PICTURE_SIZE = 1000000;
 
     /**
      * Display home page
@@ -106,16 +106,16 @@ class ActivityController extends AbstractController
             // create the image file to put it in the upload folder (without versioning)
             $targetFile = '';
             if ($_FILES['picture']['name'] > 0) {
-                $targetDir = "./assets/upload/";
+                $targetDir = "assets/upload/";
                 $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
                 $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
                 $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-                $allowedExtension = ['jpg','png'];
+                $allowedExtension = ['jpg','png','jpeg','webp'];
                 if (!in_array($imageFileType, $allowedExtension)) {
                     $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
                 }
                 if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                    $errors[] = 'L\'image doit avoir une taille maxi de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko';
+                    $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . 'Mo';
                 }
             }
             if (empty($errors)) {
