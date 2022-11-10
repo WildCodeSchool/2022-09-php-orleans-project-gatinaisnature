@@ -35,15 +35,17 @@
 						<form class="container" method="post" enctype="multipart/form-data">
 							<div class="mb-4 mt-4">
 								<label for="title" class="form-label">Titre :</label>
-								<input type="text" class="form-control" name="title" id="title" placeholder="Canal de Briare" value="{{ circuit.title ?? ''}}" required>
+								<input type="text" class="form-control" name="title" id="title" placeholder="Canal de Briare" value="{{circuit.title ?? ''}}" required>
 							</div>
 							<div class="mb-4">
-								<label for="size" class="form-label">Longueur (en km) :</label>
-								<input type="text" class="form-control" name="size" id="size" placeholder="7.0" value="{{circuit.size ?? '' }}" required>
+								<label for="size" class="form-label">Longueur :</label>
+								<input type="text" class="form-control" name="size" id="size" placeholder="7.0" value="{{circuit.size ?? ''}}" required>
 							</div>
 							<div class="mb-4">
 								<label class="form-label" for="content">Description :</label>
-								<input type="text" class="form-control" name="content" id="content" placeholder="Description du circuit..." value="{{circuit.content ?? ''}}" required>
+								<textarea type="text" class="form-control" name="content" id="content" placeholder="Description du circuit..." required>
+								{{- circuit.content ?? '' -}}
+								</textarea>
 							</div>
 							<div class="mb-4">
 								<label class="form-label" for="map">Carte :</label>

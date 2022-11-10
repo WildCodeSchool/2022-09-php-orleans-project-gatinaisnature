@@ -23,10 +23,9 @@ class CircuitController extends AbstractController
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
-            $circuit = array_map('htmlentities', $circuit);
 
-            $errors = $this->validateA($circuit, $errors);
-            $errors = $this->validateB($circuit, $errors);
+            $errors = $this->validateLengths($circuit, $errors);
+            $errors = $this->validateFields($circuit, $errors);
 
             $uploadDir = "./assets/upload/";
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
@@ -67,26 +66,31 @@ class CircuitController extends AbstractController
         ]);
     }
 
-    public function validateA($circuit, $errors)
+    public function validateLengths($circuit, $errors)
     {
-        if (empty($circuit['title'])) {
-            $errors[] = 'Le nom du circuit est requis !';
-        }
-
         $maxTitleLength = 255;
         if (!empty($circuit['title']) && strlen($circuit['title']) > $maxTitleLength) {
             $errors[] = 'Le titre doit être inférieur à 255 caractères !';
         }
 
-        if (empty($circuit['size'])) {
-            $errors[] = 'La distance du circuit est requise !';
+        $maxTraceLength = 20;
+        if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
+            $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
 
         return $errors;
     }
 
-    public function validateB($circuit, $errors)
+    public function validateFields($circuit, $errors)
     {
+        if (empty($circuit['title'])) {
+            $errors[] = 'Le nom du circuit est requis !';
+        }
+
+        if (empty($circuit['trace'])) {
+            $errors[] = 'Le tracé du circuit est requis !';
+        }
+
         if (empty($circuit['content'])) {
             $errors[] = 'La description du circuit est requise !';
         }
@@ -95,13 +99,8 @@ class CircuitController extends AbstractController
             $errors[] = 'La localisation du circuit est requise !';
         }
 
-        if (empty($circuit['trace'])) {
-            $errors[] = 'Le tracé du circuit est requis !';
-        }
-
-        $maxTraceLength = 20;
-        if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
-            $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
+        if (empty($circuit['size'])) {
+            $errors[] = 'La distance du circuit est requise !';
         }
 
         return $errors;
