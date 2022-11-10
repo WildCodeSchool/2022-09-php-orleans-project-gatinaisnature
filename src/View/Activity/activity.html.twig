@@ -26,31 +26,17 @@
 		<h1 class="text-center p-4">Les activités</h1>
 		{% for activity in activities %}
 			<div class="activitySection">
-				{% if loop.index is even %}
-					<div class="card p-0 mb-5">
-						<div class="row">
-							<div class="col-lg-5 m-auto">
-								<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture">
-							</div>
-							<div class="col-lg-7 m-auto">
-								<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
-								<p class="px-5 py-3">{{ activity.description}}</p>
-							</div>
+				<div class="card p-0 mb-5">
+					<div class="row">
+						<div class="col-lg-5 m-auto {{loop.index is odd ? 'order-2' : ''}}">
+							<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture">
+						</div>
+						<div class="col-lg-7 m-auto">
+							<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
+							<p class="px-5 py-3">{{ activity.description}}</p>
 						</div>
 					</div>
-				{% else %}
-					<div class="card p-0 mb-5">
-						<div class="row">
-							<div class="col-lg-7 m-auto">
-								<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
-								<p class="px-5 py-3">{{ activity.description}}</p>
-							</div>
-							<div class="col-lg-5 m-auto">
-								<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture" srcset="">
-							</div>
-						</div>
-					</div>
-				{% endif %}
+				</div>
 			</div>
 		{% endfor %}
 	</div>
