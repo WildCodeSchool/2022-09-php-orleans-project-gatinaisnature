@@ -199,7 +199,7 @@ VALUES (
     );
 
 CREATE TABLE
-    'landscape'(
+    `landscape`(
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
@@ -208,19 +208,6 @@ CREATE TABLE
     
     
 --
-
--- Index pour le form Si on veux récuperer les DB des users
-/* TABLE OF CONTACTS */
-
-CREATE TABLE
-    `form`(
-        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `lastname` VARCHAR(80) NOT NULL,
-        `firstname` VARCHAR(80),
-        `email` VARCHAR(255) NOT NULL,
-        `subject` VARCHAR(200) NOT NULL,
-        `content_form` TEXT
-    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
 
@@ -234,7 +221,7 @@ CREATE TABLE
         `content` TEXT,
         `map` TEXT,
         `trace` VARCHAR(20),
-        `picture` VARCHAR(100)
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 /* INSERT CIRCUITS */
