@@ -234,7 +234,7 @@ CREATE TABLE
         `content` TEXT,
         `map` TEXT,
         `trace` VARCHAR(20),
-        `picture` TEXT
+        `picture` VARCHAR(100)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 /* INSERT CIRCUITS */
