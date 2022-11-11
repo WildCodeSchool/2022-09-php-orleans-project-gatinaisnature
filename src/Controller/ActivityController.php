@@ -8,13 +8,13 @@ use App\Controller\AbstractController;
 
 class ActivityController extends AbstractController
 {
-    /**
-     * Display home page
-     */
-
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 200000;
+
+    /**
+     * Display home page
+     */
 
     public function index(): string
     {
@@ -27,20 +27,29 @@ class ActivityController extends AbstractController
         return $this->twig->render('Activity/activity.html.twig', ['events' => $events, 'activities' => $activities]);
     }
 
+        /**
+     * List items
+     */
+    public function indexAdmin(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('title');
 
+        return $this->twig->render('Activity/index.html.twig', ['activities' => $activities]);
+    }
     public function getFormErrors(array $activity, array $errors): array
     {
         if (!isset($activity['title']) || empty($activity['title'])) {
             $errors[] = 'Le titre doit être complété';
         }
         if (!isset($activity['title']) || strlen($activity['title']) > self::MAX_LENGTH_TITLE) {
-            $errors[] = 'Le titre ne doit pas faire plus de ' . self::MAX_LENGTH_TITLE . ' caracteres';
+            $errors[] = 'Le titre ne doit pas faire plus de ' . self::MAX_LENGTH_TITLE . ' caractères';
         }
         if (empty($activity['description'])) {
-            $errors[] = 'La description doit être complété';
+            $errors[] = 'La description doit être complétée';
         }
         if (!isset($activity['description']) || strlen($activity['description']) > self::MAX_LENGTH_DESCRIPTION) {
-            $errors[] = 'La description ne doit pas faire plus de ' . self::MAX_LENGTH_DESCRIPTION . ' caracteres';
+            $errors[] = 'La description ne doit pas faire plus de ' . self::MAX_LENGTH_DESCRIPTION . ' caractères';
         }
 
         return $errors;
@@ -62,10 +71,10 @@ class ActivityController extends AbstractController
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
             $allowedExtension = ['jpg','png'];
             if (!in_array($imageFileType, $allowedExtension)) {
-                $errors[] = 'L\'image doit etre de type ' . implode(", ", $allowedExtension);
+                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit etre avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko';
             }
 
             if (empty($errors)) {
@@ -75,7 +84,7 @@ class ActivityController extends AbstractController
                     $activityManager->insert($activity['title'], $activity['description'], $targetFile);
                     header('Location: /activity');
                 } else {
-                    $errors[] = 'Le fichier image n\'a pu etre ajouté';
+                    $errors[] = 'Le fichier image n\'a pu être ajouté';
                 }
             }
         }

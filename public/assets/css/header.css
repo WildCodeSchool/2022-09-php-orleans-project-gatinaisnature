@@ -11,3 +11,7 @@
     background-color: var(--bs-success);
     border-radius: 4px;
 }
+
+.navbar-toggler-icon{
+    --bs-navbar-brand-color: var(--bs-white)
+}

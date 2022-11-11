@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block title %}
-	{{parent()}} | Contact
+	{{parent()}}
+	| Contact
 {% endblock %}
 
 {% block content %}
@@ -20,8 +21,10 @@
 			<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 		</symbol>
 	</svg>
-	<section class="container-fluid content-form d-flex flex-column h-auto">
-		<h2 class="text-center m-5">Formulaire de Contact</h2>
+	<section class="container-fluid content-form d-flex flex-column h-auto min-vh-100">
+		<div class="d-flex justify-content-center p-4">
+			<h1>Formulaire de Contact</h1>
+		</div>
 		{% for error in errors %}
 			<ul class="alert alert-danger d-flex align-items-center">
 				<li class="list-errors">
@@ -30,7 +33,7 @@
 			</ul>
 		{% endfor %}
 		<div class="container-fluid d-flex flex-column flex-sm-row mb-4">
-			<div class="h-100 w-md-50 w-100 m-auto">
+			<div class="w-md-50 w-100 m-auto">
 				<img src="/../assets/images/imgPlaceHolder.jpg" alt="Image du formulaire de contact" class="img-fluid rounded">
 			</div>
 			<div form class="h-100 w-md-50 w-100">
