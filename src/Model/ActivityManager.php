@@ -19,26 +19,16 @@ class ActivityManager extends AbstractManager
         $statement->execute();
     }
         /**
-     * Update item in database
+     * Update activity in database
      */
-    public function update($activity, $picture = null)
+    public function update($activity, $picture = '')
     {
-        $query1 = " SET `title` = :title, `description` = :description, `picture` = :picture WHERE id=:id";
-        $query2 = " SET `title` = :title, `description` = :description WHERE id=:id";
-        if ($picture !== null) {
-            $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query1);
-        } else {
-            $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query2);
-        }
-
+        $query = " SET `title` = :title, `description` = :description, `picture` = :picture WHERE id=:id";
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
         $statement->bindValue('id', $activity['id'], PDO::PARAM_INT);
         $statement->bindValue('title', $activity['title'], PDO::PARAM_STR);
         $statement->bindValue('description', $activity['description'], PDO::PARAM_STR);
-
-        if ($picture !== null) {
-            $statement->bindValue('picture', $picture, PDO::PARAM_STR);
-        }
-
+        $statement->bindValue('picture', $picture, PDO::PARAM_STR);
         return $statement->execute();
     }
 }

@@ -128,7 +128,7 @@ class ActivityController extends AbstractController
                         $errors[] = 'Le fichier image n\'a pu être ajouté';
                     }
                 } else {
-                    $activityManager->update($activity, null);
+                    $activityManager->update($activity);
                     header('Location: /activity');
                 }
             }
