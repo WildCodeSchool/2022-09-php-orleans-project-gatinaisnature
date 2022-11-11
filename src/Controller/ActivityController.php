@@ -90,4 +90,15 @@ class ActivityController extends AbstractController
         }
         return $this->twig->render('Activity/add.html.twig', ['errors' => $errors]);
     }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $activityManager = new ActivityManager();
+            $activityManager->delete((int)$id);
+
+            Header('Location:/activity');
+        }
+    }
 }
