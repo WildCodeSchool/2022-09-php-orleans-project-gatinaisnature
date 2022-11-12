@@ -199,7 +199,7 @@ VALUES (
     );
 
 CREATE TABLE
-    'landscape'(
+    `landscape`(
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
@@ -208,19 +208,6 @@ CREATE TABLE
     
     
 --
-
--- Index pour le form Si on veux récuperer les DB des users
-/* TABLE OF CONTACTS */
-
-CREATE TABLE
-    `form`(
-        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `lastname` VARCHAR(80) NOT NULL,
-        `firstname` VARCHAR(80),
-        `email` VARCHAR(255) NOT NULL,
-        `subject` VARCHAR(200) NOT NULL,
-        `content_form` TEXT
-    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
 
@@ -234,7 +221,7 @@ CREATE TABLE
         `content` TEXT,
         `map` TEXT,
         `trace` VARCHAR(20),
-        `picture_circuit` TEXT
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 /* INSERT CIRCUITS */
@@ -246,7 +233,7 @@ INSERT INTO
         `trace`,
         `content`,
         `map`,
-        `picture_circuit`
+        `picture`
     )
 VALUES (
         'Le Loing et le canal de Briare à Montcresson',
@@ -254,19 +241,19 @@ VALUES (
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème Est, Montargis',
-        'fall-g02112eec4_1280_11zon.jpg'
+        'loing_canal.webp'
     ), (
         'Canal de Briare',
         7,
         'Tracé Orange',
         'Le circuit complémentaire, 7 km, tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest, il permettra d\’observer des paysages typiques plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois, dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
         'Carte IGN 1/25.000 ème Est, Montargis',
-        'fall-g02112eec4_1280_11zon.jpg'
+        'canal_briare.webp'
     ), (
         'La vallée de la Cléry à Saint-Hilaire-les-Andrésis et Chantecoq',
         6.5,
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
-        'fall-g02112eec4_1280_11zon.jpg'
+        'laclery_andresis.webp'
     );

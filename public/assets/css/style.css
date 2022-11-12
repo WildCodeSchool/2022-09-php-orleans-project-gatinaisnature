@@ -24,12 +24,15 @@
     --bs-font-family-title: 'Merriweather Sans', sans-serif;
 
     /* Fonts Size Title - Bold*/
-    --font-size-header-title: 40px;
+    --font-size-header-title: 20px;
+    --font-size-header-nav: 22px;
     --font-weight-title: bold;
 
     /* Fonts Size body - Regular*/
-    --font-size-body: 25px;
-    --font-size-header-nav: 33px;
+    --font-size-body: 20px;
+    --font-size-body-title1: 24px;
+    --font-size-body-title2: 23px;
+    --font-size-body-title3: 21px;
 
     /* Body */
     --line-height-body: 150%;
@@ -57,4 +60,17 @@ nav div a{
 
 h1, h2, h3 {
     font-family: var(--bs-font-family-title);
+}
+
+h1 {
+    font-size: var(--font-size-body-title1);
+    font-weight: var(--font-weight-title);
+}
+
+h2 {
+    font-size: var(--font-size-body-title2);
+}
+
+h3 {
+    font-size: var(--font-size-body-title3);
 }
