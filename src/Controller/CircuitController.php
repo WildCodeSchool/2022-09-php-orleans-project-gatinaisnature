@@ -28,7 +28,6 @@ class CircuitController extends AbstractController
             $errors = $this->validateFields($circuit, $errors);
 
             $uploadDir = "assets/upload/";
-            /* var_dump($uploadDir); exit(); */
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
             $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;
