@@ -8,7 +8,6 @@ class ActivityManager extends AbstractManager
 {
     public const TABLE = 'activity';
 
-
     public function insert($title, $description, $picture = null)
     {
         $query = "INSERT INTO `activity` (`title`,`description`,`picture`) 

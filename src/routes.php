@@ -9,7 +9,8 @@
 return [
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
-    'activity/add' => ['ActivityController', 'add',],
+    'activity/indexAdmin' => ['ActivityController', 'indexAdmin'],
+    'activity/add' => ['ActivityController', 'add'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -17,6 +18,7 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'contact' => ['ContactController', 'index',['answer']],
     'circuits' => ['CircuitController', 'index',],
+    'circuits/show' => ['CircuitController', 'show', ['id']],
     'especes' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
 ];
