@@ -257,3 +257,5 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'laclery_andresis.webp'
     );
+
+    

@@ -6,6 +6,7 @@ use App\Model\CircuitManager;
 
 class CircuitController extends AbstractController
 {
+    public const MAX_PICTURE_SIZE = 1000000;
     /**
      * Display circuits page
      */
@@ -17,11 +18,54 @@ class CircuitController extends AbstractController
         return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
     }
 
-    public function show(int $id): string
+    public function editCircuit(int $id): ?string
     {
         $circuitManager = new CircuitManager();
         $circuit = $circuitManager->selectOneById($id);
+        $errors = [];
 
-        return $this->twig->render('Circuits/show.html.twig', ['circuit' => $circuit]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $item = array_map('trim', $_POST);
+
+            $errors = $this->validateLengths($circuit, $errors);
+            $errors = $this->validateFields($circuit, $errors);
+
+            $uploadDir = "assets/upload/";
+            $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
+            $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
+            $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;
+            $uploadFileDest = $uploadDir . $uploadFinalName;
+
+            if (!file_exists($_FILES['picture']['tmp_name'])) {
+                $errors[] = 'L\'image est requise !';
+            }
+
+            $authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+
+            if (file_exists($_FILES['picture']['tmp_name']) && (!in_array($uploadFileType, $authorizedExtensions))) {
+                $errors[] = 'Veuillez sélectionner une image de type .jpg, .jpeg, .png ou .webp !';
+            }
+
+            if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE || $_FILES['picture']['error'] == 1) {
+                $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
+            }
+
+            if (empty($errors)) {
+                move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
+                $circuitManager->updateCircuit(
+                    $circuit['title'],
+                    $circuit['size'],
+                    $circuit['content'],
+                    $circuit['map'],
+                    $circuit['trace'],
+                    $uploadFinalName
+                );
+                header('Location: /circuits');
+            }
+        }
+        return $this->twig->render('Circuits/edit.html.twig', [
+            'circuit' => $circuit,
+            'errors' => $errors,
+        ]);
     }
 }
