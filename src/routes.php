@@ -18,5 +18,5 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'landscape' => ['LandscapeController', 'index',],
     'circuits' => ['CircuitController', 'index',],
-    'admin/circuits/indexAdmin' => ['CircuitController', 'indexCircuitsAdmin']
+    'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin']
 ];

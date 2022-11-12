@@ -1,23 +1,43 @@
-{% extends 'layoutAdmin.html.twig' %}
+{% extends "layoutAdmin.html.twig" %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/activity.css">
+	<link rel="stylesheet" href="/assets/css/circuit-index.css">
+{% endblock %}
+
+{% block title %}
+	{{ parent() }} | Circuits
 {% endblock %}
 
 {% block content %}
-	
-    
-	{% for circuit in circuits %}
-			<div class="activitySection row justify-content-evenly align-items-center m-5">
-				<div class="col-lg-4">
-					<img class="activityImg rounded" src={{ circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture }}   alt="circuitPicture" srcset="">
+	<div class="container block-form vh-100">
+		<div class="row pt-4">
+			<h1 class="text-center">Circuits Version Admin</h1>
+			<div class="col-sm-10 m-auto">
+				<div class="card card-admin mt-4 overflow-auto">
+					<ul class="p-4">
+						{% for circuit in circuits %}
+							<li class="d-flex justify-content-between align-items-center mt-4">
+								{{circuit.title}}
+								<div class="link-admin d-flex gap-3 align-items-center">
+									<div class="btn btn-primary">
+										<a href="#">Editer</a>
+									</div>
+									<form action="" method="post">
+										<div class="btn btn-danger">
+											<a href="#">Supprimer</a>
+										</div>
+									</form>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
 				</div>
-				<div class="col-lg-4">
-					<h2 class="text-center m-5">{{ circuit.title }}</h2>
-					<p class="text-center text-primary">{{ circuit.description }}</p>
+				<div class="add-entry">
+					<button class="btn btn-secondary mt-3">
+						<a href="#">Ajouter</a>
+					</button>
 				</div>
 			</div>
-	{% endfor %}
-    
+		</div>
+	</div>
 {% endblock %}
-
