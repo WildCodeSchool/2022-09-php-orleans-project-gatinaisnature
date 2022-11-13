@@ -3,6 +3,12 @@
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/activity.css">
 {% endblock %}
+
+{% block title %}
+	{{parent()}}
+	| Activités
+{% endblock %}
+
 {% block content %}
 <h1>Editer activité admin</h1>
 <ul>
