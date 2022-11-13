@@ -198,15 +198,6 @@ VALUES (
         null
     );
 
-CREATE TABLE
-    'landscape'(
-        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `title` varchar(255) NOT NULL,
-        `description` TEXT NOT NULL,
-        `picture_link` TEXT
-    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-    
-    
 --
 
 -- Index pour le form Si on veux récuperer les DB des users
@@ -269,4 +260,42 @@ VALUES (
         'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'fall-g02112eec4_1280_11zon.jpg'
+    );
+
+CREATE TABLE
+    `landscape`(
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `title` VARCHAR(255) NOT NULL,
+        `description` TEXT NOT NULL,
+        `picture_link` VARCHAR(255),
+        `circuit_id`INT(11)
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+INSERT INTO
+    `landscape` (
+        `title`,
+        `description`,
+        `picture_link`,
+        `circuit_id`
+    )
+VALUES (
+        'Le Loing et le canal de Briare à Montcresson',
+        'Montcresson,Châtillon Colgny, commerces, La Poste, église du XIII ème.Ce circuit est recommandé pour ses points de vue sur la vallée du Loing et pour la diversité des espèces d\'oiseaux rencontrés grâce à la variété des milieux naturels.',
+        'le-loing.jpg',
+        1
+    ), (
+        'Canal de briare',
+        ' Montcresson est une commune française, située dans le département du Loiret en région Centre-Val de Loire. L\'origine de la ville vient du nom gallo-romain : Mons Cressionis, la colline de Cressius, a donné Monte Cresione puis Montcresson. La prononciation du nom de cette commune est sujette à discussion.',
+        'canal.jpg',
+        1
+    ), (
+        ' La vallée de la Cléry à Saint Hilaire les Andrésis et Chantecoq',
+        'Château-Renard Saint Hilaire les Andresis : commerce, restaurant, camping intercommunal, moulins, église XIIème-XVI ème. Chantecoq :boulangerie, café- restaurant, La Poste, église, caves voûtées de l’ancien château XIIIème (propriété privée), menhir et polissoirs près du hameau de Coinche.',
+        'chemin.jpg',
+        2
+    ), (
+        'La vallée de la Cléry La Maison Blanche St Hilaire les Andrésis',
+        ' Une partie de la vallée de la Cléry (affluent du Loing) à la hauteur du lieu-dit "La Maison Blanche" à Saint Hilaire les Andrésis près de Courtenay dans le Loiret (France). ',
+        'la-valle.jpg',
+        1
     );

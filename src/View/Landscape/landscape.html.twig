@@ -1,26 +1,46 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/index.css">
+<link rel="stylesheet" href="/assets/css">
 {% endblock %}
 
-{% block content %}
-<body class="bg-secondary">
-<div class="d-flex justify-content-center mt-5">
-    <div class="card border-0 mb-5 mt-5 w-75">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="/assets/images/lest.jpg" class="card-img bg-secondary" alt="riviere">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h1 class="card-title text-center fw-bold mt-3 mb-5"> Les paysages du Gâtinais de l’Est </h1>
-                    <p class="card-text">Comme celui d’autres “gâtines” en France,le paysage du Gâtinais de l’Est est caractérisé par une couverture boisée importante dont les parcelles, disséminées dans l’espace agricole, limitent l’horizon des étendues cultivées.Le plateau,constitué d’argiles à silex recouvertes de limons,est suffisamment ondulé pour ne pas paraître monotone. Le boisement,souvent peu entretenu et assez touffu,est constitué  d’essences variées offrant une palette de verts qui accentue les monochromies des cultures de céréales et de colza</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>	
-</body>
+{% block title %}
+	{{parent()}}
+	| paysages
+{% endblock %}
 
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center p-4">Paysages du Gatinais</h1>
+    {% for landscape in landscapes %}
+        <div class="activitySection">
+            {% if loop.index is even %}
+                <div class="card p-0 mb-5">
+                    <div class="row">
+                        <div class="col-lg-5 m-auto">
+                            <img src="/assets/images/{{ landscape.picture_link }}" class="card-img bg-secondary img-fluid rounded-start " alt="riviere">
+                        </div>
+                        <div class="col-lg-7 m-auto">
+                            <h2 class="px-5 py-3 text-center">{{ landscape.title}} </h2>
+                            <p class="px-5 py-3">{{ landscape.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card p-0 mb-5">
+                    <div class="row">
+                        <div class="col-lg-7 m-auto">
+                            <h2 class="px-5 py-3 text-center">{{ landscape.title}}</h2>
+                            <p class="px-5 py-3">{{ landscape.description}}</p>
+                        </div>
+                        <div class="col-lg-5 m-auto">
+                            <img src="/assets/images/{{ landscape.picture_link }}" class="card-img bg-secondary img-fluid rounded-start " alt="riviere">
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
