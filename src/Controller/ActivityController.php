@@ -120,16 +120,13 @@ class ActivityController extends AbstractController
             }
             if (empty($errors)) {
                 // move image to upload folder
-                if ($_FILES['picture']['name'] > 0) {
+                if ($_FILES['picture']['size'] > 0) {
                     if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                         $activityManager->update($activity, $targetFile);
                         header('Location: /activity');
                     } else {
                         $errors[] = 'Le fichier image n\'a pu être ajouté';
                     }
-                } else {
-                    $activityManager->update($activity);
-                    header('Location: /activity');
                 }
             }
         }
