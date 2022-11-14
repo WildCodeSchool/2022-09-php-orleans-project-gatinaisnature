@@ -28,7 +28,7 @@ class CircuitController extends AbstractController
     public function indexCircuitsAdmin(): string
     {
         $circuitManager = new CircuitManager();
-        $circuits = $circuitManager->selectAll();
+        $circuits = $circuitManager->selectAll('title');
 
         return $this->twig->render('Circuits/index-circuits.html.twig', ['circuits' => $circuits]);
     }
