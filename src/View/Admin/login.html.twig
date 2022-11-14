@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    {{parent()}} | Connection
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <h1>Connection Administrateur</h1>
+                <form action="" method="get">
+                    <label for="admin">Nom d'administrateur</label>
+                    <input type="text" id="admin" name="admin">
+
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password">
+
+                    <button>Connection</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

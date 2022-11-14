@@ -257,3 +257,16 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'laclery_andresis.webp'
     );
+
+--
+
+--
+
+/* TABLE OF USERS */
+
+CREATE TABLE 
+    `user` (
+        `id` INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        `email` VARCHAR(255) NOT NULL UNIQUE,
+        `password` VARCHAR NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;

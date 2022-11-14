@@ -20,4 +20,5 @@ return [
     'circuits' => ['CircuitController', 'index',],
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'landscape' => ['LandscapeController', 'index',],
+    'admin' => ['AdminController', 'index'],
 ];
