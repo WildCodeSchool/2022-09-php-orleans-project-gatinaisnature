@@ -12,7 +12,7 @@ class OrganismController extends AbstractController
     public function index(): string
     {
         $organismManager = new OrganismManager();
-        $organisms = $organismManager->selectAll();
+        $organisms = $organismManager->selectAll("name");
 
         return $this->twig->render('Organism/index.html.twig', ['organisms' => $organisms]);
     }
