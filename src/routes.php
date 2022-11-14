@@ -19,7 +19,6 @@ return [
     'circuits' => ['CircuitController', 'index',],
     'admin/circuits' => ['CircuitController', 'addCircuit'],
     'contact' => ['ContactController', 'index',['answer']],
-    'circuits' => ['CircuitController', 'index',],
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'landscape' => ['LandscapeController', 'index',],
 ];
