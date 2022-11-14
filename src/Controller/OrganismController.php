@@ -31,6 +31,7 @@ class OrganismController extends AbstractController
             }
 
             $errors = $this->isEmpty($organism, $errors);
+            $errors = $this->isImage($organism, $errors);
 
             if (empty($errors)) {
                 $organismManager = new OrganismManager();
@@ -54,6 +55,26 @@ class OrganismController extends AbstractController
 
         if (!isset($organism['picture']) || empty($organism['picture'])) {
             $errors[] = 'Le lien d\'une photo est obligatoire';
+        }
+
+        return $errors;
+    }
+
+    public function isImage(array $organism, array $errors)
+    {
+        $url_headers = get_headers($organism['picture'], 1);
+        $extension = ['png', 'jpg', 'webp'];
+        if (isset($url_headers['Content-Type'])) {
+            $type = strtolower($url_headers['Content-Type']);
+
+            $valid_img_type = array();
+            $valid_img_type['image/png'] = '';
+            $valid_img_type['image/jpg'] = '';
+            $valid_img_type['image/webp'] = '';
+
+            if (!isset($valid_img_type[$type])) {
+                $errors[] = 'Le fichier doit être de type ' . implode(", ", $extension);
+            }
         }
 
         return $errors;
