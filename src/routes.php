@@ -18,9 +18,10 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'circuits' => ['CircuitController', 'index',],
-    'admin/circuits' => ['CircuitController', 'addCircuit'],
-    'contact' => ['ContactController', 'index',['answer']],
     'circuits/show' => ['CircuitController', 'show', ['id']],
+    'admin/circuits/add' => ['CircuitController', 'addCircuit'],
+    'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin'],
+    'contact' => ['ContactController', 'index',['answer']],
     'especes' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
 ];
