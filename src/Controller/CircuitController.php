@@ -112,6 +112,7 @@ class CircuitController extends AbstractController
         }
 
         return $errors;
+    }
 
     public function show(int $id): string
     {
@@ -119,6 +120,5 @@ class CircuitController extends AbstractController
         $circuit = $circuitManager->selectOneById($id);
 
         return $this->twig->render('Circuits/show.html.twig', ['circuit' => $circuit]);
-
     }
 }
