@@ -15,19 +15,31 @@
 	<form action="" method="post" enctype="multipart/form-data" class="container">
 
 		<input type="hidden" value="{{ activity.id }}" name="id">
-		<div class="mb-3">
-			<label for="title" class="form-label">Titre:</label>
-			<input type="text" name="title" id="title" class="form-control" value="{{circuit.title}}" placeholder="Titre à renseigner">
+		<div class="mb-4 mt-4">
+			<label for="title" class="form-label">Titre :</label>
+			<input type="text" class="form-control" name="title" id="title" placeholder="Canal de Briare" value="{{circuit.title ?? ''}}" required>
 		</div>
-
-		<div class="mb-3">
-			<label for="description" class="form-label">Description:</label>
-			<input type="text" name="description" id="description" class="form-control" value="{{circuit.description}}" placeholder="Ajouter Descriptif">
+		<div class="mb-4">
+			<label for="size" class="form-label">Longueur (en km) :</label>
+			<input type="text" class="form-control" name="size" id="size" placeholder="7.0" value="{{circuit.size ?? ''}}" required>
 		</div>
-
-		<div class="mb-3">
-			<label for="picture" class="form-label">Image:</label>
-			<input type="file" name="picture" id="picture" value="{{circuit.picture}}" class="form-control">
+		<div class="mb-4">
+			<label class="form-label" for="content">Description :</label>
+			<textarea class="form-control" name="content" id="content" placeholder="Description du circuit..." required>
+				{{- circuit.content ?? '' -}}
+			</textarea>
+		</div>
+		<div class="mb-4">
+			<label class="form-label" for="map">Carte :</label>
+			<input type="text" class="form-control" name="map" id="map" placeholder="Carte IGN 1/25.000 ème Est" value="{{circuit.map ?? ''}}" required>
+		</div>
+		<div class="mb-4">
+			<label class="form-label" for="trace">Tracé :</label>
+			<input type="text" class="form-control" name="trace" id="trace" placeholder="Orange" value="{{circuit.trace ?? ''}}" required>
+		</div>
+		<div class="mb-4">
+			<label class="form-label" for="picture">Image :</label>
+			<input type="file" class="form-control" name="picture" id="picture" value="{{circuit.picture ?? ''}}" required>
 		</div>
 
 		<div>
