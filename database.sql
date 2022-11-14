@@ -257,3 +257,15 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'laclery_andresis.webp'
     );
+
+/* TABLE OF RACES */
+
+CREATE TABLE
+    `organism` (
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(255) NOT NULL,
+        `link` TEXT NOT NULL,
+        `picture` VARCHAR(255) NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--

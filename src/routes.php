@@ -19,5 +19,6 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'circuits' => ['CircuitController', 'index',],
     'circuits/show' => ['CircuitController', 'show', ['id']],
+    'especes' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
 ];
