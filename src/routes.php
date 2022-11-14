@@ -23,5 +23,6 @@ return [
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'especes' => ['OrganismController', 'index'],
     'especes/ajouter' => ['OrganismController', 'add'],
+    'especes/editer' => ['OrganismController', 'edit', ['id']],
     'landscape' => ['LandscapeController', 'index',],
 ];

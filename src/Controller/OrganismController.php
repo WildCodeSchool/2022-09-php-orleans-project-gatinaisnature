@@ -79,4 +79,33 @@ class OrganismController extends AbstractController
 
         return $errors;
     }
+
+    public function edit(int $id)
+    {
+        $errors = [];
+
+        $organismManager = new OrganismManager();
+        $organism = $organismManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $organism = array_map('trim', $_POST);
+            $maxCharOrganismName = 255;
+            if (strlen($organism['name']) > $maxCharOrganismName) {
+                $errors[] = 'Le nom doit être inférieur à ' . $maxCharOrganismName . ' caractères.';
+            }
+
+            $errors = $this->isEmpty($organism, $errors);
+            $errors = $this->isImage($organism, $errors);
+
+            if (empty($errors)) {
+                $organismManager->update($organism);
+
+                header('Location: /especes');
+            }
+        }
+        return $this->twig->render('Organism/edit.html.twig', [
+            'organism' => $organism,
+            'errors' => $errors,
+        ]);
+    }
 }

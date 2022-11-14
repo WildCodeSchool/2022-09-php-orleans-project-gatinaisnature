@@ -1,7 +1,7 @@
 {% extends "layoutAdmin.html.twig" %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/species.css">
+	<link rel="stylesheet" href="/assets/css/organism.css">
 {% endblock %}
 
 {% block title %}
@@ -21,7 +21,7 @@
 								{{organism.name}}
 								<div class="link-admin d-flex gap-3 align-items-center">
 									<div class="update">
-										<a class="btn btn-primary" href="/especes/editer">Éditer</a>
+										<a class="btn btn-primary" href="/especes/editer?id={{organism.id}}">Éditer</a>
 									</div>
 									<form action="/especes/supprimer" method="post">
 										<button class="btn btn-danger">Supprimer</button>

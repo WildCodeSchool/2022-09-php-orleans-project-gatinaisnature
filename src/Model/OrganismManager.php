@@ -21,4 +21,15 @@ class OrganismManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function update(array $organism): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title, `link` = :link, `picture` = :picture WHERE id=:id");
+        
+        $statement->bindValue(':name', $organism['name'], PDO::PARAM_STR);
+        $statement->bindValue(':link', $organism['link'], PDO::PARAM_STR);
+        $statement->bindValue(':picture', $organism['picture'], PDO::PARAM_STR);
+        
+        return $statement->execute();
+    }
 }
