@@ -44,15 +44,15 @@ class OrganismController extends AbstractController
 
     public function isEmpty(array $organism, array $errors): array
     {
-        if (empty($organism['name']) || !isset($organism['name'])) {
+        if (!isset($organism['name']) || empty($organism['name'])) {
             $errors[] = 'Le nom est obligatoire';
         }
 
-        if (empty($organism['link']) || !isset($organism['link'])) {
+        if (!isset($organism['link']) || empty($organism['link'])) {
             $errors[] = 'Le lien wikipédia est obligatoire';
         }
 
-        if (empty($organism['picture']) || !isset($organism['picture'])) {
+        if (!isset($organism['picture']) || empty($organism['picture'])) {
             $errors[] = 'Le lien d\'une photo est obligatoire';
         }
 
