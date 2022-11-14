@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css">
+{% endblock %}
+
+{% block title %}
+{{parent()}}
+| oiseaux bléssés
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center p-4">Oiseaux bléssés</h1>
+    {% for birdsHurt in birdsHurt %}
+    <div class="activitySection">
+        <div class="card p-0 mb-5">
+            <div class="row ">
+                <div class="col-lg-5 card-img-top w-50 h-25 m-auto p-25 text-center">
+                    <img src="/assets/images/{{ birdsHurt.picture_link }}"
+                        class="card-img bg-secondary img-fluid rounded-start " alt="chouette bléssé">
+                </div>
+                <div class="col-lg-7 m-auto">
+                    <h2 class="px-5 py-3 text-center">{{ birdsHurt.title}} </h2>
+                    <p class="px-5 py-3">{{ birdsHurt.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

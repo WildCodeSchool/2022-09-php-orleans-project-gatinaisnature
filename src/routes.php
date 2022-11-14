@@ -18,5 +18,6 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'landscape' => ['LandscapeController', 'index',],
     'landscape/circuit' => ['LandscapeController','getLandscapeByCircuit', ['circuit_id']],
+    'birdsHurt' => ['BirdsHurtController','index'],
     'circuits' => ['CircuitController', 'index',]
 ];
