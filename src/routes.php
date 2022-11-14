@@ -10,6 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
     'activity/indexAdmin' => ['ActivityController', 'indexAdmin'],
+    'activity/add' => ['ActivityController', 'add'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -18,5 +19,7 @@ return [
     'circuits' => ['CircuitController', 'index',],
     'admin/circuits' => ['CircuitController', 'addCircuit'],
     'contact' => ['ContactController', 'index',['answer']],
+    'circuits' => ['CircuitController', 'index',],
+    'circuits/show' => ['CircuitController', 'show', ['id']],
     'landscape' => ['LandscapeController', 'index',],
 ];
