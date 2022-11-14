@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Editer Circuit Admin</h1>
+	<h1>Éditer Circuit Admin</h1>
 	<ul>
 		{% for error in errors %}
 			<li>{{error}}</li>
@@ -16,17 +16,17 @@
 
 		<input type="hidden" value="{{ activity.id }}" name="id">
 		<div class="mb-3">
-			<label for="title" class="form-label">Titre</label>
+			<label for="title" class="form-label">Titre:</label>
 			<input type="text" name="title" id="title" class="form-control" value="{{circuit.title}}" placeholder="Titre à renseigner">
 		</div>
 
 		<div class="mb-3">
-			<label for="description" class="form-label">Description</label>
+			<label for="description" class="form-label">Description:</label>
 			<input type="text" name="description" id="description" class="form-control" value="{{circuit.description}}" placeholder="Ajouter Descriptif">
 		</div>
 
 		<div class="mb-3">
-			<label for="picture" class="form-label">Images</label>
+			<label for="picture" class="form-label">Image:</label>
 			<input type="file" name="picture" id="picture" value="{{circuit.picture}}" class="form-control">
 		</div>
 
@@ -38,6 +38,6 @@
 			{% endif %}
 		</div>
 
-		<button class="btn btn-primary">Mettre à jour</input>
+		<button class="btn btn-primary">Mettre à jour</button>
 	</form>
 {% endblock %}

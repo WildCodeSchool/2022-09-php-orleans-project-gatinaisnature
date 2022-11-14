@@ -43,7 +43,7 @@ class CircuitController extends AbstractController
             $authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
             if (file_exists($_FILES['picture']['tmp_name']) && (!in_array($uploadFileType, $authorizedExtensions))) {
-                $errors[] = 'Veuillez sélectionner une image de type .jpg, .jpeg, .png ou .webp !';
+                $errors[] = 'Veuillez sélectionner une image de type ' . implode(', ', $authorizedExtensions) . ' !';
             }
 
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE || $_FILES['picture']['error'] == 1) {
@@ -52,20 +52,12 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->updateCircuit(
-                    $circuit['title'],
-                    $circuit['size'],
-                    $circuit['content'],
-                    $circuit['map'],
-                    $circuit['trace'],
-                    $uploadFinalName
-                );
-                header('Location: /circuits');
+                $circuitManager->updateCircuit($circuit, $uploadFinalName);
+                header('Location: /circuits/show/id' . $id);
             }
         }
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
-            'errors' => $errors,
         ]);
     }
 }
