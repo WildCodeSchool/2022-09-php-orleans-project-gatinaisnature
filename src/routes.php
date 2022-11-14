@@ -22,5 +22,6 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'especes' => ['OrganismController', 'index'],
+    'especes/ajouter' => ['OrganismController', 'add'],
     'landscape' => ['LandscapeController', 'index',],
 ];
