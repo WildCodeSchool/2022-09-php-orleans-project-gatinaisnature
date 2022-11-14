@@ -40,7 +40,7 @@ class CircuitController extends AbstractController
             $authorizedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
             if (file_exists($_FILES['picture']['tmp_name']) && (!in_array($uploadFileType, $authorizedExtensions))) {
-                $errors[] = 'Veuillez sélectionner une image de type .jpg, .jpeg, .png ou .webp !';
+                $errors[] = 'Veuillez sélectionner une image de type ' . implode(', ', $authorizedExtensions);
             }
 
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE || $_FILES['picture']['error'] == 1) {
@@ -49,14 +49,7 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->save(
-                    $circuit['title'],
-                    $circuit['size'],
-                    $circuit['content'],
-                    $circuit['map'],
-                    $circuit['trace'],
-                    $uploadFinalName
-                );
+                $circuitManager->save($circuit, $uploadFinalName);
                 header('Location: /circuits');
             }
         }
@@ -103,12 +96,8 @@ class CircuitController extends AbstractController
             $errors[] = 'La distance du circuit est requise !';
         }
 
-        if (empty($circuit['size'])) {
-            $errors[] = 'La distance du circuit est requise !';
-        }
-
-        if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT)) {
-            $errors[] = 'La longueur du circuit doit être un nombre !';
+        if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
+            $errors[] = 'La longueur du circuit doit être un nombre positif !';
         }
 
         return $errors;
