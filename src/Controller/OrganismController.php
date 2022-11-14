@@ -62,17 +62,17 @@ class OrganismController extends AbstractController
 
     public function isImage(array $organism, array $errors)
     {
-        $url_headers = get_headers($organism['picture'], 1);
+        $urlHeaders = get_headers($organism['picture'], true);
         $extension = ['png', 'jpg', 'webp'];
-        if (isset($url_headers['Content-Type'])) {
-            $type = strtolower($url_headers['Content-Type']);
+        if (isset($urlHeaders['Content-Type'])) {
+            $type = strtolower($urlHeaders['Content-Type']);
 
-            $valid_img_type = array();
-            $valid_img_type['image/png'] = '';
-            $valid_img_type['image/jpg'] = '';
-            $valid_img_type['image/webp'] = '';
+            $validImgType = array();
+            $validImgType['image/png'] = '';
+            $validImgType['image/jpg'] = '';
+            $validImgType['image/webp'] = '';
 
-            if (!isset($valid_img_type[$type])) {
+            if (!isset($validImgType[$type])) {
                 $errors[] = 'Le fichier doit être de type ' . implode(", ", $extension);
             }
         }
