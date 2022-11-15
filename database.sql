@@ -219,9 +219,9 @@ CREATE TABLE
         `title` VARCHAR(255) NOT NULL,
         `size` DECIMAL(4, 1) NOT NULL,
         `content` TEXT,
-        `map` TEXT,
+        `map` VARCHAR(100),
         `trace` VARCHAR(20),
-        `picture` TEXT
+        `picture` VARCHAR(255)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 /* INSERT CIRCUITS */
@@ -258,4 +258,12 @@ VALUES (
         'laclery_andresis.webp'
     );
 
-    
+/* TABLE OF RACES */
+
+CREATE TABLE
+    `organism` (
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(255) NOT NULL,
+        `link` TEXT NOT NULL,
+        `picture` VARCHAR(255) NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
