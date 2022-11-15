@@ -18,11 +18,10 @@
                                     <div class="btn btn-primary">
                                         <a href="/activity/edit?id={{activity.id}}">Editer</a>
                                     </div>
-                                    <form action="" method="post">
-                                    <div class="btn btn-danger">
-                                        <a href="#">Supprimer</a>
-                                    </div>
-                                    </form>
+                                        <form action="/activity/delete" method="POST">
+                                            <input type="hidden" name="id" value="{{ activity.id }}">
+                                            <button>Supprimer</button>
+                                        </form>
                                 </div>
                             </li>
                         {% endfor %}

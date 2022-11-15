@@ -1,7 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-	{{parent()}}| Page-Circuit {{ circuit.id }}
+	{{parent()}}| Page-Circuit
+	{{ circuit.id }}
 {% endblock %}
 
 {% block stylesheet %}
@@ -10,8 +11,8 @@
 
 {% block content %}
 	<section>
-		<div class="container-fluid bg-secondary p-0 text-center min-vh-100">
-			<h2 class="p-5">{{circuit.title}}</h2>
+		<div class="container-fluid p-0 text-center min-vh-100">
+			<h1 class="p-4">{{circuit.title}}</h1>
 			{# Carte type pour ajout circuit #}
 			<div class="card-container">
 				<div class="container pb-4">
@@ -22,22 +23,23 @@
 									<p class="card-text text-start p-4">
 										{{circuit.content}}
 									</p>
-									<p>
-										{{circuit.map}}
-									</p>
 								</div>
 							</div>
-							<div class="col-md-4">
-								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="img-fluid card-img" alt="Image du circuit">
+							<div class="col-md-4 d-flex align-items-center">
+								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="w-100 h-100 card-img" alt="Image du circuit">
+							</div>
+							<div class="row pt-5">
+								<p>
+									{{circuit.map}}
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			{# Carrousel Espèces - prévoir loop de data#}
-			
+
 			{# Carrousel Paysages - prévoir loop de data#}
 		</div>
 	</div>
-</section>{% endblock %}{% block javascript %}
-<script src="/assets/js/carousel.js"></script>{% endblock %}
+</section>{% endblock %}

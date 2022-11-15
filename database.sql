@@ -199,7 +199,7 @@ VALUES (
     );
 
 CREATE TABLE
-    'landscape'(
+    `landscape`(
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `title` varchar(255) NOT NULL,
         `description` TEXT NOT NULL,
@@ -208,19 +208,6 @@ CREATE TABLE
     
     
 --
-
--- Index pour le form Si on veux récuperer les DB des users
-/* TABLE OF CONTACTS */
-
-CREATE TABLE
-    `form`(
-        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `lastname` VARCHAR(80) NOT NULL,
-        `firstname` VARCHAR(80),
-        `email` VARCHAR(255) NOT NULL,
-        `subject` VARCHAR(200) NOT NULL,
-        `content_form` TEXT
-    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
 
@@ -232,9 +219,9 @@ CREATE TABLE
         `title` VARCHAR(255) NOT NULL,
         `size` DECIMAL(4, 1) NOT NULL,
         `content` TEXT,
-        `map` TEXT,
+        `map` VARCHAR(100),
         `trace` VARCHAR(20),
-        `picture` TEXT
+        `picture` VARCHAR(255)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 /* INSERT CIRCUITS */
@@ -270,3 +257,15 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'laclery_andresis.webp'
     );
+
+/* TABLE OF RACES */
+
+CREATE TABLE
+    `organism` (
+        `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(255) NOT NULL,
+        `link` TEXT NOT NULL,
+        `picture` VARCHAR(255) NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
