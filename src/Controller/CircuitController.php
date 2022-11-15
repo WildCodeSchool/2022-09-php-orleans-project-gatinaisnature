@@ -15,13 +15,14 @@ class CircuitController extends AbstractController
 
         return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
     }
-    
-        public function indexCircuitsAdmin(): string
+
+    public function indexCircuitsAdmin(): string
     {
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll('title');
 
         return $this->twig->render('Circuits/indexAdmin.html.twig', ['circuits' => $circuits]);
+    }
 
     public function addCircuit()
     {
@@ -156,7 +157,7 @@ class CircuitController extends AbstractController
                 header('Location: /circuits');
             }
         }
-     
+
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
             'errors' => $errors,
