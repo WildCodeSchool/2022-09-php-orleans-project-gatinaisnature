@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{parent()}}| Page-Circuit
+	{{ circuit.id }}
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/circuitPage.css">
+{% endblock %}
+
+{% block content %}
+	<section>
+		<div class="container-fluid p-0 text-center min-vh-100">
+			<h1 class="p-4">{{circuit.title}}</h1>
+			{# Carte type pour ajout circuit #}
+			<div class="card-container">
+				<div class="container pb-4">
+					<div class="card col col-md-10 m-auto">
+						<div class="row g-0">
+							<div class="col-md-8">
+								<div class="card-body">
+									<p class="card-text text-start p-4">
+										{{circuit.content}}
+									</p>
+								</div>
+							</div>
+							<div class="col-md-4 d-flex align-items-center">
+								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="w-100 h-100 card-img" alt="Image du circuit">
+							</div>
+							<div class="row pt-5">
+								<p>
+									{{circuit.map}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{# Carrousel Espèces - prévoir loop de data#}
+
+			{# Carrousel Paysages - prévoir loop de data#}
+		</div>
+	</div>
+</section>
+{% endblock %}
