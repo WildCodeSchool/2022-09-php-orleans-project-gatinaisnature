@@ -82,13 +82,14 @@ class OrganismController extends AbstractController
 
     public function edit(int $id)
     {
+        $organism = [];
         $errors = [];
 
         $organismManager = new OrganismManager();
         $organism = $organismManager->selectOneById($id);
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $organism = array_map('trim', $_POST);
+            $organism['id'] = $id;
             $maxCharOrganismName = 255;
             if (strlen($organism['name']) > $maxCharOrganismName) {
                 $errors[] = 'Le nom doit être inférieur à ' . $maxCharOrganismName . ' caractères.';
