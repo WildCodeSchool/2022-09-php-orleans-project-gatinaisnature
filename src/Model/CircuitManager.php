@@ -8,17 +8,18 @@ class CircuitManager extends AbstractManager
 {
     public const TABLE = 'circuit';
 
-    public function updateCircuit(array $item): bool
+    public function updateCircuit(array $circuit, $picture)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " 
-        SET `title`, `size`, `content`, `map`, `trace`, `picture` = :title, :size, :content, :map, :trace, :picture WHERE id=:id");
-        $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
-        $statement->bindValue('size', $item['size'], PDO::PARAM_STR);
-        $statement->bindValue('content', $item['content'], PDO::PARAM_STR);
-        $statement->bindValue('map', $item['map'], PDO::PARAM_STR);
-        $statement->bindValue('trace', $item['trace'], PDO::PARAM_STR);
-        $statement->bindValue('picture', $item['picture'], PDO::PARAM_STR);
+        SET `title` = :title, `size` = :size, `content` = :content, `map` = :map, `trace` = :trace, `picture` = :picture 
+        WHERE id=:id");
+        $statement->bindValue('id', $circuit['id'], PDO::PARAM_INT);
+        $statement->bindValue('title', $circuit['title'], PDO::PARAM_STR);
+        $statement->bindValue('size', $circuit['size'], PDO::PARAM_STR);
+        $statement->bindValue('content', $circuit['content'], PDO::PARAM_STR);
+        $statement->bindValue('map', $circuit['map'], PDO::PARAM_STR);
+        $statement->bindValue('trace', $circuit['trace'], PDO::PARAM_STR);
+        $statement->bindValue('picture', $picture, PDO::PARAM_STR);
         return $statement->execute();
     }
 }

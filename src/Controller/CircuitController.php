@@ -53,11 +53,13 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->updateCircuit($circuit, $uploadFinalName);
-                header('Location: /circuits/show/id' . $id);
+                header('Location: /circuits');
             }
         }
+     
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
+            'errors' => $errors,
         ]);
     }
 }
