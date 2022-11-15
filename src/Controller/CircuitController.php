@@ -18,6 +18,14 @@ class CircuitController extends AbstractController
         return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
     }
 
+    public function showCircuit(int $id): string
+    {
+        $circuitManager = new CircuitManager();
+        $circuit = $circuitManager->selectOneById($id);
+
+        return $this->twig->render('Circuit/show.html.twig', ['circuit' => $circuit]);
+    }
+
     public function editCircuit(int $id): ?string
     {
         $circuitManager = new CircuitManager();
