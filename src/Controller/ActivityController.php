@@ -129,10 +129,10 @@ class ActivityController extends AbstractController
                     }
                 }
             }
-         } 
-         return $this->twig->render('Activity/edit.html.twig', ['activity' => $activity, 'errors' => $errors]);
-       }
-        
+        }
+        return $this->twig->render('Activity/edit.html.twig', ['activity' => $activity, 'errors' => $errors]);
+    }
+
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
