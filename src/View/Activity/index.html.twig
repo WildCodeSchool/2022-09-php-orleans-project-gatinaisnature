@@ -16,7 +16,7 @@
                                 {{activity.title}}
                                 <div class="link-admin d-flex gap-3 align-items-center">
                                     <div class="btn btn-primary">
-                                        <a href="#">Éditer</a>
+                                        <a href="/activity/edit?id={{activity.id}}">Editer</a>
                                     </div>
                                         <form action="/activity/delete" method="POST">
                                             <input type="hidden" name="id" value="{{ activity.id }}">
