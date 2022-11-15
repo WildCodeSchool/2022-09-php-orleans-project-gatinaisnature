@@ -21,6 +21,7 @@ return [
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'admin/circuits/add' => ['CircuitController', 'addCircuit'],
     'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin'],
+    'admin/circuits/delete' => ['CircuitController', 'removeCircuit'],
     'contact' => ['ContactController', 'index',['answer']],
     'especes' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
