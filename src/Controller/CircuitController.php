@@ -126,7 +126,7 @@ class CircuitController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $item = array_map('trim', $_POST);
+            $circuit = array_map('trim', $_POST);
 
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
