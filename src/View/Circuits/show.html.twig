@@ -29,142 +29,67 @@
 							<div class="circuit-img col-lg-4 d-flex align-items-center">
 								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="w-100 h-100" alt="Image du circuit">
 							</div>
-							<div class="row pt-5">
-								<p>
-									{{circuit.map}}
-								</p>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="container p-0">
 				<h2 class="p-4">Espèces rencontrées</h2>
-				{# {% if organisms is null %}
+				{% if organisms is null %}
 					<div class="card col col-md-10 m-auto py-4">
 						<div class="row">
 							<h2>Pas d'espèces renseignées</h2>
 							<p>Veuillez joindre l'administrateur du site pour ajouter des espèces, en cliquant ici</p>
 							<a class="btn bg-primary text-white fw-bold col-10 col-sm-4 m-auto" href="/contact">Contact</a>
 						</div>
-					</div> #}
+					</div>
+				{% else %}
 					<div class="owl-carousel carousel1 owl-theme">
-					{# {% else %} #}
-						{# {% for organism in organisms %} #}
-						<div class="item">
-							<div class="card bg-secondary text-white">
-								<div class="img-wrapper">
-									<img src="https://metropoletpm.fr/sites/new.tpm-agglo.fr/files/styles/contenu/public/web-img_7843a_credit_photo_c.viry_.jpg" class="w-100 h-100" alt="image espèce">
-								</div>
-								<div class="card-body">
-									<h3>Écureuil</h3>
-									<p>Paysage ID</p>
-									<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/%C3%89cureuil" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-								</div>
-							</div>
-						</div>
-						{# {% endfor %} #}
-						<div class="item">
-							<div class="card bg-secondary text-white">
-								<div class="img-wrapper">
-									<img src="https://www.anigaido.com/media/zoo_animaux/201-300/216/pic-vert-picus-viridis-copy-didier-loyer-xl.jpg" class="w-100 h-100" alt="image espèce">
-								</div>
-								<div class="card-body">
-									<h3>Pic Vert</h3>
-									<p>Paysage ID</p>
-									<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/Pic_vert" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+						{% for organism in organisms %}
+							<div class="item">
+								<div class="card bg-secondary text-white">
+									<div class="img-wrapper">
+										<img src="https://metropoletpm.fr/sites/new.tpm-agglo.fr/files/styles/contenu/public/web-img_7843a_credit_photo_c.viry_.jpg" class="w-100 h-100" alt="image espèce">
+									</div>
+									<div class="card-body">
+										<h3>Écureuil</h3>
+										<p>Paysage ID</p>
+										<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/%C3%89cureuil" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="item">
-							<div class="card bg-secondary text-white">
-								<div class="img-wrapper">
-									<img src="https://parrotworld.fr/sites/default/files/styles/famille_animaux_header/public/media/image/Perroquet_Ara_Macao_157318289_gi_A.jpg" class="w-100 h-100" alt="image espèce">
-								</div>
-								<div class="card-body">
-									<h3>Perroquet</h3>
-									<p>Paysage ID</p>
-									<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/Perroquet" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="card bg-secondary text-white">
-								<div class="img-wrapper">
-									<img src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2019-02/mini/chouette-effraie-105616-650-400.jpg" class="w-100 h-100" alt="image espèce">
-								</div>
-								<div class="card-body">
-									<h3>Chouette</h3>
-									<p>Paysage ID</p>
-									<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/Chouette" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="card bg-secondary text-white">
-								<div class="img-wrapper">
-									<img src="https://lemagdesanimaux.ouest-france.fr/images/dossiers/2019-01/moyen-duc-114424.jpg" class="w-100 h-100" alt="image espèce">
-								</div>
-								<div class="card-body">
-									<h3>Moyen-Duc</h3>
-									<p>Paysage ID</p>
-									<a class="btn btn-light w-100" href="https://fr.wikipedia.org/wiki/Hibou_moyen-duc" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-								</div>
-							</div>
-						</div>
-					{# {% endif %} #}
-				</div>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</div>
 			<div class="container pb-4 p-0">
-				<h2 class="p-4">Paysages rencontrés</h2>
+				<h2 class="p-4 mt-3">Paysages rencontrés</h2>
 				<div class="row mb-4">
-					{# {% if organisms is null %}
+					{% if organisms is null %}
 						<div class="card col col-md-10 m-auto py-4">
 							<div class="row">
 								<h2>Pas de paysages renseignés</h2>
 								<p>Veuillez joindre l'administrateur du site pour ajouter des paysages, en cliquant ici</p>
 								<a class="btn bg-primary text-white fw-bold col-10 col-sm-4 m-auto" href="/contact">Contact</a>
 							</div>
-						</div> #}
-						<div class="owl-carousel carousel2 owl-theme">
-						{# {% else %} #}
-							{# {% for landscape in landscapes %} #}
-								<div class="item">
-									<div class="card bg-secondary text-white">
-										<div class="img-wrapper">
-											<img src="/assets/images/imgPlaceHolder.jpg" class="w-100 h-100" alt="image espèce">
-										</div>
-										<div class="card-body">
-											<h3 class="p-2">Nom Paysage</h3>
-											<a class="btn btn-light w-100" href="/landscape/show?id={{ landscape.id }}" target="_blank" rel="noopener noreferrer">En savoir +</a>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="card bg-secondary text-white">
-										<div class="img-wrapper">
-											<img src="/assets/images/home-forest.jpg" class="w-100 h-100" alt="image espèce">
-										</div>
-										<div class="card-body">
-											<h3 class="p-2">Nom Paysage</h3>
-											<a class="btn btn-light w-100" href="/landscape/show?id={{ landscape.id }}" target="_blank" rel="noopener noreferrer">En savoir +</a>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="card bg-secondary text-white">
-										<div class="img-wrapper">
-											<img src="/assets/images/imgPlaceHolderCircuit.jpg" class="w-100 h-100" alt="image espèce">
-										</div>
-										<div class="card-body">
-											<h3 class="p-2">Nom Paysage</h3>
-											<a class="btn btn-light w-100" href="/landscape/show?id={{ landscape.id }}" target="_blank" rel="noopener noreferrer">En savoir +</a>
-										</div>
-									</div>
-								</div>
-							{# {% endfor %} #}
 						</div>
-					{# {% endif %} #}
+					{% else %}
+						<div class="owl-carousel carousel2 owl-theme">
+							{% for landscape in landscapes %}
+								<div class="item">
+									<div class="card bg-secondary text-white">
+										<div class="img-wrapper">
+											<img src="{{landscape.picture}}" class="w-100 h-100" alt="image espèce">
+										</div>
+										<div class="card-body">
+											<h3>{{landscape.name}}</h3>
+											<a class="btn btn-light w-100" href="/landscape/show?id={{ landscape.id }}" target="_blank" rel="noopener noreferrer">En savoir +</a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>

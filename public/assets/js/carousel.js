@@ -5,7 +5,7 @@ $(document).ready(function () {
 $(".carousel1").owlCarousel({
   loop: true,
   autoplay: true,
-  autoplayTimeout: 3000,
+  autoplayTimeout: 5000,
   autoplayHoverPause: true,
   margin: 10,
   responsiveClass: true,
@@ -28,7 +28,7 @@ $(".carousel1").owlCarousel({
 
 $(".carousel2").owlCarousel({
     loop: true,
-    autoplay: true,
+    autoplay: false,
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
     margin: 30,
@@ -41,7 +41,7 @@ $(".carousel2").owlCarousel({
         576: {
             items: 2,
         },
-        768: {
+        992: {
             items: 3,
         },
     },
