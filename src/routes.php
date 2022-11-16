@@ -30,6 +30,7 @@ return [
     'admin/circuits/edit' => ['CircuitController', 'editCircuit', ['id']],
     'contact' => ['ContactController', 'index',['answer']],
     'landscape' => ['LandscapeController', 'index',],
+    'event/edit' => ['EventController', 'edit', ['id']],
     'login' => ['LoginController', 'login'],
     'event/add' => ['EventController', 'add'],
     'event/delete' => ['EventController', 'delete'],
