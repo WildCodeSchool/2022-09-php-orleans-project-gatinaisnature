@@ -1,0 +1,32 @@
+.circuit-img img {
+    object-fit: cover;
+}
+
+.img-wrapper {
+    max-width: 100%;
+    height: 30vw;
+}
+
+.img-wrapper img {
+    object-fit: cover;
+}
+
+.item .card {
+    text-shadow: 1px 1px 1px black;
+}
+
+.item .card-body{
+    background-color: rgba(var(--bs-primary-rgb), .3);
+}
+
+.card-body a{
+    text-decoration: none;
+    color: var(--bs-primary);
+    text-shadow: none;
+}
+
+@media screen and (min-width:576px) {
+    .img-wrapper{
+        height: 15vw
+    }
+}
