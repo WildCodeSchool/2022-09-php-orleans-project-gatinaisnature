@@ -7,7 +7,6 @@ use App\Controller\AbstractController;
 
 class EventController extends AbstractController
 {
-  
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 200000;
