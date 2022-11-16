@@ -1,0 +1,50 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/event.css">
+{% endblock %}
+
+{% block title %}
+	{{parent()}}
+	| Évènements
+{% endblock %}
+
+{% block content %}
+<h1>Editer évènement admin</h1>
+<ul>
+{% for error in errors %}
+  <li>{{error}}</li>
+{% endfor %}
+</ul>
+<form action="" method="post" enctype="multipart/form-data" class="container">
+   <input type="hidden" value="{{ event.id }}" name="id">
+    <div class="mb-3">	
+      <label for="title" class="form-label">Titre :</label>
+      <input type="text" name="title" id="title" class="form-control" value ="{{event.title}}" placeholder="Titre à renseigner">
+    </div>
+    </div class="mb-3">
+      <label for="date" class="form-label">Date :</label>
+      <input type="date" name="date" id="date" class="form-control" value ="{{event.date}}" placeholder="Ajouter Descriptif">
+    </div>
+    </div class="mb-3">
+      <label for="description" class="form-label">Description :</label>
+      <input type="text" name="description" id="description" class="form-control" value ="{{event.description}}" placeholder="Ajouter Descriptif">
+    </div>
+    </div class="mb-3">
+      <label for="cost" class="form-label">Coût :</label>
+      <input type="number" step=".01" name="cost" id="cost" class="form-control" value ="{{event.cost}}" placeholder="Ajouter Coût">
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Image :</label>
+      <input type="file" name="picture" id="picture" value ="{{event.picture}}" class="form-control">
+    </div>
+    <div>
+			{% if event.picture == null %}
+				<img class="eventImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="eventPicture" srcset="">
+			{% else %}
+				<img class="eventImg rounded" src={{ event.picture|trim('.')}} alt="eventPicture" srcset="">
+			{% endif %}
+    </div>
+    <button class="btn btn-primary">Mettre à jour</button>
+</form>
+{% endblock %}

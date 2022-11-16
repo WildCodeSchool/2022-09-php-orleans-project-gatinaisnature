@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\LandscapeManager;
+use App\Controller\AbstractController;
+
 class LandscapeController extends AbstractController
 {
     /**
@@ -10,5 +13,13 @@ class LandscapeController extends AbstractController
     public function index(): string
     {
         return $this->twig->render('Landscape/landscape.html.twig');
+    }
+
+    public function indexLandscapeAdmin(): string
+    {
+        $landscapeManager = new LandscapeManager();
+        $landscapes = $landscapeManager->selectAll('title');
+
+        return $this->twig->render('Landscape/indexAdmin.html.twig', ['landscapes' => $landscapes]);
     }
 }
