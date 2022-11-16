@@ -11,6 +11,7 @@ return [
     'activity' => ['ActivityController', 'index',],
     'activity/indexAdmin' => ['ActivityController', 'indexAdmin'],
     'activity/add' => ['ActivityController', 'add'],
+    'activity/edit' => ['ActivityController', 'edit', ['id']],
     'activity/delete' => ['ActivityController', 'delete'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
