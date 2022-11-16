@@ -268,5 +268,17 @@ CREATE TABLE
     `user` (
         `id` INT(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
         `email` VARCHAR(255) NOT NULL UNIQUE,
-        `password` VARCHAR NOT NULL
+        `password` VARCHAR(100) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+--
+
+INSERT INTO
+    `user` (
+        `email`,
+        `password`
+    )
+VALUES (
+    'admin@gatinais.com',
+    '$2y$10$e9IPqPJAEqXocHcpBF21sOi4WbuyiHrK0aR6Ht8r2B09u95W/XMAm'
+);
