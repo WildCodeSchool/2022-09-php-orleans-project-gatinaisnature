@@ -20,4 +20,17 @@ class EventManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
+
+    public function insert($event, $picture = null)
+    {
+        $query = "INSERT INTO " . self::TABLE . " (`title`,`date`,`description`,`cost`,`picture`) 
+        VALUES (:title,:date,:description,:cost,:picture)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':title', $event['title']);
+        $statement->bindValue(':date', $event['date']);
+        $statement->bindValue(':description', $event['description']);
+        $statement->bindValue(':cost', $event['cost']);
+        $statement->bindValue(':picture', $picture);
+        $statement->execute();
+    }
 }
