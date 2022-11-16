@@ -28,5 +28,7 @@ return [
     'admin/especes/index' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
     'login' => ['LoginController', 'login'],
+    'logout' => ['LoginController', 'logout'],
     'event/add' => ['EventController', 'add'],
+    'admin' => ['AdminController', 'index'],
 ];
