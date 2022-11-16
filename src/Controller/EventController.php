@@ -11,6 +11,14 @@ class EventController extends AbstractController
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 200000;
 
+    public function indexAdmin(): string
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAll('title');
+
+        return $this->twig->render('/Event/index.html.twig', ['events' => $events]);
+    }
+
     public function getFormErrors(array $activity, array $errors): array
     {
         if (!isset($activity['title']) || empty($activity['title'])) {
