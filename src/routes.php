@@ -32,4 +32,5 @@ return [
     'landscape' => ['LandscapeController', 'index',],
     'login' => ['LoginController', 'login'],
     'event/add' => ['EventController', 'add'],
+    'event/delete' => ['EventController', 'delete'],
 ];

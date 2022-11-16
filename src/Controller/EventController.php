@@ -72,4 +72,15 @@ class EventController extends AbstractController
         }
         return $this->twig->render('Event/add.html.twig', ['errors' => $errors]);
     }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $eventManager = new EventManager();
+            $eventManager->delete((int)$id);
+
+            header('Location:/event/indexAdmin');
+        }
+    }
 }
