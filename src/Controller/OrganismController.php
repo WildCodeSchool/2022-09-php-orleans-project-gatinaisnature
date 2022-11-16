@@ -37,7 +37,7 @@ class OrganismController extends AbstractController
                 $organismManager = new OrganismManager();
                 $organismManager->insert($organism['name'], $organism['link'], $organism['picture']);
 
-                header('Location: /especes');
+                header('Location: /admin/especes');
             }
         }
         return $this->twig->render('Organism/add.html.twig', ['errors' => $errors]);
@@ -57,24 +57,24 @@ class OrganismController extends AbstractController
             $errors[] = 'Le lien d\'une photo est obligatoire';
         }
 
+        if (!filter_var($organism['link'], FILTER_VALIDATE_URL)) {
+            $errors[] = 'Le lien wikipedia n\'est pas correct';
+        }
+
+        if (!filter_var($organism['picture'], FILTER_VALIDATE_URL)) {
+            $errors[] = 'Le lien image n\'est pas correct';
+        }
+
         return $errors;
     }
 
     public function isImage(array $organism, array $errors)
     {
-        $urlHeaders = get_headers($organism['picture'], true);
-        $extension = ['png', 'jpg', 'webp'];
-        if (isset($urlHeaders['Content-Type'])) {
-            $type = strtolower($urlHeaders['Content-Type']);
+        $extension = pathinfo($organism['picture'], PATHINFO_EXTENSION);
+        $authorizedMimes = ['png', 'jpg', 'jpeg', 'webp'];
 
-            $validImgType = array();
-            $validImgType['image/png'] = '';
-            $validImgType['image/jpg'] = '';
-            $validImgType['image/webp'] = '';
-
-            if (!isset($validImgType[$type])) {
-                $errors[] = 'Le fichier doit être de type ' . implode(", ", $extension);
-            }
+        if (!in_array($extension, $authorizedMimes)) {
+            $errors[] = 'Le fichier doit être de type ' . implode(", ", $authorizedMimes);
         }
 
         return $errors;

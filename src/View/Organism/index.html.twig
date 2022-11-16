@@ -21,9 +21,9 @@
 								{{organism.name}}
 								<div class="link-admin d-flex gap-3 align-items-center">
 									<div class="update">
-										<a class="btn btn-primary" href="admin/especes/editer?id={{organism.id}}">Éditer</a>
+										<a class="btn btn-primary" href="/admin/especes/editer?id={{organism.id}}">Éditer</a>
 									</div>
-									<form action="admin/especes/supprimer" method="post">
+									<form action="/admin/especes/supprimer" method="post">
 										<button class="btn btn-danger">Supprimer</button>
 									</form>
 								</div>
@@ -32,7 +32,7 @@
 					</ul>
 				</div>
 				<div class="add-entry">
-					<a class="btn btn-secondary" href="admin/especes/ajouter">Ajouter</a>
+					<a class="btn btn-secondary" href="/admin/especes/ajouter">Ajouter</a>
 				</div>
 			</div>
 		</div>
