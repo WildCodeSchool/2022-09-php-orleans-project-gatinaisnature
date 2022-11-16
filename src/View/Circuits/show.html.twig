@@ -1,45 +1,100 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-	{{parent()}}| Page-Circuit
+	{{parent()}}| Page-Circuit
 	{{ circuit.id }}
 {% endblock %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/circuitPage.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" href="/assets/css/circuit-page.css">
 {% endblock %}
 
 {% block content %}
 	<section>
 		<div class="container-fluid p-0 text-center min-vh-100">
 			<h1 class="p-4">{{circuit.title}}</h1>
-			{# Carte type pour ajout circuit #}
-			<div class="card-container">
-				<div class="container pb-4">
-					<div class="card col col-md-10 m-auto">
-						<div class="row g-0">
-							<div class="col-md-8">
-								<div class="card-body">
-									<p class="card-text text-start p-4">
-										{{circuit.content}}
-									</p>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex align-items-center">
-								<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="w-100 h-100 card-img" alt="Image du circuit">
-							</div>
-							<div class="row pt-5">
-								<p>
-									{{circuit.map}}
+			<div class="container pb-4">
+				<div class="card col col-md-10 m-auto">
+					<div class="row g-0">
+						<div class="col-lg-8">
+							<div class="card-body">
+								<p class="card-text text-start p-4">
+									{{circuit.content}}
 								</p>
 							</div>
+						</div>
+						<div class="circuit-img col-lg-4 d-flex align-items-center">
+							<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolder.jpg' : circuit.picture}}" class="w-100 h-100" alt="Image du circuit">
 						</div>
 					</div>
 				</div>
 			</div>
-			{# Carrousel Espèces - prévoir loop de data#}
-
-			{# Carrousel Paysages - prévoir loop de data#}
+			<div class="container pb-4 p-0">
+				<h2 class="p-4">Espèces rencontrées</h2>
+				<div class="row mb-4">
+					{% if organisms %}
+						<div class="owl-carousel carousel1 owl-theme">
+							{% for organism in organisms %}
+								<div class="item">
+									<div class="card col-10 bg-secondary text-white">
+										<div class="img-wrapper">
+											<img src="{{organism.picture}}" class="w-100 h-100" alt="image espèce">
+										</div>
+										<div class="card-body">
+											<h3>{{organism.name}}</h3>
+											<p>{{landscape.title}}</p>
+											<a class="btn btn-light w-100" href="{{organism.link}}" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% else %}
+						<div class="card col-10 m-auto py-4">
+							<div class="row">
+								<h2>Pas d'espèces renseignées</h2>
+								<p>Veuillez joindre l'administrateur du site pour ajouter des espèces, en cliquant ici</p>
+								<a class="btn bg-primary text-white fw-bold col-10 col-sm-4 m-auto" href="/contact">Contact</a>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="container pb-4 p-0">
+				<h2 class="p-4 mt-3">Paysages rencontrés</h2>
+				<div class="row mb-4">
+					{% if landscapes %}
+						<div class="owl-carousel carousel2 owl-theme">
+							{% for landscape in landscapes %}
+								<div class="item">
+									<div class="card col-10 bg-secondary text-white">
+										<div class="img-wrapper">
+											<img src="/assets/upload/{{ landscape.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : landscape.picture_link }}" class="w-100 h-100" alt="image espèce">
+										</div>
+										<div class="card-body">
+											<h3>{{landscape.title}}</h3>
+											<a class="btn btn-light w-100" href="/landscape/show?id={{ landscape.id }}" target="_blank" rel="noopener noreferrer">En savoir +</a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					{% else %}
+						<div class="card col-10 m-auto py-4">
+							<div class="row">
+								<h2>Pas de paysages renseignés</h2>
+								<p>Veuillez joindre l'administrateur du site pour ajouter des paysages, en cliquant ici</p>
+								<a class="btn bg-primary text-white fw-bold col-10 col-sm-4 m-auto" href="/contact">Contact</a>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</div>
-</section>{% endblock %}
+</section>{% endblock %}{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/carousel.js"></script>{% endblock %}

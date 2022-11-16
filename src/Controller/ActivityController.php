@@ -10,7 +10,7 @@ class ActivityController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
-    private const MAX_PICTURE_SIZE = 200000;
+    private const MAX_PICTURE_SIZE = 1000000;
 
     /**
      * Display home page
@@ -89,5 +89,58 @@ class ActivityController extends AbstractController
             }
         }
         return $this->twig->render('Activity/add.html.twig', ['errors' => $errors]);
+    }
+
+        /**
+     * Edit a specific activity
+     */
+    public function edit(int $id)
+    {
+        $errors = [];
+        $activityManager = new ActivityManager();
+        $activity = $activityManager->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $activity = array_map('trim', $_POST);
+            $errors = $this->getFormErrors($activity, $errors);
+
+            // create the image file to put it in the upload folder (without versioning)
+            $targetFile = '';
+            if ($_FILES['picture']['name'] > 0) {
+                $targetDir = "assets/upload/";
+                $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
+                $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
+                $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
+                $allowedExtension = ['jpg','png','jpeg','webp'];
+                if (!in_array($imageFileType, $allowedExtension)) {
+                    $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
+                }
+                if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
+                    $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . 'Mo';
+                }
+            }
+            if (empty($errors)) {
+                // move image to upload folder
+                if ($_FILES['picture']['size'] > 0) {
+                    if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
+                        $activityManager->update($activity, $targetFile);
+                        header('Location: /activity');
+                    } else {
+                        $errors[] = 'Le fichier image n\'a pu être ajouté';
+                    }
+                }
+            }
+        }
+        return $this->twig->render('Activity/edit.html.twig', ['activity' => $activity, 'errors' => $errors]);
+    }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $activityManager = new ActivityManager();
+            $activityManager->delete((int)$id);
+
+            header('Location:/activity');
+        }
     }
 }
