@@ -144,7 +144,6 @@ class EventController extends AbstractController
         }
         return $this->twig->render('Event/edit.html.twig', ['event' => $event, 'errors' => $errors]);
     }
-    
     public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
