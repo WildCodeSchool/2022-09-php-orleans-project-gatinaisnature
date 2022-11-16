@@ -12,6 +12,14 @@ class EventController extends AbstractController
     private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 200000;
 
+    public function indexAdmin(): string
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAll('title');
+
+        return $this->twig->render('/Event/index.html.twig', ['events' => $events]);
+    }
+
     public function checkDate(string $date, array $errors): void
     {
         new DateTime($date);
@@ -40,7 +48,6 @@ class EventController extends AbstractController
             $errors[] = 'Le coût doit être positif !';
         }
     }
-
 
     public function getFormErrors(array $event, array $errors): array
     {
@@ -136,5 +143,16 @@ class EventController extends AbstractController
             }
         }
         return $this->twig->render('Event/edit.html.twig', ['event' => $event, 'errors' => $errors]);
+    }
+    
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $eventManager = new EventManager();
+            $eventManager->delete((int)$id);
+
+            header('Location:/event/indexAdmin');
+        }
     }
 }
