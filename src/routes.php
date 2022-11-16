@@ -9,8 +9,9 @@
 return [
     '' => ['HomeController', 'index',],
     'activity' => ['ActivityController', 'index',],
-    'activity/indexAdmin' => ['ActivityController', 'indexAdmin'],
+    'admin/activites/indexAdmin' => ['ActivityController', 'indexAdmin'],
     'activity/add' => ['ActivityController', 'add'],
+    'activity/edit' => ['ActivityController', 'edit', ['id']],
     'activity/delete' => ['ActivityController', 'delete'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
@@ -22,7 +23,8 @@ return [
     'admin/circuits/add' => ['CircuitController', 'addCircuit'],
     'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin'],
     'admin/circuits/delete' => ['CircuitController', 'removeCircuit'],
+    'admin/circuits/edit' => ['CircuitController', 'editCircuit', ['id']],
     'contact' => ['ContactController', 'index',['answer']],
-    'especes' => ['OrganismController', 'index'],
+    'admin/especes/index' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
 ];
