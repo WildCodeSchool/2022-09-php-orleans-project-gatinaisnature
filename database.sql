@@ -267,5 +267,3 @@ CREATE TABLE
         `link` TEXT NOT NULL,
         `picture` VARCHAR(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-
---
