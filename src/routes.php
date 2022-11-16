@@ -26,4 +26,5 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'admin/especes/index' => ['OrganismController', 'index'],
     'landscape' => ['LandscapeController', 'index',],
+    'event/edit' => ['EventController', 'edit', ['id']],
 ];
