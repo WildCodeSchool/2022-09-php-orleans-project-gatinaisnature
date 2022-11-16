@@ -163,4 +163,15 @@ class CircuitController extends AbstractController
             'errors' => $errors,
         ]);
     }
+
+    public function removeCircuit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $circuitManager = new CircuitManager();
+            $circuitManager->delete((int)$id);
+
+            header('Location: /circuits');
+        }
+    }
 }

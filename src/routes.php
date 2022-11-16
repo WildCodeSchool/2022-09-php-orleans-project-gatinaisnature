@@ -22,6 +22,7 @@ return [
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'admin/circuits/add' => ['CircuitController', 'addCircuit'],
     'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin'],
+    'admin/circuits/delete' => ['CircuitController', 'removeCircuit'],
     'admin/circuits/edit' => ['CircuitController', 'editCircuit', ['id']],
     'contact' => ['ContactController', 'index',['answer']],
     'admin/especes/index' => ['OrganismController', 'index'],

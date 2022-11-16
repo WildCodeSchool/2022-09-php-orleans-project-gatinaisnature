@@ -21,8 +21,9 @@
 								{{circuit.title}}
 								<div class="link-admin d-flex gap-3 align-items-center">
 									<a class="btn btn-primary" href="#">Éditer</a>
-									<form action="" method="post">
-										<a class="btn btn-danger" href="#">Supprimer</a>
+									<form action="delete" method="POST">
+										<input type="hidden" name="id" value="{{ circuit.id }}">
+										<button class="btn btn-danger">Supprimer</button>
 									</form>
 								</div>
 							</li>
