@@ -137,5 +137,4 @@ class EventController extends AbstractController
         }
         return $this->twig->render('Event/edit.html.twig', ['event' => $event, 'errors' => $errors]);
     }
-
 }
