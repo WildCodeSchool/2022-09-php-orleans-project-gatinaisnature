@@ -82,7 +82,7 @@ class ActivityController extends AbstractController
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $activityManager = new ActivityManager();
                     $activityManager->insert($activity['title'], $activity['description'], $targetFile);
-                    header('Location: /activites');
+                    header('Location: /admin/activites/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté';
                 }
@@ -123,7 +123,7 @@ class ActivityController extends AbstractController
                 if ($_FILES['picture']['size'] > 0) {
                     if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                         $activityManager->update($activity, $targetFile);
-                        header('Location: /activites');
+                        header('Location: /admin/activites/index');
                     } else {
                         $errors[] = 'Le fichier image n\'a pu être ajouté';
                     }
@@ -140,7 +140,7 @@ class ActivityController extends AbstractController
             $activityManager = new ActivityManager();
             $activityManager->delete((int)$id);
 
-            header('Location: /activites');
+            header('Location: /admin/activites/index');
         }
     }
 }
