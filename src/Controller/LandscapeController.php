@@ -116,4 +116,14 @@ class LandscapeController extends AbstractController
         }
         return $this->twig->render('Landscape/add.html.twig', ['errors' => $errors]);
     }
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $landscapeManager = new LandscapeManager();
+            $landscapeManager->delete((int)$id);
+
+            header('Location:/admin/paysages/index');
+        }
+    }
 }
