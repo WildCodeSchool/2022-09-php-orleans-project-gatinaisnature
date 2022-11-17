@@ -257,7 +257,6 @@ VALUES (
         'laclery_andresis.webp'
     );
 
-=======
 --
 
 --
@@ -283,7 +282,7 @@ VALUES (
     '$2y$10$e9IPqPJAEqXocHcpBF21sOi4WbuyiHrK0aR6Ht8r2B09u95W/XMAm'
 );
 
-/* TABLE OF RACES */
+/* TABLE OF ORGANISMS */
 
 CREATE TABLE
     `organism` (
