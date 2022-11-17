@@ -18,4 +18,17 @@ class LandscapeManager extends AbstractManager
         $statement->bindValue(':picture', $picture);
         $statement->execute();
     }
+
+    public function update($landscape, $picture = '')
+    {
+        $query = " SET `title` = :title,
+          `description` = :description,
+            `picture_link` = :picture WHERE id=:id";
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
+        $statement->bindValue('id', $landscape['id'], PDO::PARAM_INT);
+        $statement->bindValue('title', $landscape['title'], PDO::PARAM_STR);
+        $statement->bindValue('description', $landscape['description'], PDO::PARAM_STR);
+        $statement->bindValue('picture', $picture, PDO::PARAM_STR);
+        return $statement->execute();
+    }
 }

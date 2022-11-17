@@ -31,7 +31,6 @@ foreach ($matchingRoute[2] ?? [] as $parameter) {
         $parameters[] = $_GET[$parameter];
     }
 }
-
 // instance the controller, call the method with given parameters
 // controller method will return a twig template (HTML string) which is displayed here
 try {

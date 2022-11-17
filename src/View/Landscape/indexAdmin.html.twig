@@ -20,7 +20,7 @@
 							<li class="d-flex justify-content-between align-items-center mt-4">
 								{{landscape.title}}
 								<div class="link-admin d-flex gap-3 align-items-center">
-									<a class="btn btn-primary" href="#">Éditer</a>
+									<a class="btn btn-primary" href="edit?id={{ landscape.id }}">Éditer</a>
 									<form action="delete" method="POST">
 										<input type="hidden" name="id" value="{{ landscape.id }}">
 										<button class="btn btn-danger">Supprimer</button>
