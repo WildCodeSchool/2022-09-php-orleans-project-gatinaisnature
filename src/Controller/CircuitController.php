@@ -55,10 +55,13 @@ class CircuitController extends AbstractController
                 $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
+
+
+            
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->save($circuit, $uploadFinalName);
-                header('Location: /circuits');
+                header ('Location:/circuits');
             }
         }
 
