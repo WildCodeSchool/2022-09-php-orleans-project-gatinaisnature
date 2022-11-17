@@ -15,3 +15,7 @@
 .navbar-toggler-icon{
     --bs-navbar-brand-color: var(--bs-white)
 }
+
+.navbar-brand a {
+    font-size: clamp(*);
+}
