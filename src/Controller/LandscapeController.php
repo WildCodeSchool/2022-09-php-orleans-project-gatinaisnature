@@ -22,4 +22,9 @@ class LandscapeController extends AbstractController
 
         return $this->twig->render('Landscape/indexAdmin.html.twig', ['landscapes' => $landscapes]);
     }
+
+    public function edit(int $id)
+    {
+        echo($id);
+    }
 }
