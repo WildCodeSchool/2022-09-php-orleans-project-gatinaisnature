@@ -13,7 +13,7 @@ return [
     'activity/add' => ['ActivityController', 'add'],
     'activity/edit' => ['ActivityController', 'edit', ['id']],
     'activity/delete' => ['ActivityController', 'delete'],
-    'event/indexAdmin' => ['EventController', 'indexAdmin'],
+    'admin/evenements/index' => ['EventController', 'indexAdmin'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
