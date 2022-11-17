@@ -6,52 +6,54 @@
 
 {% block content %}
 	<body class="bg-secondary">
-		<section class="container-fluid d-flex">
-			<div class="row">
-			<div class="col-6">
-				<img class="p-0" src="/assets/images/home-forest.jpg" alt="Image d'une forêt">
-				<a class="btn bg-dark text-white fs-2 fw-bold link1" href="/circuits">CIRCUITS</a>
-			</div>
-			<div class="col-6">
-				<img class="p-0" src="/assets/images/home-bird.jpg" alt="Image d'un oiseau">
-				<a class="btn bg-dark text-white fs-2 fw-bold link2" href="/activity">ACTIVITÉS</a>
-			</div>
+		<section class="container-fluid p-0 landing">
+			<div class="row g-0 h-100">
+				<div class="col-md-6 position-relative">
+					<img class="h-100 w-100" src="/assets/images/home-bird.jpg" alt="Image d'un oiseau">
+					<a class="btn bg-dark text-white fs-2 fw-bold link position-absolute top-50 start-50 translate-middle" href="/activity">ACTIVITÉS</a>
+				</div>
+				<div class="col-md-6 position-relative">
+					<img class="h-100 w-100" src="/assets/images/home-forest.jpg" alt="Image d'une forêt">
+					<a class="btn bg-dark text-white fs-2 fw-bold link position-absolute top-50 start-50 translate-middle" href="/circuits">CIRCUITS</a>
+				</div>
 			</div>
 		</section>
 
-		<div class="d-flex justify-content-center mt-5">
-			<div class="card border-0 mb-5 mt-5 w-75">
-				<div class="row no-gutters">
-					<div class="col-md-4">
-						<img src="/assets/images/asso-presentation.png" class="w-100 h-100" alt="Randonneurs en forêt">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h1 class="card-title text-center fw-bold mt-3 mb-5">Présentation de l'association</h1>
-							<p class="card-text">L’association Les Corbeaux - Gâtinais Nature, fondée en décembre 1981, a pour but de faire connaître et respecter la nature, de faciliter les études et recherches dans le domaine des sciences naturelles, de préserver la faune, la flore et les sites nécessaires à leur conservation, et d’éduquer le public dans tous les domaines touchant la nature. Son terrain d’étude couvre le Gâtinais de l’Est du Loiret. Elle organise également des sorties sur le terrain, des expositions et des animations.</p>
+		<div class="container">
+			<section class="justify-content-center mt-5">
+				<div class="card border-0 mb-5 mt-5">
+					<div class="row">
+						<div class="col-md-4">
+							<img src="/assets/images/lest.jpg" class="w-100 h-100 rounded" alt="Randonneurs en forêt">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h1 class="card-title text-center fw-bold mt-3 mb-5">Présentation de l'association</h1>
+								<p class="card-text">L’association Les Corbeaux - Gâtinais Nature, fondée en décembre 1981, a pour but de faire connaître et respecter la nature, de faciliter les études et recherches dans le domaine des sciences naturelles, de préserver la faune, la flore et les sites nécessaires à leur conservation, et d’éduquer le public dans tous les domaines touchant la nature. Son terrain d’étude couvre le Gâtinais de l’Est du Loiret. Elle organise également des sorties sur le terrain, des expositions et des animations.</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</section>
 
-		<h2 class="text-center fw-bold mt-5">Membres de l'association</h2>
+			<h2 class="text-center fw-bold mt-5">Membres de l'association</h2>
 
-		<div class="d-flex flex-row justify-content-around text-center mt-5 mb-5">
-			<div>
-				<img src="/assets/images/president.png" alt="Photo du président" class="rounded-circle">
-				<h2 class="mt-4 fw-bold">Philippe Doré</h2>
-				<h3 class="fst-italic">Président</h3>
-			</div>
-			<div>
-				<img src="/assets/images/tresorier.png" alt="Photo du trésorier" class="rounded-circle">
-				<h2 class="mt-4 fw-bold">John Doe</h2>
-				<h3 class="fst-italic">Trésorier</h3>
-			</div>
-			<div>
-				<img src="/assets/images/secretaire.png" alt="Photo de la secrétaire" class="rounded-circle">
-				<h2 class="mt-4 fw-bold">Jane Doe</h2>
-				<h3 class="fst-italic">Secrétaire</h3>
+			<div class="row justify-content-around text-center mt-5 mb-5">
+				<div class="col-md-4">
+					<img src="/assets/images/president.png" alt="Photo du président" class="rounded-circle">
+					<h2 class="mt-4 fw-bold">Philippe Doré</h2>
+					<h3 class="fst-italic">Président</h3>
+				</div>
+				<div class="col-md-4">
+					<img src="/assets/images/tresorier.png" alt="Photo du trésorier" class="rounded-circle">
+					<h2 class="mt-4 fw-bold">John Doe</h2>
+					<h3 class="fst-italic">Trésorier</h3>
+				</div>
+				<div class="col-md-4">
+					<img src="/assets/images/secretaire.png" alt="Photo de la secrétaire" class="rounded-circle">
+					<h2 class="mt-4 fw-bold">Jane Doe</h2>
+					<h3 class="fst-italic">Secrétaire</h3>
+				</div>
 			</div>
 		</div>
 

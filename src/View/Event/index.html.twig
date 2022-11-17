@@ -1,0 +1,34 @@
+
+{% extends "layoutAdmin.html.twig" %}{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/event-index.css">
+{% endblock %}{% block title %}
+    {{parent()}}
+    | Évènements
+{% endblock %}{% block content %}
+    <div class="container block-form vh-100">
+        <div class="row pt-4">
+            <h1 class="text-center">Évènements Version Admin</h1>
+            <div class="col-12 col-sm-10 m-auto">
+                <div class="card card-admin mt-4 overflow-auto">
+                    <ul class="p-4">
+                        {% for event in events %}
+                            <li class="d-flex justify-content-between align-items-center mt-4">
+                                {{event.title}}
+                                <div class="link-admin d-flex gap-3 align-items-center">
+                                    <a class="btn btn-primary" href="#">Éditer</a>
+                                    <form action="/event/delete" method="POST">
+                                        <input type="hidden" name="id" value="{{ event.id }}">
+                                        <button class="btn btn-danger">Supprimer</button>
+                                    </form>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="add-entry"> 
+                        <a href="#" class="btn btn-secondary">Ajouter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

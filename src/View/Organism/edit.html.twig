@@ -1,0 +1,18 @@
+{% extends "layoutAdmin.html.twig" %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/../assets/css/organism.css">
+{% endblock %}
+
+{% block title %}
+	{{parent()}}
+	| Edition d'espèces
+{% endblock %}
+
+{% block content %}
+	{% include "formAdminEdit.html.twig" %}
+{% endblock %}
+
+{% block titleForm %}
+	Formulaire d'édition d'espèces
+{% endblock %}

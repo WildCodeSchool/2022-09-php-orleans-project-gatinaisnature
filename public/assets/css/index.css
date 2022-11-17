@@ -1,28 +1,16 @@
-img {
-    position: relative;
+.link {
+    border: 1.5px solid var(--bs-white);
+    padding:1rem;
 }
 
-div.links {
-    display: flex;
-    position: absolute;
+.landing img {
+    min-height: calc(50vh - 60px);
 }
 
-.link1 {
-    position: absolute;
-    width: 15%;
-    bottom: 3em;
-    left: 10em;
-    border: 1.5px solid white;
-}
-
-.link2 {
-    position: absolute;
-    width: 15%;
-    bottom: 3em;
-    right: 10em;
-    border: 1.5px solid white;
-}
-
-button.bg-dark {
+button.bg-dark, a.bg-dark {
     --bs-bg-opacity: 0.9;
+}
+
+img {
+    vertical-align: initial;
 }
