@@ -35,7 +35,7 @@ return [
     'login' => ['LoginController', 'login'],
     'logout' => ['LoginController', 'logout'],
     'event/add' => ['EventController', 'add'],
-    'organisms' => ['OrganismController', 'index']
+    'organisms' => ['OrganismController', 'index'],
     'event/delete' => ['EventController', 'delete'],
     'admin/paysages/index' => ['LandscapeController', 'indexLandscapeAdmin'],
     'admin/paysages/add' => ['LandscapeController', 'add'],

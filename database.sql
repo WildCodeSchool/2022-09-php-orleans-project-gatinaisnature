@@ -316,3 +316,4 @@ CREATE TABLE
         CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id),
         CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    
