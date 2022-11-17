@@ -20,7 +20,7 @@
                                     </div>
                                         <form action="/activity/delete" method="POST">
                                             <input type="hidden" name="id" value="{{ activity.id }}">
-                                            <button>Supprimer</button>
+                                            <button class="btn btn-danger">Supprimer</button>
                                         </form>
                                 </div>
                             </li>
@@ -28,9 +28,7 @@
                     </ul>
                 </div>
                 <div class="add-entry">
-                    <button class="btn btn-secondary">
-                        <a href="#">Ajouter</a>
-                    </button>
+                    <a class="btn btn-secondary" href="/activity/add">Ajouter</a>
                 </div>
             </div>
         </div>
