@@ -41,4 +41,12 @@ class LoginController extends AbstractController
             'profils' => $profils,
         ]);
     }
+
+    public function logout(): void
+    {
+        if (isset($_SESSION['user_id'])) {
+            unset($_SESSION['user_id']);
+        }
+        header('Location: /');
+    }
 }

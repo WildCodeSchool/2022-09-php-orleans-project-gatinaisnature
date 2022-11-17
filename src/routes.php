@@ -32,8 +32,10 @@ return [
     'landscape' => ['LandscapeController', 'index',],
     'event/edit' => ['EventController', 'edit', ['id']],
     'login' => ['LoginController', 'login'],
+    'logout' => ['LoginController', 'logout'],
     'event/add' => ['EventController', 'add'],
     'event/delete' => ['EventController', 'delete'],
     'admin/paysages/index' => ['LandscapeController', 'indexLandscapeAdmin'],
     'admin/paysages/add' => ['LandscapeController', 'add'],
+    'admin' => ['AdminController', 'index'],
 ];
