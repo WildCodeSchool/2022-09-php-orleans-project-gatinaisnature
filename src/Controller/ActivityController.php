@@ -140,7 +140,7 @@ class ActivityController extends AbstractController
             $activityManager = new ActivityManager();
             $activityManager->delete((int)$id);
 
-            header('Location:/activites');
+            header('Location: /activites');
         }
     }
 }

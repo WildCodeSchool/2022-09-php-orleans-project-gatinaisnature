@@ -123,7 +123,7 @@ class LandscapeController extends AbstractController
             $landscapeManager = new LandscapeManager();
             $landscapeManager->delete((int)$id);
 
-            header('Location:/admin/paysages/index');
+            header('Location: /admin/paysages/index');
         }
     }
 }
