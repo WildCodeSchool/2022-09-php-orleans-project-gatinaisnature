@@ -36,5 +36,6 @@ return [
     'event/add' => ['EventController', 'add'],
     'event/delete' => ['EventController', 'delete'],
     'admin/paysages/index' => ['LandscapeController', 'indexLandscapeAdmin'],
+    'admin/paysages/add' => ['LandscapeController', 'add'],
     'admin' => ['AdminController', 'index'],
 ];
