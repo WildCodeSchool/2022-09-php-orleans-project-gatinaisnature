@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\CircuitManager;
+use App\Model\OrganismManager;
+use App\Model\LandscapeManager;
 
 class CircuitController extends AbstractController
 {
@@ -27,11 +29,17 @@ class CircuitController extends AbstractController
     public function addCircuit()
     {
         $circuitManager = new CircuitManager();
+        $organismManager = new OrganismManager();
+        $landscapeManager = new LandscapeManager();
+
         $errors = [];
+        $organisms = $organismManager->selectAll();
+        $landscapes = $landscapeManager->selectAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
 
+            $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
@@ -57,13 +65,19 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->save($circuit, $uploadFinalName);
+                $circuitManager->saveCircuit($circuit, $uploadFinalName);
+
+                $lastInsertedId = $circuitManager->selectLastId();
+                $circuitManager->saveCircuitOrganism($lastInsertedId['id'], $circuit['organisms']);
+                $circuitManager->saveCircuitLandscape($lastInsertedId['id'], $circuit['landscapes']);
                 header('Location: /circuits');
             }
         }
 
         return $this->twig->render('Circuits/circuits-add.html.twig', [
             'errors' => $errors,
+            'organisms' => $organisms,
+            'landscapes' => $landscapes
         ]);
     }
 
@@ -78,7 +92,6 @@ class CircuitController extends AbstractController
         if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
             $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
-
         return $errors;
     }
 
@@ -107,16 +120,34 @@ class CircuitController extends AbstractController
         if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
             $errors[] = 'La longueur du circuit doit être un nombre positif !';
         }
+        return $errors;
+    }
 
+    public function validateSelectInputs($circuit, $errors)
+    {
+        if (empty($circuit['organisms'])) {
+            $errors[] = 'Veuillez choisir une (ou des) espèce(s) visible(s) sur le circuit !';
+        }
+
+        if (empty($circuit['landscapes'])) {
+            $errors[] = 'Veuillez choisir un (ou des) paysage(s) visible(s) sur le circuit !';
+        }
         return $errors;
     }
 
     public function show(int $id): string
     {
         $circuitManager = new CircuitManager();
-        $circuit = $circuitManager->selectOneById($id);
 
-        return $this->twig->render('Circuits/show.html.twig', ['circuit' => $circuit]);
+        $circuit = $circuitManager->selectOneById($id);
+        $organism = $circuitManager->selectOrganisms($id);
+        $landscape = $circuitManager->selectLandscapes($id);
+
+        return $this->twig->render('Circuits/show.html.twig', [
+            'circuit' => $circuit,
+            'organism' => $organism,
+            'landscape' => $landscape
+        ]);
     }
 
     public function editCircuit(int $id): ?string

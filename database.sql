@@ -205,8 +205,7 @@ CREATE TABLE
         `description` TEXT NOT NULL,
         `picture_link` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-    
-    
+
 --
 
 --
@@ -283,9 +282,7 @@ VALUES (
     '$2y$10$e9IPqPJAEqXocHcpBF21sOi4WbuyiHrK0aR6Ht8r2B09u95W/XMAm'
 );
 
---
-
-/* TABLE OF RACES */
+/* TABLE OF ORGANISMS */
 
 CREATE TABLE
     `organism` (
@@ -294,3 +291,29 @@ CREATE TABLE
         `link` TEXT NOT NULL,
         `picture` VARCHAR(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    
+   
+/* TABLES FOR JOINTS */
+
+CREATE TABLE
+    `circuit_organism` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `organism_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_organism` 
+        FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_organism` FOREIGN KEY (`organism_id`) REFERENCES `organism`(id) ON DELETE CASCADE
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+
+CREATE TABLE
+    `circuit_landscape` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `landscape_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id) ON DELETE CASCADE
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    

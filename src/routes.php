@@ -21,7 +21,6 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'circuits' => ['CircuitController', 'index',],
     'circuits/show' => ['CircuitController', 'show', ['id']],
-    'admin/especes' => ['OrganismController', 'index'],
     'admin/especes/index' => ['OrganismController', 'index'],
     'admin/especes/ajouter' => ['OrganismController', 'add'],
     'admin/especes/editer' => ['OrganismController', 'edit', ['id']],
