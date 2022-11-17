@@ -13,7 +13,7 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll();
 
-        return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
+        return $this->twig->render('Circuits/circuits.html.twig', ['circuits' => $circuits]);
     }
 
     public function indexCircuitsAdmin(): string
@@ -21,7 +21,7 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll('title');
 
-        return $this->twig->render('Circuits/indexAdmin.html.twig', ['circuits' => $circuits]);
+        return $this->twig->render('Circuits/index.html.twig', ['circuits' => $circuits]);
     }
 
     public function addCircuit()
@@ -62,7 +62,7 @@ class CircuitController extends AbstractController
             }
         }
 
-        return $this->twig->render('Circuits/circuits-add.html.twig', [
+        return $this->twig->render('Circuits/add.html.twig', [
             'errors' => $errors,
         ]);
     }
