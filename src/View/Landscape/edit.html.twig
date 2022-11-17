@@ -1,0 +1,41 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/landscape.css">
+{% endblock %}
+
+{% block title %}
+	{{parent()}}
+	| Paysages
+{% endblock %}
+{% block content %}
+<h1>Editer Paysage admin</h1>
+<ul>
+{% for error in errors %}
+  <li>{{error}}</li>
+{% endfor %}
+</ul>
+<form action="" method="post" enctype="multipart/form-data" class="container">
+   <input type="hidden" value="{{ landscape.id }}" name="id">
+    <div class="mb-3">	
+      <label for="title" class="form-label">Titre :</label>
+      <input type="text" name="title" id="title" class="form-control" value ="{{landscape.title}}" placeholder="Titre à renseigner">
+    </div>
+    </div class="mb-3">
+      <label for="description" class="form-label">Description :</label>
+      <input type="text" name="description" id="description" class="form-control" value ="{{landscape.description}}" placeholder="Ajouter Descriptif">
+    </div>
+    <div class="mb-3">
+      <label for="picture" class="form-label">Image :</label>
+      <input type="file" name="picture" id="picture" value ="{{landscape.picture}}" class="form-control">
+    </div>
+    <div>
+			{% if landscape.picture_link == null %}
+				<img class="eventImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="landscapePicture" srcset="">
+			{% else %}
+				<img class="eventImg rounded" src={{ landscape.picture_link|trim('.')}} alt="landscapePicture" srcset="">
+			{% endif %}
+    </div>
+    <button class="btn btn-primary">Mettre à jour</button>
+</form>
+{% endblock %}

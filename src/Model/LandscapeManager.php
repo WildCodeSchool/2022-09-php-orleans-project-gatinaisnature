@@ -4,13 +4,13 @@ namespace App\Model;
 
 use PDO;
 
-class ActivityManager extends AbstractManager
+class LandscapeManager extends AbstractManager
 {
-    public const TABLE = 'activity';
+    public const TABLE = 'landscape';
 
     public function insert($title, $description, $picture = null)
     {
-        $query = "INSERT INTO `activity` (`title`,`description`,`picture`) 
+        $query = "INSERT INTO " . self::TABLE . " (title, description, picture_link) 
         VALUES (:title,:description,:picture)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $title);
@@ -18,16 +18,16 @@ class ActivityManager extends AbstractManager
         $statement->bindValue(':picture', $picture);
         $statement->execute();
     }
-        /**
-     * Update activity in database
-     */
-    public function update($activity, $picture = '')
+
+    public function update($landscape, $picture = '')
     {
-        $query = " SET `title` = :title, `description` = :description, `picture` = :picture WHERE id=:id";
+        $query = " SET `title` = :title,
+          `description` = :description,
+            `picture_link` = :picture WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
-        $statement->bindValue('id', $activity['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $activity['title'], PDO::PARAM_STR);
-        $statement->bindValue('description', $activity['description'], PDO::PARAM_STR);
+        $statement->bindValue('id', $landscape['id'], PDO::PARAM_INT);
+        $statement->bindValue('title', $landscape['title'], PDO::PARAM_STR);
+        $statement->bindValue('description', $landscape['description'], PDO::PARAM_STR);
         $statement->bindValue('picture', $picture, PDO::PARAM_STR);
         return $statement->execute();
     }
