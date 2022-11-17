@@ -125,7 +125,6 @@ CREATE TABLE
 -- Structure de la table `event`
 
 --
-
 CREATE TABLE
     `event` (
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -133,7 +132,7 @@ CREATE TABLE
         `date` DATE NOT NULL,
         `description` TEXT NOT NULL,
         `cost` DECIMAL(5, 2),
-        `picture_link` TEXT
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
@@ -170,7 +169,7 @@ INSERT INTO
         `date`,
         `description`,
         `cost`,
-        `picture_link`
+        `picture`
     )
 VALUES (
         'Reparation des nids de chouette',

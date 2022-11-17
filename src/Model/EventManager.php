@@ -11,7 +11,7 @@ class EventManager extends AbstractManager
 
     public function selectEventsDateDetails(): array
     {
-        $query = 'SELECT title,cost,picture_link,description,date
+        $query = 'SELECT title,cost,picture,description,date
         FROM ' . self::TABLE . '
         ORDER BY date DESC';
 
