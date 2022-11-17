@@ -301,8 +301,9 @@ CREATE TABLE
         `circuit_id` INT(11) UNSIGNED NOT NULL,
         `organism_id` INT(11) UNSIGNED NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_circuit_organism` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id),
-        CONSTRAINT `fk_organism` FOREIGN KEY (`organism_id`) REFERENCES `organism`(id)
+        CONSTRAINT `fk_circuit_organism` 
+        FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_organism` FOREIGN KEY (`organism_id`) REFERENCES `organism`(id) ON DELETE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 
@@ -312,7 +313,7 @@ CREATE TABLE
         `circuit_id` INT(11) UNSIGNED NOT NULL,
         `landscape_id` INT(11) UNSIGNED NOT NULL,
         PRIMARY KEY (`id`),
-        CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id),
-        CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id)
+        CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id) ON DELETE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
     
