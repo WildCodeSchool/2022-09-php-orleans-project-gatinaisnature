@@ -123,7 +123,7 @@ class CircuitController extends AbstractController
         return $errors;
     }
 
-    public function validateSelectInputs()
+    public function validateSelectInputs($circuit, $errors)
     {
         if (empty($circuit['organisms'])) {
             $errors[] = 'Veuillez choisir une (ou des) espèce(s) visible(s) sur le circuit !';
