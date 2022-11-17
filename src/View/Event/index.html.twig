@@ -15,9 +15,10 @@
                             <li class="d-flex justify-content-between align-items-center mt-4">
                                 {{event.title}}
                                 <div class="link-admin d-flex gap-3 align-items-center">
-                                        <a class="btn btn-primary" href="#">Éditer</a>
-                                    <form action="" method="post">
-                                        <a href="#" class="btn btn-danger">Supprimer</a>
+                                    <a class="btn btn-primary" href="#">Éditer</a>
+                                    <form action="/event/delete" method="POST">
+                                        <input type="hidden" name="id" value="{{ event.id }}">
+                                        <button class="btn btn-danger">Supprimer</button>
                                     </form>
                                 </div>
                             </li>
