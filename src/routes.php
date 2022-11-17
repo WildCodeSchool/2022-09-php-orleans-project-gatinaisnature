@@ -24,6 +24,7 @@ return [
     'admin/especes' => ['OrganismController', 'index'],
     'admin/especes/index' => ['OrganismController', 'index'],
     'admin/especes/ajouter' => ['OrganismController', 'add'],
+    'admin/especes/editer' => ['OrganismController', 'edit', ['id']],
     'admin/circuits/add' => ['CircuitController', 'addCircuit'],
     'admin/circuits/index' => ['CircuitController', 'indexCircuitsAdmin'],
     'admin/circuits/delete' => ['CircuitController', 'removeCircuit'],
