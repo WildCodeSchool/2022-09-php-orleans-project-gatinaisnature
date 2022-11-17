@@ -121,6 +121,14 @@ class CircuitController extends AbstractController
             $errors[] = 'La longueur du circuit doit être un nombre positif !';
         }
 
+        if (empty($circuit['organisms'])) {
+            $errors[] = 'Veuillez choisir une (ou des) espèce(s) visible(s) sur le circuit !';
+        }
+
+        if (empty($circuit['landscapes'])) {
+            $errors[] = 'Veuillez choisir un (ou des) paysage(s) visible(s) sur le circuit !';
+        }
+
         return $errors;
     }
 
