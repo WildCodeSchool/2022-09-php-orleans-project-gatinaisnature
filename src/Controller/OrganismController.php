@@ -109,4 +109,15 @@ class OrganismController extends AbstractController
             'errors' => $errors,
         ]);
     }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $organismManager = new OrganismManager();
+            $organismManager->delete((int)$id);
+
+            header('Location:/admin/especes');
+        }
+    }
 }
