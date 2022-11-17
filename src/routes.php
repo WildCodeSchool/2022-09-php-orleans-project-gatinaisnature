@@ -20,4 +20,6 @@ return [
     'circuits' => ['CircuitController', 'index',],
     'circuits/show' => ['CircuitController', 'show', ['id']],
     'landscape' => ['LandscapeController', 'index',],
+    'birdsHurt' => ['BirdsHurtController','index'],
+
 ];

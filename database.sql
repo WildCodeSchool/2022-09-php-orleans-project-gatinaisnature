@@ -257,3 +257,26 @@ VALUES (
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         'laclery_andresis.webp'
     );
+
+
+
+CREATE TABLE
+`birdsHurt`(
+`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+`title` VARCHAR(255) NOT NULL,
+`description` TEXT NOT NULL,
+`picture_link` VARCHAR(255)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+
+INSERT INTO
+`birdsHurt` (
+`title`,
+`description`,
+`picture_link`
+)
+VALUES (
+'Quelques conseils',
+' Vous trouvez un animal sauvage en détresse, manipulez le avec des gants ou en l’enveloppant dans un vêtement épais. Méfiez- vous des serres des rapaces, du bec des échassiers, des dents et des griffes des mammifères ainsi que des pattes et des bois des cervidés. - Placez le dans un carton avec du papier absorbant au fond, laissez le au calme. - Ne placez pas un oiseau sauvage dans une cage ou un clapier où il aggravera ses blessures et abîmera son plumage. - Prévenez rapidement le Centre de sauvegarde le plus proche afin que l’animal soit soigné le plus vite possible. A-delà de deux jours sans soins, les chances de relâcher un oiseau victime d’une fracture sont quasiment nulles. - Ne lui donnez rien à manger ni à boire sans nous avoir téléphoné préalablement pour nous demander conseil. - Ne tentez pas de donner vous même des soins qui pourraient laisser des séquelles. - Les soins à la faune sauvage requièrent des connaissances et des installations particulières. - Quelques gestes simples lui permettent de survivre ou de ne pas aggraver ses blessures. - Si son aile est pendante, n’utilisez pas de sparadrap, immobilisez-la le long du corps avec du scotch, qui n’adhère pas aux plumes. Nettoyez la plaie avec du Mercryl uniquement. - Ne le gavez jamais et ne le forcez pas à boire. Laisser à disposition des rapaces ou des mammifères carnivores, quelques dés de viande rouge crue. Jeunes animaux : - N’essayez pas de les élever vous-même : vous les priveriez de toute chance de retrouver un jour une vie sauvage et autonome. - Ne perdez pas de temps : transportez les rapidement au centre le plus proche afins qu’ils ne souffrent pas ultérieurement de carences invalidantes. - Les faons de chevreuil et les jeunes rapaces nocturnes ne sont presque jamais abandonnés. Pour les premiers, éloignez- vous rapidement et tentez de percher les seconds hors de portée des prédateurs ou de leur nid s’il est accessible. Sources : Site Internet www.uncs.org',
+'blesse.jpg'
+);
