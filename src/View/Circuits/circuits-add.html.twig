@@ -60,7 +60,7 @@
 						<select class="form-select" name="organisms" id="organisms" aria-label="Default select example" multiple required>
 							<option selected>Gardez la touche Ctrl appuyée pour choisir plusieurs espèces :</option>
 							{% for organism in organisms %}
-								<option value="{{ organism.id }}">{{ organism.name }}</option>
+								<option value="{{organism.id ?? ''}}">{{organism.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -69,7 +69,7 @@
 						<select class="form-select" name="landscapes" id="landscapes" aria-label="Default select example" multiple required>
 							<option selected>Gardez la touche Ctrl appuyée pour choisir plusieurs paysages :</option>
 							{% for landscape in landscapes %}
-								<option value="{{ landscape.id }}">{{ landscape.title }}</option>
+								<option value="{{landscape.id ?? ''}}">{{landscape.title}}</option>
 							{% endfor %}
 						</select>
 					</div>
