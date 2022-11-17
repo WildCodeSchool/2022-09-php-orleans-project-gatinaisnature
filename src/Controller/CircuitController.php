@@ -39,6 +39,7 @@ class CircuitController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
 
+            $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
@@ -91,7 +92,6 @@ class CircuitController extends AbstractController
         if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
             $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
-
         return $errors;
     }
 
@@ -120,7 +120,11 @@ class CircuitController extends AbstractController
         if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
             $errors[] = 'La longueur du circuit doit être un nombre positif !';
         }
+        return $errors;
+    }
 
+    public function validateSelectInputs()
+    {
         if (empty($circuit['organisms'])) {
             $errors[] = 'Veuillez choisir une (ou des) espèce(s) visible(s) sur le circuit !';
         }
@@ -128,7 +132,6 @@ class CircuitController extends AbstractController
         if (empty($circuit['landscapes'])) {
             $errors[] = 'Veuillez choisir un (ou des) paysage(s) visible(s) sur le circuit !';
         }
-
         return $errors;
     }
 
