@@ -4,9 +4,13 @@
 }
 
 .landing img {
-    min-height: 50vh;
+    min-height: calc(50vh - 60px);
 }
 
 button.bg-dark, a.bg-dark {
     --bs-bg-opacity: 0.9;
+}
+
+img {
+    vertical-align: initial;
 }
