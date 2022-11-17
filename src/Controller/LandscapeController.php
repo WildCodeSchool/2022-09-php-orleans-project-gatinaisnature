@@ -9,7 +9,7 @@ class LandscapeController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
     private const MAX_LENGTH_DESCRIPTION = 200;
-    private const MAX_PICTURE_SIZE = 200000;
+    private const MAX_PICTURE_SIZE = 1000000;
 
     /**
      * Display home page
@@ -64,7 +64,7 @@ class LandscapeController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo';
             }
 
             if (empty($errors)) {
