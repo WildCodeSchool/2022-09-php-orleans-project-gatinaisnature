@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\CircuitManager;
+use App\Model\OrganismManager;
+use App\Model\LandscapeManager;
 
 class CircuitController extends AbstractController
 {
@@ -27,7 +29,12 @@ class CircuitController extends AbstractController
     public function addCircuit()
     {
         $circuitManager = new CircuitManager();
+        $organismManager = new OrganismManager();
+        $landscapeManager = new LandscapeManager();
+
         $errors = [];
+        $organisms = $organismManager->selectAll();
+        $landscapes = $landscapeManager->selectAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $circuit = array_map('trim', $_POST);
@@ -57,13 +64,19 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->save($circuit, $uploadFinalName);
+                $circuitManager->saveCircuit($circuit, $uploadFinalName);
+
+                $lastInsertedId = $circuitManager->selectLastId();
+                $circuitManager->saveCircuitOrganism($lastInsertedId['id'], $circuit['organisms']);
+                $circuitManager->saveCircuitLandscape($lastInsertedId['id'], $circuit['landscapes']);
                 header('Location: /circuits');
             }
         }
 
         return $this->twig->render('Circuits/circuits-add.html.twig', [
             'errors' => $errors,
+            'organisms' => $organisms,
+            'landscapes' => $landscapes
         ]);
     }
 
@@ -114,9 +127,16 @@ class CircuitController extends AbstractController
     public function show(int $id): string
     {
         $circuitManager = new CircuitManager();
-        $circuit = $circuitManager->selectOneById($id);
 
-        return $this->twig->render('Circuits/show.html.twig', ['circuit' => $circuit]);
+        $circuit = $circuitManager->selectOneById($id);
+        $organism = $circuitManager->selectOrganisms($id);
+        $landscape = $circuitManager->selectLandscapes($id);
+
+        return $this->twig->render('Circuits/show.html.twig', [
+            'circuit' => $circuit,
+            'organism' => $organism,
+            'landscape' => $landscape
+        ]);
     }
 
     public function editCircuit(int $id): ?string

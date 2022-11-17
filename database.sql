@@ -205,8 +205,7 @@ CREATE TABLE
         `description` TEXT NOT NULL,
         `picture_link` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-    
-    
+
 --
 
 --
@@ -258,6 +257,26 @@ VALUES (
         'laclery_andresis.webp'
     );
 
+CREATE TABLE
+    `circuit_activity` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `activity_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit` FOREIGN KEY (`circuit_id`) REFERENCES `circuit` (id),
+        CONSTRAINT `fk_activity` FOREIGN KEY (`activity_id`) REFERENCES `activity` (id)
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+CREATE TABLE
+    `circuit_landscape` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `landscape_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id),
+        CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id)
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
 /* TABLE OF RACES */
 
 CREATE TABLE
@@ -267,3 +286,81 @@ CREATE TABLE
         `link` TEXT NOT NULL,
         `picture` VARCHAR(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+CREATE TABLE
+    `circuit_organism` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `organism_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_organism` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id),
+        CONSTRAINT `fk_organism` FOREIGN KEY (`organism_id`) REFERENCES `organism`(id)
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+/* TEST FOR JOINTURES */
+
+INSERT INTO
+    `organism` (`name`, `link`, `picture`)
+VALUES (
+        'Chat',
+        'Miaaaaou',
+        'photo de chat'
+    ), (
+        'Lion',
+        'Rooooaaarrr',
+        'photo de lion'
+    ), (
+        'Singe',
+        'Ouuu Ouuu Ouuu',
+        'photo de singe'
+    );
+
+INSERT INTO
+    `landscape` (
+        `title`,
+        `description`,
+        `picture_link`
+    )
+VALUES (
+        'Forêt',
+        'Magnifique forêt enchantée',
+        '15'
+    ), (
+        'Désert',
+        'Terrible désert de la mort',
+        '20'
+    ), (
+        'Océan',
+        'Océan très profond',
+        '12'
+    );
+
+INSERT INTO
+    `circuit_activity` (`circuit_id`, `activity_id`)
+VALUES ('1', '1'), ('2', '1'), ('3', '2');
+
+INSERT INTO
+    `circuit_landscape` (`circuit_id`, `landscape_id`)
+VALUES ('1', '1'), ('2', '2'), ('3', '3');
+
+INSERT INTO
+    `circuit_organism` (`circuit_id`, `organism_id`)
+VALUES ('1', '1'), ('2', '2'), ('3', '3');
+
+SELECT *
+FROM circuit c
+    JOIN circuit_activity ca ON ca.circuit_id = c.id
+    JOIN activity a ON ca.activity_id = a.id
+WHERE c.id = 1;
+
+SELECT
+    o.id,
+    o.name,
+    o.link,
+    o.picture
+FROM organism o
+    JOIN circuit_organism co ON co.organism_id = o.id
+    JOIN circuit c ON co.circuit_id = c.id
+WHERE c.id = 1;
+
+SELECT MAX(id) FROM circuit;
