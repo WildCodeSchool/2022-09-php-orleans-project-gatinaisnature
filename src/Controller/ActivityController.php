@@ -123,7 +123,7 @@ class ActivityController extends AbstractController
                 if ($_FILES['picture']['size'] > 0) {
                     if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                         $activityManager->update($activity, $targetFile);
-                        header('Location: /activity');
+                        header('Location: /admin/activites/indexAdmin');
                     } else {
                         $errors[] = 'Le fichier image n\'a pu être ajouté';
                     }
