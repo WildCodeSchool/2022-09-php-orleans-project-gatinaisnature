@@ -24,6 +24,7 @@
 										<a class="btn btn-primary" href="/admin/especes/editer?id={{organism.id}}">Éditer</a>
 									</div>
 									<form action="/admin/especes/supprimer" method="post">
+										<input type="hidden" name="id" value="{{ organism.id }}">
 										<button class="btn btn-danger">Supprimer</button>
 									</form>
 								</div>
