@@ -27,7 +27,7 @@
 							<div class="col-12 col-sm-8 col-lg-4 m-auto">
 								<div class="card mb-4 text-white">
 									<a href="/circuits/show?id={{ circuit.id }}" class="link-cards">
-										<img src="/assets/upload/{{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : circuit.picture}}" 
+										<img src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : circuit.picture}} 
 											class="card-img img-circuit img-responsive" alt="image_circuits">
 										<div class="card-img-overlay card-img-circuit d-flex flex-column justify-content-start align-item-center">
 											<h2 class="card-title card-title-circuit fs-5">{{circuit.title}}</h2>
