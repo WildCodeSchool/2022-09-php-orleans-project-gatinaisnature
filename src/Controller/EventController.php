@@ -83,7 +83,7 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "assets/upload/";
+            $targetDir = "assets/uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
@@ -119,7 +119,7 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // create the image file to put it in the upload folder (without versioning)
-            $targetDir = "assets/upload/";
+            $targetDir = "assets/uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
