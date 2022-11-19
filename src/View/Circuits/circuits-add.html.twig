@@ -49,7 +49,11 @@
 					</div>
 					<div class="mb-4">
 						<label class="form-label" for="trace">Tracé :</label>
-						<input type="text" class="form-control" name="trace" id="trace" placeholder="Orange" value="{{circuit.trace ?? ''}}" required>
+						<select class="form-select" name="trace" id="trace" aria-label="Default select example" required>
+							<option>Jaune</option>
+							<option>Orange</option>
+							<option>Rouge</option>
+						</select>
 					</div>
 					<div class="mb-4">
 						<label class="form-label" for="picture">Image :</label>
