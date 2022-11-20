@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use PDO;
+use DateTime;
 
 class EventManager extends AbstractManager
 {
@@ -14,8 +15,15 @@ class EventManager extends AbstractManager
         $query = 'SELECT title,cost,picture,description,date
         FROM ' . self::TABLE . '
         ORDER BY date DESC';
-
-        return $this->pdo->query($query)->fetchAll();
+        $events = $this->pdo->query($query)->fetchAll();
+        $eventsNewDateFormat = $events;
+        $nbEvents = count($eventsNewDateFormat);
+        for ($i = 0; $i < $nbEvents; $i++) {
+            $dateFromSQL = $events[$i]['date'];
+            $dateTime = new DateTime($dateFromSQL);
+            $eventsNewDateFormat[$i]['date'] = $dateTime->format('d-m-Y');
+        }
+        return $eventsNewDateFormat;
     }
 
     public function update($event, $picture = '')
