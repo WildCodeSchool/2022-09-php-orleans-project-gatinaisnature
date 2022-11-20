@@ -5,39 +5,57 @@
 	| Connection
 {% endblock %}
 
-{% block content %}
-	<div class="container vh-100">
-		<div class="row">
-			<div class="col-10 m-auto">
-				<h1 class="text-center p-4">Connection Administrateur</h1>
-				<div class="card p-5">
-					<form action="" method="post">
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
 
-						{% if errors %}
-							<ul>
-								{% for error in errors %}
-									<li>{{error}}</li>
-								{% endfor %}
-							</ul>
-						{% endif %}
-						<div class="col-10 mb-4 pb-4 m-auto">
-							<div class="row d-flex justify-content-around">
-								<label class="form-label" for="email">Adresse e-mail</label>
-								<input class="form-control" type="email" id="email" name="email">
+{% block content %}
+	<section class="section-admin">
+		<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card">
+						<div class="row g-0">
+							<div class="col-md-6 col-lg-5 d-block custom-block">
+								<img src="/assets/images/imgPlaceHolderCircuit.jpg" class="h-100 w-100" alt="image de forêt">
+							</div>
+							<div class="col-md-6 col-lg-7 d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+
+									<form action="" method="post">
+										{% if errors %}
+											<ul>
+												{% for error in errors %}
+													<li>{{error}}</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+										<div class="d-flex align-items-center mb-5 pb-1">
+											<span class="h1 fw-bold mb-0">Connection
+												<br>Administrateur</span>
+										</div>
+
+										<div class="mb-4">
+											<label class="form-label" for="email">Adresse e-mail</label>
+											<input type="email" id="email" name="email" class="form-control form-control-lg"/>
+										</div>
+
+										<div class="mb-4">
+											<label class="form-label" for="password">Mot de passe</label>
+											<input type="password" id="password" name="password" class="form-control form-control-lg"/>
+										</div>
+
+										<div class="pt-1 mb-4">
+											<button class="btn btn-dark btn-lg btn-block" type="submit">Connection</button>
+										</div>
+									
+									</form>
+								</div>
 							</div>
 						</div>
-						<div class="col-10 mb-4 pb-4 m-auto">
-							<div class="row d-flex justify-content-around">
-								<label class="form-label" for="password">Mot de passe</label>
-								<input class="form-control" type="password" id="password" name="password">
-							</div>
-						</div>
-						<div class="col-10  pb-4 col-sm-4 m-auto text-center">
-							<button class="btn bg-primary w-100 text-white">Connection</button>
-						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 {% endblock %}

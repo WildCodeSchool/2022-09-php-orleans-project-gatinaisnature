@@ -39,6 +39,6 @@ return [
     'admin/paysages/index' => ['LandscapeController', 'indexLandscapeAdmin'],
     'admin/paysages/edit' => ['LandscapeController', 'edit', ['id']],
     'admin/paysages/add' => ['LandscapeController', 'add'],
-    'admin' => ['AdminController', 'index'],
     'admin/paysages/delete' => ['LandscapeController', 'delete'],
+    'admin' => ['AdminController', 'index'],
 ];

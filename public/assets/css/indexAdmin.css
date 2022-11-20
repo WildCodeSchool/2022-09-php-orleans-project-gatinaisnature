@@ -4,5 +4,8 @@
 
 .block-form a {
     text-decoration: none;
+}
+
+.block-form a:hover {
     color: var(--bs-white);
 }
