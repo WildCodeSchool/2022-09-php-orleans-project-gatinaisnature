@@ -40,7 +40,7 @@
 		</div>
 		<div class="mb-4">
 			<label class="form-label" for="trace">Tracé :</label>
-			<input class="form-select" type="text" name="trace" id="trace" value="{{circuit.trace}}" required>
+			<input type="text" class="form-control" name="trace" id="trace" placeholder="Orange" value="{{circuit.trace ?? ''}}" required>
 		</div>
 		<div class="mb-4">
 			<label class="form-label" for="picture">Image :</label>
