@@ -16,7 +16,12 @@ class LandscapeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Landscape/landscape.html.twig');
+        $landscapeManager = new LandscapeManager();
+        $landscapes = $landscapeManager->selectAll();
+
+        return $this->twig->render('Landscape/landscape.html.twig', [
+            'landscapes' => $landscapes,
+        ]);
     }
 
     public function indexLandscapeAdmin(): string
