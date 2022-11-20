@@ -6,9 +6,61 @@
 {% endblock %}
 
 {% block content %}
-	{% include "formAdminEdit.html.twig" %}
-{% endblock %}
+	<section class="section-form">
+		<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg vh-100">
+						<div class="row g-0">
+							<div class="col-md-10 col-lg-11 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
 
-{% block titleForm %}
-	Formulaire d'ajouts d'espèces
+									<form action="" method="post" enctype="multipart/form-data">
+										{% if errors %}
+											<ul class="alert alert-danger" role="alert">
+												{% for error in errors %}
+													<li class="list-unstyled">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewbox="0 0 16 16">
+															<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+														</svg>
+														{{error}}
+													</li>
+												{% endfor %}
+											</ul>
+										{% endif %}
+										<div class="d-flex align-items-center mb-5 pb-1">
+											<span class="h1 fw-bold mb-0">
+												Ajout espèces admin
+											</span>
+										</div>
+
+										<div class="mb-4">
+											<label for="name" class="form-label">Nom de l'espèce</label>
+											<input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Ecureuil" value="{{organism.name ?? ''}}" required>
+										</div>
+
+										<div class="mb-4">
+											<label for="link" class="form-label">Lien Wikipedia(url)</label>
+											<input type="url" class="form-control" name="link" id="link" placeholder="https://www.wikimedia.com/ecureuil" value="{{organism.link ?? '' }}" required>
+										</div>
+
+										<div class="mb-4">
+											<label class="form-label" for="picture">Lien de l'image de l'espèce(url)</label>
+											<input type="url" class="form-control" name="picture" id="picture" placeholder="https://www.wikimedia.com/ecureuil.png" value="{{organism.picture ?? ''}}" required>
+										</div>
+
+										<div class="pt-1 mb-4">
+											<button class="btn btn-success btn-lg btn-block" type="submit">Ajouter</button>
+											<a class="btn btn-outline-success btn-lg btn-block" href="/admin/especes/index">Retour</a>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

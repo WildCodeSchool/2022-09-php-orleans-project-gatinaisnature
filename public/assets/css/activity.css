@@ -1,3 +1,12 @@
 .card-event{
     width: 18rem;
 }
+
+.section-form{
+    height: calc(100vh - 94px);
+}
+
+.custom-block img{
+    object-fit: contain;
+    border-radius: .375rem 0 0 .375rem;
+}

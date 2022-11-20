@@ -70,7 +70,7 @@ class CircuitController extends AbstractController
                 $lastInsertedId = $circuitManager->selectLastId();
                 $circuitManager->saveCircuitOrganism($lastInsertedId['id'], $circuit['organisms']);
                 $circuitManager->saveCircuitLandscape($lastInsertedId['id'], $circuit['landscapes']);
-                header('Location: /circuits');
+                header('Location: /admin/circuits/index');
             }
         }
 
@@ -185,7 +185,7 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->updateCircuit($circuit, $uploadFinalName);
-                header('Location: /circuits');
+                header('Location: /admin/circuits/index');
             }
         }
 
@@ -202,7 +202,7 @@ class CircuitController extends AbstractController
             $circuitManager = new CircuitManager();
             $circuitManager->delete((int)$id);
 
-            header('Location: /circuits');
+            header('Location: /admin/circuits/index');
         }
     }
 }
