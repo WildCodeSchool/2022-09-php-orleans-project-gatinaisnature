@@ -9,7 +9,7 @@ use App\Controller\AbstractController;
 class EventController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
-    private const MAX_PICTURE_SIZE = 200000;
+    private const MAX_PICTURE_SIZE = 1000000;
 
     public function indexAdmin(): string
     {
@@ -91,7 +91,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
             }
 
             if (empty($errors)) {
@@ -127,7 +127,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
             }
 
             if (empty($errors)) {
