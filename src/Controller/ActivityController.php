@@ -9,7 +9,6 @@ use App\Controller\AbstractController;
 class ActivityController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
-    private const MAX_LENGTH_DESCRIPTION = 200;
     private const MAX_PICTURE_SIZE = 1000000;
 
     /**
@@ -48,8 +47,8 @@ class ActivityController extends AbstractController
         if (empty($activity['description'])) {
             $errors[] = 'La description doit être complétée';
         }
-        if (!isset($activity['description']) || strlen($activity['description']) > self::MAX_LENGTH_DESCRIPTION) {
-            $errors[] = 'La description ne doit pas faire plus de ' . self::MAX_LENGTH_DESCRIPTION . ' caractères';
+        if (!isset($activity['description']) || empty($activity['description'])) {
+            $errors[] = 'La description est requise';
         }
 
         return $errors;
