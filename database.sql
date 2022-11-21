@@ -125,7 +125,6 @@ CREATE TABLE
 -- Structure de la table `event`
 
 --
-
 CREATE TABLE
     `event` (
         `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -133,7 +132,7 @@ CREATE TABLE
         `date` DATE NOT NULL,
         `description` TEXT NOT NULL,
         `cost` DECIMAL(5, 2),
-        `picture_link` TEXT
+        `picture` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
@@ -170,7 +169,7 @@ INSERT INTO
         `date`,
         `description`,
         `cost`,
-        `picture_link`
+        `picture`
     )
 VALUES (
         'Reparation des nids de chouette',
@@ -205,8 +204,7 @@ CREATE TABLE
         `description` TEXT NOT NULL,
         `picture_link` TEXT
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-    
-    
+
 --
 
 --
@@ -241,21 +239,21 @@ VALUES (
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème Est, Montargis',
-        'loing_canal.webp'
+        null
     ), (
         'Canal de Briare',
         7,
         'Tracé Orange',
         'Le circuit complémentaire, 7 km, tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest, il permettra d\’observer des paysages typiques plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois, dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
         'Carte IGN 1/25.000 ème Est, Montargis',
-        'canal_briare.webp'
+        null
     ), (
         'La vallée de la Cléry à Saint-Hilaire-les-Andrésis et Chantecoq',
         6.5,
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
-        'laclery_andresis.webp'
+        null
     );
 
 --
@@ -283,9 +281,7 @@ VALUES (
     '$2y$10$e9IPqPJAEqXocHcpBF21sOi4WbuyiHrK0aR6Ht8r2B09u95W/XMAm'
 );
 
---
-
-/* TABLE OF RACES */
+/* TABLE OF ORGANISMS */
 
 CREATE TABLE
     `organism` (
@@ -294,3 +290,29 @@ CREATE TABLE
         `link` TEXT NOT NULL,
         `picture` VARCHAR(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    
+   
+/* TABLES FOR JOINTS */
+
+CREATE TABLE
+    `circuit_organism` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `organism_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_organism` 
+        FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_organism` FOREIGN KEY (`organism_id`) REFERENCES `organism`(id) ON DELETE CASCADE
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+
+CREATE TABLE
+    `circuit_landscape` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `circuit_id` INT(11) UNSIGNED NOT NULL,
+        `landscape_id` INT(11) UNSIGNED NOT NULL,
+        PRIMARY KEY (`id`),
+        CONSTRAINT `fk_circuit_landscape` FOREIGN KEY (`circuit_id`) REFERENCES `circuit`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_landscape` FOREIGN KEY (`landscape_id`) REFERENCES `landscape`(id) ON DELETE CASCADE
+    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+    
