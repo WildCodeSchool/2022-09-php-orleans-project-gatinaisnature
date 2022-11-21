@@ -65,7 +65,7 @@ class ActivityController extends AbstractController
             $errors = $this->getFormErrors($activity, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "./assets/upload/";
+            $targetDir = "./assets/uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
@@ -106,7 +106,7 @@ class ActivityController extends AbstractController
             // create the image file to put it in the upload folder (without versioning)
             $targetFile = '';
             if ($_FILES['picture']['name'] > 0) {
-                $targetDir = "assets/upload/";
+                $targetDir = "assets/uploads/";
                 $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
                 $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
                 $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
