@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block title %}
-	{{ parent() }} | Circuits
+	{{ parent() }}
+	| Circuits
 {% endblock %}
 
 {% block content %}
@@ -14,7 +15,6 @@
 		{% for error in errors %}
 			<li>{{error}}</li>
 		{% endfor %}
-
 	</ul>
 	<form action="" method="post" enctype="multipart/form-data" class="container">
 
