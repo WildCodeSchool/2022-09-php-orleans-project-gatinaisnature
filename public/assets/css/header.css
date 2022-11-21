@@ -15,10 +15,3 @@
 .navbar-toggler-icon{
     --bs-navbar-brand-color: var(--bs-white)
 }
-
-@media screen and (max-width: 400px) {
-    
-    .title-nav a{
-        font-size: 18px;
-    }
-}
