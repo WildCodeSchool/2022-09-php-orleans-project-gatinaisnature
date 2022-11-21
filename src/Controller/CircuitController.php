@@ -156,7 +156,12 @@ class CircuitController extends AbstractController
     public function editCircuit(int $id): ?string
     {
         $circuitManager = new CircuitManager();
+        $organismManager = new OrganismManager();
+        $landscapeManager = new LandscapeManager();
+
         $circuit = $circuitManager->selectOneById($id);
+        $organisms = $organismManager->selectAll();
+        $landscapes = $landscapeManager->selectAll();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -194,6 +199,8 @@ class CircuitController extends AbstractController
 
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
+            'organisms' => $organisms,
+            'landscapes' => $landscapes,
             'errors' => $errors
         ]);
     }
