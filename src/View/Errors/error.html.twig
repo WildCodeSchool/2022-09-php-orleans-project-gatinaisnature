@@ -10,18 +10,33 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container min-vh-100 text-center d-flex justify-content-center align-items-start p-5">
-		<div class="row">
-			<div class="col-10 m-auto">
-				<div class="card d-flex justify-content-center align-items-center p-5">
-					<h1>Erreur 401</h1>
-					<p>Vous n'avez pas les autorisations nécessaires pour continuer, veuillez revenir sur la page principale.</p>
-					<img src="/assets/images/corbakeu.jpg" alt="401 image not authorized">
-					<div class="btn-style col-10 col-sm-6 m-4">
-						<a class="btn bg-primary text-white w-100" href="/">Retour</a>
+	<section class="section-error">
+		<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg">
+						<div class="row g-0">
+							<div class="col-md-6 col-lg-5 d-block custom-block">
+								<img class="w-100 h-100" src="/assets/images/corbakeu.jpg" alt="Image de l'erreur">
+							</div>
+							<div class="col-md-6 col-lg-7 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+									<div class="mb-4">
+										<span class="h1 fw-bold mb-0">Erreur 401</span>
+									</div>
+
+									<div class="mb-5">
+										<p>Vous n'avez pas les autorisations nécessaires pour continuer, veuillez revenir sur la page principale.</p>
+									</div>
+									<div class="pt-1 mb-4">
+										<a class="btn btn-success btn-lg btn-block col-12 col-md-6" href="/">Retour</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 {% endblock %}
