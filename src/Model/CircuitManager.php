@@ -31,12 +31,12 @@ class CircuitManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function updateCircuit(array $circuit, $picture)
+    public function updateCircuit(array $circuit, int $id, $picture)
     {
         $query = " SET `title` = :title, `size` = :size, `content` = :content, 
         `map` = :map, `trace` = :trace, `picture` = :picture WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
-        $statement->bindValue('id', $circuit['id'], PDO::PARAM_INT);
+        $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->bindValue('title', $circuit['title'], PDO::PARAM_STR);
         $statement->bindValue('size', $circuit['size'], PDO::PARAM_STR);
         $statement->bindValue('content', $circuit['content'], PDO::PARAM_STR);
@@ -58,6 +58,17 @@ class CircuitManager extends AbstractManager
         }
     }
 
+    public function updateCircuitOrganism($circuitId, $organismIds): void
+    {
+        foreach ($organismIds as $organismId) {
+            $query = "UPDATE circuit_organism SET `organism_id` = :organism_id WHERE `circuit_id` = :circuit_id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('circuit_id', $circuitId, PDO::PARAM_INT);
+            $statement->bindValue('organism_id', $organismId, PDO::PARAM_STR);
+            $statement->execute();
+        }
+    }
+
     public function saveCircuitLandscape($circuitId, $landscapeIds): void
     {
         foreach ($landscapeIds as $landscapeId) {
@@ -66,6 +77,16 @@ class CircuitManager extends AbstractManager
             $statement = $this->pdo->prepare($query);
             $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
             $statement->bindValue('landscape_id', $landscapeId, \PDO::PARAM_STR);
+            $statement->execute();
+        }
+    }
+    public function updateCircuitLandscape($circuitId, $landscapeIds): void
+    {
+        foreach ($landscapeIds as $landscapeId) {
+            $query = "UPDATE circuit_landscape SET `landscape_id` = :landscape_id WHERE `circuit_id` = :circuit_id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('circuit_id', $circuitId, PDO::PARAM_INT);
+            $statement->bindValue('landscape_id', $landscapeId, PDO::PARAM_STR);
             $statement->execute();
         }
     }
