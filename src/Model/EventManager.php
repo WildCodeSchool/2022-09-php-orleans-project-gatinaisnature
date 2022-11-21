@@ -16,14 +16,13 @@ class EventManager extends AbstractManager
         FROM ' . self::TABLE . '
         ORDER BY date DESC';
         $events = $this->pdo->query($query)->fetchAll();
-        $eventsNewDateFormat = $events;
-        $nbEvents = count($eventsNewDateFormat);
+        $nbEvents = count($events);
         for ($i = 0; $i < $nbEvents; $i++) {
             $dateFromSQL = $events[$i]['date'];
             $dateTime = new DateTime($dateFromSQL);
-            $eventsNewDateFormat[$i]['date'] = $dateTime->format('d-m-Y');
+            $events[$i]['date'] = $dateTime->format('d/m/Y');
         }
-        return $eventsNewDateFormat;
+        return $events;
     }
 
     public function update($event, $picture = '')
