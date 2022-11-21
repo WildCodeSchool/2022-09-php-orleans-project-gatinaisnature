@@ -37,7 +37,10 @@ class CircuitController extends AbstractController
         $landscapes = $landscapeManager->selectAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $circuit = array_map('trim', $_POST);
+            $circuit = $_POST;
+            array_walk_recursive($circuit, function (&$var) {
+                $var = trim($var);
+            });
 
             $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
@@ -140,13 +143,13 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
 
         $circuit = $circuitManager->selectOneById($id);
-        $organism = $circuitManager->selectOrganisms($id);
-        $landscape = $circuitManager->selectLandscapes($id);
+        $organisms = $circuitManager->selectOrganisms($id);
+        $landscapes = $circuitManager->selectLandscapes($id);
 
         return $this->twig->render('Circuits/show.html.twig', [
             'circuit' => $circuit,
-            'organism' => $organism,
-            'landscape' => $landscape
+            'organisms' => $organisms,
+            'landscapes' => $landscapes,
         ]);
     }
 
@@ -191,7 +194,7 @@ class CircuitController extends AbstractController
 
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
-            'errors' => $errors,
+            'errors' => $errors
         ]);
     }
 
