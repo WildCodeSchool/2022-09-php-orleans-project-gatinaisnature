@@ -102,10 +102,10 @@ class LandscapeController extends AbstractController
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
             $allowedExtension = ['jpg','png','jpeg','webp'];
             if (!in_array($imageFileType, $allowedExtension)) {
-                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
+                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
@@ -115,7 +115,7 @@ class LandscapeController extends AbstractController
                     $landscapeManager->insert($landscape['title'], $landscape['description'], $targetFile);
                     header('Location: /admin/paysages/index');
                 } else {
-                    $errors[] = 'Le fichier image n\'a pu être ajouté';
+                    $errors[] = 'Le fichier image n\'a pu être ajouté !';
                 }
             }
         }

@@ -25,7 +25,7 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $user = $userManager->selectOneByEmail($profils['email']);
             if ($user === false) {
-                $errors[] = 'L\'adresse e-mail est inconnu';
+                $errors[] = 'L\'adresse e-mail est inconnue';
             } elseif (!password_verify($profils['password'], $user['password'])) {
                 $errors[] = 'Le mot de passe est incorrect';
             }
