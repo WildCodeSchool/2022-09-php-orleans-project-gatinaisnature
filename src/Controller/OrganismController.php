@@ -37,7 +37,7 @@ class OrganismController extends AbstractController
                 $organismManager = new OrganismManager();
                 $organismManager->insert($organism['name'], $organism['link'], $organism['picture']);
 
-                header('Location: /admin/especes');
+                header('Location: /admin/especes/index');
             }
         }
         return $this->twig->render('Organism/add.html.twig', ['errors' => $errors]);
@@ -101,7 +101,7 @@ class OrganismController extends AbstractController
             if (empty($errors)) {
                 $organismManager->update($organism);
 
-                header('Location: /admin/especes');
+                header('Location: /admin/especes/index');
             }
         }
         return $this->twig->render('Organism/edit.html.twig', [
@@ -117,7 +117,7 @@ class OrganismController extends AbstractController
             $organismManager = new OrganismManager();
             $organismManager->delete((int)$id);
 
-            header('Location:/admin/especes');
+            header('Location:/admin/especes/index');
         }
     }
 }
