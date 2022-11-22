@@ -56,7 +56,7 @@
 						<input type="file" class="form-control" name="picture" id="picture" value="{{circuit.picture ?? ''}}" required>
 					</div>
 					<div class="mb-4">
-						<label class="form-label" for="organisms">Espèces visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs espèces) :</label>
+						<label class="form-label" for="organisms">Espèces visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs espèces):</label>
 						<select class="form-select" name="organisms[]" id="organisms" aria-label="Default select example" multiple>
 							{% for organism in organisms %}
 								<option value="{{ organism.id }}">{{ organism.name }}</option>
@@ -64,7 +64,7 @@
 						</select>
 					</div>
 					<div class="mb-4">
-						<label class="form-label" for="landscapes">Paysages visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs paysages) :</label>
+						<label class="form-label" for="landscapes">Paysages visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs paysages):</label>
 						<select class="form-select" name="landscapes[]" id="landscapes" aria-label="Default select example" multiple>
 							{% for landscape in landscapes %}
 								<option value="{{ landscape.id }}">{{ landscape.title }}</option>

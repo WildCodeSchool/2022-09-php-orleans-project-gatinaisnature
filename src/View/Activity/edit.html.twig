@@ -10,14 +10,11 @@
 {% endblock %}
 
 {% block content %}
-<h1>Editer activité admin</h1>
+<h1>Éditer activité admin</h1>
 <ul>
 {% for error in errors %}
   <li>{{error}}</li>
 {% endfor %}
-<pre>
-  {{ dump(activity) }}
-</pre>
 </ul>
 <form action="" method="post" enctype="multipart/form-data" class="container">
    <input type="hidden" value="{{ activity.id }}" name="id">
