@@ -9,8 +9,7 @@ use App\Controller\AbstractController;
 class EventController extends AbstractController
 {
     private const MAX_LENGTH_TITLE = 100;
-    private const MAX_LENGTH_DESCRIPTION = 200;
-    private const MAX_PICTURE_SIZE = 200000;
+    private const MAX_PICTURE_SIZE = 1000000;
 
     public function indexAdmin(): string
     {
@@ -67,8 +66,8 @@ class EventController extends AbstractController
         } else {
             $this->checkCost($event['cost'], $errors);
         }
-        if (!isset($event['description']) || strlen($event['description']) > self::MAX_LENGTH_DESCRIPTION) {
-            $errors[] = 'La description ne doit pas faire plus de ' . self::MAX_LENGTH_DESCRIPTION . ' caractères !';
+        if (!isset($event['description']) || empty($event['description'])) {
+            $errors[] = 'La description est requise !';
         }
 
         return $errors;
@@ -83,7 +82,7 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "assets/upload/";
+            $targetDir = "assets/uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
@@ -92,7 +91,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
             }
 
             if (empty($errors)) {
@@ -119,7 +118,7 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // create the image file to put it in the upload folder (without versioning)
-            $targetDir = "assets/upload/";
+            $targetDir = "assets/uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
             $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
@@ -128,7 +127,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
             }
 
             if (empty($errors)) {
