@@ -14,3 +14,7 @@ button.bg-dark, a.bg-dark {
 img {
     vertical-align: initial;
 }
+
+.asso-card{
+    object-fit: cover;
+}
