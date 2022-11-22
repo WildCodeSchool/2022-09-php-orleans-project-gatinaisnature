@@ -15,8 +15,8 @@ class EventManager extends AbstractManager
         $query = 'SELECT title,cost,picture,description,date
         FROM ' . self::TABLE . '
         ORDER BY date DESC';
-        $events = $this->pdo->query($query)->fetchAll();
-        return $events;
+
+        return $this->pdo->query($query)->fetchAll();
     }
 
     public function update($event, $picture = '')
