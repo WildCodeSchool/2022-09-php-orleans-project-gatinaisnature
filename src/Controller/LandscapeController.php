@@ -37,6 +37,7 @@ class LandscapeController extends AbstractController
         $errors = [];
         $landscapeManager = new LandscapeManager();
         $landscape = $landscapeManager->selectOneById($id);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $landscape = array_map('trim', $_POST);
             $errors = $this->getFormErrors($landscape, $errors);
