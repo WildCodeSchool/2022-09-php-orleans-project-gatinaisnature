@@ -42,7 +42,6 @@ class CircuitController extends AbstractController
                 $var = trim($var);
             });
 
-            $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
@@ -70,9 +69,9 @@ class CircuitController extends AbstractController
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->saveCircuit($circuit, $uploadFinalName);
                 $lastInsertedId = $circuitManager->selectLastId();
-                $circuitManager->saveCircuitOrganism($lastInsertedId['id'], $circuit['organisms']);
-                $circuitManager->saveCircuitLandscape($lastInsertedId['id'], $circuit['landscapes']);
-                header('Location: /admin/circuits/index');
+                $this->addLandScapeOrganism($lastInsertedId['id'], $circuit);
+
+                header('Location: /circuits');
             }
         }
 
@@ -81,6 +80,17 @@ class CircuitController extends AbstractController
             'organisms' => $organisms,
             'landscapes' => $landscapes
         ]);
+    }
+
+    public function addLandScapeOrganism($lastInsertedId, $circuit): void
+    {
+        $circuitManager = new CircuitManager();
+        if (key_exists('organisms', $circuit)) {
+            $circuitManager->saveCircuitOrganism($lastInsertedId, $circuit['organisms']);
+        }
+        if (key_exists('landscapes', $circuit)) {
+            $circuitManager->saveCircuitLandscape($lastInsertedId, $circuit['landscapes']);
+        }
     }
 
     public function validateLengths($circuit, $errors)
@@ -125,18 +135,6 @@ class CircuitController extends AbstractController
         return $errors;
     }
 
-    public function validateSelectInputs($circuit, $errors)
-    {
-        if (empty($circuit['organisms'])) {
-            $errors[] = 'Veuillez choisir une (ou des) espèce(s) visible(s) sur le circuit !';
-        }
-
-        if (empty($circuit['landscapes'])) {
-            $errors[] = 'Veuillez choisir un (ou des) paysage(s) visible(s) sur le circuit !';
-        }
-        return $errors;
-    }
-
     public function show(int $id): string
     {
         $circuitManager = new CircuitManager();
@@ -171,7 +169,6 @@ class CircuitController extends AbstractController
                 $var = trim($var);
             });
 
-            $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
@@ -198,13 +195,11 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->updateCircuit($circuit, $id, $uploadFinalName);
+                $this->editLandScapeOrganism($id, $circuit);
 
-                $circuitManager->deleteCircuitOrganism($id);
-                $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
-                $circuitManager->deleteCircuitLandscape($id);
-                $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
+                $this->editLandScapeOrganism($id, $circuit);
 
-                header('Location: /admin/circuits/index');
+                header('Location: /circuits');
             }
         }
 
@@ -214,6 +209,19 @@ class CircuitController extends AbstractController
             'landscapes' => $landscapes,
             'errors' => $errors
         ]);
+    }
+
+    public function editLandScapeOrganism($id, $circuit): void
+    {
+        $circuitManager = new CircuitManager();
+        if (key_exists('organisms', $circuit)) {
+            $circuitManager->deleteCircuitOrganism($id);
+            $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
+        }
+        if (key_exists('landscapes', $circuit)) {
+            $circuitManager->deleteCircuitLandscape($id);
+            $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
+        }
     }
 
     public function removeCircuit()
