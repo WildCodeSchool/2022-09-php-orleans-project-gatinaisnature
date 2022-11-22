@@ -37,6 +37,7 @@ class LandscapeController extends AbstractController
         $errors = [];
         $landscapeManager = new LandscapeManager();
         $landscape = $landscapeManager->selectOneById($id);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $landscape = array_map('trim', $_POST);
             $errors = $this->getFormErrors($landscape, $errors);
@@ -128,7 +129,7 @@ class LandscapeController extends AbstractController
             $landscapeManager = new LandscapeManager();
             $landscapeManager->delete((int)$id);
 
-            header('Location:/admin/paysages/index');
+            header('Location: /admin/paysages/index');
         }
     }
 }

@@ -20,8 +20,8 @@
 							<li class="d-flex justify-content-between align-items-center mt-4">
 								{{circuit.title}}
 								<div class="link-admin d-flex gap-3 align-items-center">
-									<a class="btn btn-primary" href="/admin/circuits/edit?id={{circuit.id}}">Éditer</a>
-									<form action="/admin/circuits/delete" method="POST">
+									<a class="btn btn-primary" href="/admin/circuits/editer?id={{circuit.id}}">Éditer</a>
+									<form action="/admin/circuits/supprimer" method="POST">
 										<input type="hidden" name="id" value="{{ circuit.id }}">
 										<button class="btn btn-danger">Supprimer</button>
 									</form>
@@ -30,7 +30,7 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<a class="btn btn-secondary mt-3" href="/admin/circuits/add">Ajouter</a>
+				<a class="btn btn-secondary mt-3" href="/admin/circuits/ajouter">Ajouter</a>
 			</div>
 		</div>
 	</div>
