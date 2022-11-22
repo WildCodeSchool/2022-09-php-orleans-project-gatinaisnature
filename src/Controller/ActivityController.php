@@ -64,11 +64,12 @@ class ActivityController extends AbstractController
             $errors = $this->getFormErrors($activity, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "./assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg','png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
@@ -80,7 +81,7 @@ class ActivityController extends AbstractController
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $activityManager = new ActivityManager();
-                    $activityManager->insert($activity['title'], $activity['description'], $targetFile);
+                    $activityManager->insert($activity['title'], $activity['description'], $uploadFinalName);
                     header('Location: /admin/activites/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
@@ -104,11 +105,13 @@ class ActivityController extends AbstractController
 
             // create the image file to put it in the upload folder (without versioning)
             $targetFile = '';
+            $uploadFinalName = '';
             if ($_FILES['picture']['name'] > 0) {
-                $targetDir = "assets/uploads/";
+                $targetDir = "uploads/";
                 $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
                 $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-                $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
+                $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+                $targetFile = $targetDir . $uploadFinalName;
                 $allowedExtension = ['jpg','png','jpeg','webp'];
                 if (!in_array($imageFileType, $allowedExtension)) {
                     $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
@@ -121,7 +124,7 @@ class ActivityController extends AbstractController
                 // move image to upload folder
                 if ($_FILES['picture']['size'] > 0) {
                     if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
-                        $activityManager->update($activity, $targetFile);
+                        $activityManager->update($activity, $uploadFinalName);
                         header('Location: /admin/activites/index');
                     } else {
                         $errors[] = 'Le fichier image n\'a pu être ajouté !';

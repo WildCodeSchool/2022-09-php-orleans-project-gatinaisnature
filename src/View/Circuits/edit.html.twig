@@ -64,11 +64,7 @@
 			</select>
 		</div>
 		<div>
-			{% if circuit.picture == null %}
-				<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="circuitPicture" srcset="">
-			{% else %}
-				<img class="activityImg rounded" src={{ circuit.picture|trim('.')}} alt="circuitPicture" srcset="">
-			{% endif %}
+			<img src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : "/uploads/" ~ circuit.picture}} 
 		</div>
 		<button class="btn btn-primary">Mettre à jour</button>
 	</form>
