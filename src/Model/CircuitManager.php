@@ -31,39 +31,61 @@ class CircuitManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function updateCircuit(array $circuit, $picture)
+    public function updateCircuit(array $circuit, int $id, $picture)
     {
         $query = " SET `title` = :title, `size` = :size, `content` = :content, 
         `map` = :map, `trace` = :trace, `picture` = :picture WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
-        $statement->bindValue('id', $circuit['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $circuit['title'], PDO::PARAM_STR);
-        $statement->bindValue('size', $circuit['size'], PDO::PARAM_STR);
-        $statement->bindValue('content', $circuit['content'], PDO::PARAM_STR);
-        $statement->bindValue('map', $circuit['map'], PDO::PARAM_STR);
-        $statement->bindValue('trace', $circuit['trace'], PDO::PARAM_STR);
-        $statement->bindValue('picture', $picture, PDO::PARAM_STR);
+        $statement->bindValue('id', $id, PDO::PARAM_INT);
+        $statement->bindValue('title', $circuit['title'], \PDO::PARAM_STR);
+        $statement->bindValue('size', $circuit['size'], \PDO::PARAM_STR);
+        $statement->bindValue('content', $circuit['content'], \PDO::PARAM_STR);
+        $statement->bindValue('map', $circuit['map'], \PDO::PARAM_STR);
+        $statement->bindValue('trace', $circuit['trace'], \PDO::PARAM_STR);
+        $statement->bindValue('picture', $picture, \PDO::PARAM_STR);
         return $statement->execute();
     }
 
-    public function saveCircuitOrganism($circuitId, $organismId): void
+    public function saveCircuitOrganism($circuitId, $organismIds): void
     {
-        $query = "INSERT INTO circuit_organism (`circuit_id`, `organism_id`)
-        VALUES (:circuit_id, :organism_id)";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
-        $statement->bindValue('organism_id', $organismId, \PDO::PARAM_STR);
-        $statement->execute();
+        foreach ($organismIds as $organismId) {
+            $query = "INSERT INTO circuit_organism (`circuit_id`, `organism_id`)
+            VALUES (:circuit_id, :organism_id)";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('circuit_id', $circuitId);
+            $statement->bindValue('organism_id', $organismId);
+            $statement->execute();
+        }
     }
 
-    public function saveCircuitLandscape($circuitId, $landscapeId): void
+    public function deleteCircuitOrganism($circuitId)
     {
-        $query = "INSERT INTO circuit_landscape (`circuit_id`, `landscape_id`)
-        VALUES (:circuit_id, :landscape_id)";
+        $query = "DELETE FROM circuit_organism WHERE `circuit_id` = :circuit_id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
-        $statement->bindValue('landscape_id', $landscapeId, \PDO::PARAM_STR);
-        $statement->execute();
+
+        return $statement->execute();
+    }
+
+    public function saveCircuitLandscape($circuitId, $landscapeIds): void
+    {
+        foreach ($landscapeIds as $landscapeId) {
+            $query = "INSERT INTO circuit_landscape (`circuit_id`, `landscape_id`)
+            VALUES (:circuit_id, :landscape_id)";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue('circuit_id', $circuitId);
+            $statement->bindValue('landscape_id', $landscapeId);
+            $statement->execute();
+        }
+    }
+
+    public function deleteCircuitLandscape($circuitId)
+    {
+        $query = "DELETE FROM circuit_landscape WHERE `circuit_id` = :circuit_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 
     public function selectOrganisms($id)
@@ -75,7 +97,7 @@ class CircuitManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     public function selectLandscapes($id)
@@ -87,6 +109,6 @@ class CircuitManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 }

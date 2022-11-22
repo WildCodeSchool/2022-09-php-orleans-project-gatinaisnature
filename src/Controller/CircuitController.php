@@ -37,7 +37,10 @@ class CircuitController extends AbstractController
         $landscapes = $landscapeManager->selectAll();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $circuit = array_map('trim', $_POST);
+            $circuit = $_POST;
+            array_walk_recursive($circuit, function (&$var) {
+                $var = trim($var);
+            });
 
             $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
@@ -139,25 +142,36 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
 
         $circuit = $circuitManager->selectOneById($id);
-        $organism = $circuitManager->selectOrganisms($id);
-        $landscape = $circuitManager->selectLandscapes($id);
+        $organisms = $circuitManager->selectOrganisms($id);
+        $landscapes = $circuitManager->selectLandscapes($id);
 
         return $this->twig->render('Circuits/show.html.twig', [
             'circuit' => $circuit,
-            'organism' => $organism,
-            'landscape' => $landscape
+            'organisms' => $organisms,
+            'landscapes' => $landscapes,
         ]);
     }
 
     public function editCircuit(int $id): ?string
     {
         $circuitManager = new CircuitManager();
+        $organismManager = new OrganismManager();
+        $landscapeManager = new LandscapeManager();
+
         $circuit = $circuitManager->selectOneById($id);
+        $id = $circuit['id'];
+        $organisms = $organismManager->selectAll();
+        $landscapes = $landscapeManager->selectAll();
+
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $circuit = array_map('trim', $_POST);
+            $circuit = $_POST;
+            array_walk_recursive($circuit, function (&$var) {
+                $var = trim($var);
+            });
 
+            $errors = $this->validateSelectInputs($circuit, $errors);
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
@@ -183,14 +197,22 @@ class CircuitController extends AbstractController
 
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
-                $circuitManager->updateCircuit($circuit, $uploadFinalName);
+                $circuitManager->updateCircuit($circuit, $id, $uploadFinalName);
+
+                $circuitManager->deleteCircuitOrganism($id);
+                $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
+                $circuitManager->deleteCircuitLandscape($id);
+                $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
+
                 header('Location: /admin/circuits/index');
             }
         }
 
         return $this->twig->render('Circuits/edit.html.twig', [
             'circuit' => $circuit,
-            'errors' => $errors,
+            'organisms' => $organisms,
+            'landscapes' => $landscapes,
+            'errors' => $errors
         ]);
     }
 
