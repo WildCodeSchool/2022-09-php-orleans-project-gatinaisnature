@@ -91,7 +91,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
@@ -127,7 +127,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
