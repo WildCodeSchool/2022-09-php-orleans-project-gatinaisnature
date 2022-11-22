@@ -39,11 +39,7 @@
       <input type="file" name="picture" id="picture" value ="{{event.picture}}" class="form-control">
     </div>
     <div>
-			{% if event.picture == null %}
-				<img class="eventImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="eventPicture" srcset="">
-			{% else %}
-				<img class="eventImg rounded" src={{ event.picture|trim('.')}} alt="eventPicture" srcset="">
-			{% endif %}
+			<img class="activityImg w-100 h-100 rounded" src={{ event.picture is null ? '/assets/images/imgPlaceHolder.jpg' : "/uploads/" ~ event.picture }} alt="activityPicture">
     </div>
     <button class="btn btn-primary">Mettre à jour</button>
 </form>
