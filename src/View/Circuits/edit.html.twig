@@ -41,17 +41,17 @@
 										</div>
 
 										<div class="mb-4">
-											<label for="title" class="form-label">Titre</label>
+											<label for="title" class="form-label">Titre :</label>
 											<input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="Canal de Briare" value="{{circuit.title ?? ''}}" required>
 										</div>
 
 										<div class="mb-4">
-											<label for="size" class="form-label">Longueur (en km)</label>
+											<label for="size" class="form-label">Longueur (en km) :</label>
 											<input type="text" class="form-control form-control-lg" name="size" id="size" placeholder="7.0" value="{{circuit.size ?? ''}}" required>
 										</div>
 
 										<div class="mb-4">
-											<label class="form-label" for="content">Description</label>
+											<label class="form-label" for="content">Description :</label>
 											<textarea class="form-control form-control-lg" name="content" id="content" placeholder="Description du circuit..." required>
 												{{- circuit.content ?? '' -}}
 											</textarea>
@@ -68,7 +68,7 @@
 										</div>
 
 										<div class="mb-4">
-											<label for="picture" class="form-label">Images</label>
+											<label for="picture" class="form-label">Image :</label>
 											<input type="file" name="picture" id="picture" class="form-control form-control-lg" value="{{circuit.picture ?? ''}}" required>
 										</div>
 
