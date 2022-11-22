@@ -119,6 +119,11 @@ class CircuitController extends AbstractController
             $errors[] = 'La distance du circuit est requise !';
         }
 
+        $regex = "/[0-9.,]/";
+        if (!preg_match($regex, $circuit['size'])) {
+            $errors[] = 'Veuillez rentrer un nombre pour la longueur !';
+        }
+
         if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
             $errors[] = 'La longueur du circuit doit être un nombre positif !';
         }
