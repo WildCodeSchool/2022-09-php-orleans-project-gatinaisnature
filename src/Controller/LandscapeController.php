@@ -26,6 +26,7 @@ class LandscapeController extends AbstractController
 
     public function indexLandscapeAdmin(): string
     {
+        $this->isAuthorized();
         $landscapeManager = new LandscapeManager();
         $landscapes = $landscapeManager->selectAll('title');
 
@@ -34,6 +35,7 @@ class LandscapeController extends AbstractController
 
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $landscapeManager = new LandscapeManager();
         $landscape = $landscapeManager->selectOneById($id);
@@ -90,7 +92,7 @@ class LandscapeController extends AbstractController
 
     public function add()
     {
-
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -126,6 +128,7 @@ class LandscapeController extends AbstractController
     }
     public function delete(): void
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $landscapeManager = new LandscapeManager();

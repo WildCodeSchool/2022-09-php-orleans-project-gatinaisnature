@@ -31,6 +31,7 @@ class ActivityController extends AbstractController
      */
     public function indexAdmin(): string
     {
+        $this->isAuthorized();
         $activityManager = new ActivityManager();
         $activities = $activityManager->selectAll('title');
 
@@ -56,7 +57,7 @@ class ActivityController extends AbstractController
 
     public function add()
     {
-
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -96,6 +97,7 @@ class ActivityController extends AbstractController
      */
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $activityManager = new ActivityManager();
         $activity = $activityManager->selectOneById($id);
@@ -137,6 +139,7 @@ class ActivityController extends AbstractController
 
     public function delete()
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $activityManager = new ActivityManager();

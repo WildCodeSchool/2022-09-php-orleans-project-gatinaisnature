@@ -26,4 +26,12 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
     }
+
+    public function isAuthorized()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('HTTP/1.1 401 Unauthorized');
+            header('Location: /error?code=401');
+        }
+    }
 }

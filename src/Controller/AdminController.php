@@ -9,12 +9,7 @@ class AdminController extends AbstractController
      */
     public function index(): string
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('HTTP/1.1 401 Unauthorized');
-            return $this->twig->render('Errors/error.html.twig', [
-                'error' => '401',
-            ]);
-        }
+        $this->isAuthorized();
         return $this->twig->render('Admin/index.html.twig');
     }
 }
