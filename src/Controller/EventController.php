@@ -82,11 +82,12 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png','webp'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg', 'png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
@@ -98,7 +99,7 @@ class EventController extends AbstractController
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
-                    $eventManager->insert($event, $targetFile);
+                    $eventManager->insert($event, $uploadFinalName);
                     header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
@@ -118,11 +119,12 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // create the image file to put it in the upload folder (without versioning)
-            $targetDir = "assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png','webp'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg', 'png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
@@ -134,7 +136,7 @@ class EventController extends AbstractController
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
-                    $eventManager->update($event, $targetFile);
+                    $eventManager->update($event, $uploadFinalName);
                     header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';

@@ -45,7 +45,7 @@ class CircuitController extends AbstractController
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
-            $uploadDir = "assets/uploads/";
+            $uploadDir = "uploads/";
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
             $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;
@@ -180,7 +180,7 @@ class CircuitController extends AbstractController
             $errors = $this->validateLengths($circuit, $errors);
             $errors = $this->validateFields($circuit, $errors);
 
-            $uploadDir = "assets/uploads/";
+            $uploadDir = "uploads/";
             $uploadFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $uploadFirstName = pathinfo($_FILES['picture']['name'])['filename'];
             $uploadFinalName = uniqid($uploadFirstName) . '.' . $uploadFileType;

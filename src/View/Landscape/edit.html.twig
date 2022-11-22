@@ -27,14 +27,10 @@
     </div>
     <div class="mb-3">
       <label for="picture" class="form-label">Image :</label>
-      <input type="file" name="picture" id="picture" value ="{{landscape.picture}}" class="form-control">
+      <input type="file" name="picture" id="picture" value ="{{landscape.picture_link}}" class="form-control">
     </div>
     <div>
-			{% if landscape.picture_link == null %}
-				<img class="eventImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="landscapePicture" srcset="">
-			{% else %}
-				<img class="eventImg rounded" src={{ landscape.picture_link|trim('.')}} alt="landscapePicture" srcset="">
-			{% endif %}
+    	<img class="w-100 h-100 rounded" src={{ landscape.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : "/uploads/" ~ landscape.picture_link }} alt="landscapePicture">
     </div>
     <button class="btn btn-primary">Mettre à jour</button>
 </form>

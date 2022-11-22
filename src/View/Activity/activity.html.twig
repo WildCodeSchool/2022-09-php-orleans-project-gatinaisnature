@@ -12,7 +12,7 @@
 			{% for event in events %}
 			<div class="col-sm-6 col-md-4 col-lg-3">
 				<div class="card card-event bg-success">
-					<img class="img-responsive rounded h-50" src={{ event.picture is null ? '/assets/images/imgPlaceHolder.jpg' : event.picture }} alt="eventPicture">
+					<img class="img-responsive rounded h-50" src={{ event.picture is null ? '/assets/images/imgPlaceHolder.jpg' : "uploads/" ~ event.picture }} alt="eventPicture">
 					<div class="card-body d-flex flex-column justify-content-around ">
 						<h3 class="card-title text-center">{{event.date|date("d/m/Y")}}</h3>
 						<p class="card-text text-center fst-italic">{{event.title}}</p>
@@ -31,7 +31,7 @@
 				<div class="card p-0 mb-5">
 					<div class="row">
 						<div class="col-lg-5 m-auto {{loop.index is odd ? 'order-2' : ''}}">
-							<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : activity.picture }} alt="activityPicture">
+							<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : "uploads/" ~ activity.picture }} alt="activityPicture">
 						</div>
 						<div class="col-lg-7 m-auto">
 							<h2 class="px-5 py-3 text-center">{{ activity.title}}</h2>
