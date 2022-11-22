@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block title %}
-	{{ parent() }} | Circuits
+	{{ parent() }}
+	| Circuits
 {% endblock %}
 
 {% block content %}
@@ -62,15 +63,13 @@
 				{% endfor %}
 			</select>
 		</div>
-
 		<div>
 			{% if circuit.picture == null %}
 				<img class="activityImg rounded" src="/assets/images/imgPlaceHolder.jpg" alt="circuitPicture" srcset="">
 			{% else %}
-				<img class="activityImg rounded" src={{ activity.picture|trim('.')}} alt="circuitPicture" srcset="">
+				<img class="activityImg rounded" src={{ circuit.picture|trim('.')}} alt="circuitPicture" srcset="">
 			{% endif %}
 		</div>
-
 		<button class="btn btn-primary">Mettre à jour</button>
 	</form>
 {% endblock %}

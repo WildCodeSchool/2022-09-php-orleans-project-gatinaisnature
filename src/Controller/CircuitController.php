@@ -15,7 +15,7 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll();
 
-        return $this->twig->render('Circuits/chooseCircuits.html.twig', ['circuits' => $circuits]);
+        return $this->twig->render('Circuits/circuits.html.twig', ['circuits' => $circuits]);
     }
 
     public function indexCircuitsAdmin(): string
@@ -23,7 +23,7 @@ class CircuitController extends AbstractController
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll('title');
 
-        return $this->twig->render('Circuits/indexAdmin.html.twig', ['circuits' => $circuits]);
+        return $this->twig->render('Circuits/index.html.twig', ['circuits' => $circuits]);
     }
 
     public function addCircuit()
@@ -68,7 +68,6 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->saveCircuit($circuit, $uploadFinalName);
-
                 $lastInsertedId = $circuitManager->selectLastId();
                 $this->addLandScapeOrganism($lastInsertedId['id'], $circuit);
 
@@ -76,7 +75,7 @@ class CircuitController extends AbstractController
             }
         }
 
-        return $this->twig->render('Circuits/circuits-add.html.twig', [
+        return $this->twig->render('Circuits/add.html.twig', [
             'errors' => $errors,
             'organisms' => $organisms,
             'landscapes' => $landscapes
@@ -198,6 +197,11 @@ class CircuitController extends AbstractController
                 $circuitManager->updateCircuit($circuit, $id, $uploadFinalName);
                 $this->editLandScapeOrganism($id, $circuit);
 
+                $circuitManager->deleteCircuitOrganism($id);
+                $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
+                $circuitManager->deleteCircuitLandscape($id);
+                $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
+
                 header('Location: /circuits');
             }
         }
@@ -230,7 +234,7 @@ class CircuitController extends AbstractController
             $circuitManager = new CircuitManager();
             $circuitManager->delete((int)$id);
 
-            header('Location: /circuits');
+            header('Location: /admin/circuits/index');
         }
     }
 }

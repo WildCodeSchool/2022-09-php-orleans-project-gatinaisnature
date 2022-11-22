@@ -91,7 +91,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
@@ -99,7 +99,7 @@ class EventController extends AbstractController
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
                     $eventManager->insert($event, $targetFile);
-                    header('Location: /event/indexAdmin');
+                    header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
                 }
@@ -127,7 +127,7 @@ class EventController extends AbstractController
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
@@ -135,7 +135,7 @@ class EventController extends AbstractController
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
                     $eventManager->update($event, $targetFile);
-                    header('Location: /event/indexAdmin');
+                    header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
                 }
@@ -150,7 +150,7 @@ class EventController extends AbstractController
             $eventManager = new EventManager();
             $eventManager->delete((int)$id);
 
-            header('Location:/event/indexAdmin');
+            header('Location:/admin/evenements/index');
         }
     }
 }
