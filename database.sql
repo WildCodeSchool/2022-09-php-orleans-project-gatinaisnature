@@ -230,7 +230,6 @@ INSERT INTO
         `size`,
         `trace`,
         `content`,
-        `map`,
         `picture`
     )
 VALUES (
@@ -238,21 +237,18 @@ VALUES (
         5.5,
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson : se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy. Le circuit de base (5.5 km), tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide : reine des prés, salicaire commune, épilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
-        'Carte IGN 1/25.000 ème Est, Montargis',
         null
     ), (
         'Canal de Briare',
         7,
         'Tracé Orange',
         'Le circuit complémentaire (7 km), tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest. Il permettra d\’observer des paysages typiques du plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois. Dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
-        'Carte IGN 1/25.000 ème Est, Montargis',
         null
     ), (
         'La vallée de la Cléry à Saint-Hilaire-les-Andrésis et Chantecoq',
         6.5,
         'Tracé Jaune',
         'Le départ du circuit se situe à l\’église de Montcresson : se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy. Le circuit de base (5.5 km), tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide : reine des prés, salicaire commune, épilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
-        'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         null
     );
 

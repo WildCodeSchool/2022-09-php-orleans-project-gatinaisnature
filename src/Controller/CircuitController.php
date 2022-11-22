@@ -132,10 +132,6 @@ class CircuitController extends AbstractController
             $errors[] = 'La description du circuit est requise !';
         }
 
-        if (empty($circuit['map'])) {
-            $errors[] = 'La localisation du circuit est requise !';
-        }
-
         if (empty($circuit['size'])) {
             $errors[] = 'La distance du circuit est requise !';
         }
