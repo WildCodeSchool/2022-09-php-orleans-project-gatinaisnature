@@ -13,7 +13,7 @@
 				<div class="card p-0 mb-5">
 					<div class="row">
 						<div class="col-lg-5 landscapeImg m-auto {{loop.index is odd ? 'order-2' : ''}}">
-							<img class="w-100 h-100 rounded" src={{ landscapes.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : landscape.picture_link }} alt="Image de paysage">
+							<img class="w-100 h-100 rounded" src={{ landscape.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : "/uploads/" ~ landscape.picture_link }} alt="Image de paysage">
 						</div>
 						<div class="col-lg-7 m-auto">
 							<h2 class="px-5 py-3 text-center">{{ landscape.title}}</h2>
