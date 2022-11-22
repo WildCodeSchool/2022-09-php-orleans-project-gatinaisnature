@@ -2,3 +2,15 @@
     height: 30rem;
 }
 
+.card-admin{
+    height: 700px;
+}
+
+.section-form{
+    height: calc(100vh - 94px);
+}
+
+.custom-block img{
+    object-fit: contain;
+    border-radius: .375rem 0 0 .375rem;
+}
