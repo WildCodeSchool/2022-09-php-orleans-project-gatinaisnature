@@ -16,9 +16,9 @@
                                 {{activity.title}}
                                 <div class="link-admin d-flex gap-3 align-items-center">
                                     <div class="btn btn-primary">
-                                        <a href="/activity/edit?id={{activity.id}}">Editer</a>
+                                        <a href="/admin/activites/editer?id={{activity.id}}">Editer</a>
                                     </div>
-                                        <form action="/activity/delete" method="POST">
+                                        <form action="/admin/activites/supprimer" method="POST">
                                             <input type="hidden" name="id" value="{{ activity.id }}">
                                             <button class="btn btn-danger">Supprimer</button>
                                         </form>
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
                 <div class="add-entry">
-                    <a class="btn btn-secondary" href="/activity/add">Ajouter</a>
+                    <a class="btn btn-secondary" href="/admin/activites/ajouter">Ajouter</a>
                 </div>
             </div>
         </div>
