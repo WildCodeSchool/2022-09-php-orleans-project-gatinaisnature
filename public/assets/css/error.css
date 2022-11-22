@@ -8,3 +8,7 @@
         border-radius: .375rem .375rem 0 0;
     }
 }
+
+.section-error{
+    height: calc(100vh - 94px);
+}
