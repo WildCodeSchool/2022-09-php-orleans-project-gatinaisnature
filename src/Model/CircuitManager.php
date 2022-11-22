@@ -37,12 +37,12 @@ class CircuitManager extends AbstractManager
         `map` = :map, `trace` = :trace, `picture` = :picture WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
         $statement->bindValue('id', $id, PDO::PARAM_INT);
-        $statement->bindValue('title', $circuit['title'], PDO::PARAM_STR);
-        $statement->bindValue('size', $circuit['size'], PDO::PARAM_STR);
-        $statement->bindValue('content', $circuit['content'], PDO::PARAM_STR);
-        $statement->bindValue('map', $circuit['map'], PDO::PARAM_STR);
-        $statement->bindValue('trace', $circuit['trace'], PDO::PARAM_STR);
-        $statement->bindValue('picture', $picture, PDO::PARAM_STR);
+        $statement->bindValue('title', $circuit['title'], \PDO::PARAM_STR);
+        $statement->bindValue('size', $circuit['size'], \PDO::PARAM_STR);
+        $statement->bindValue('content', $circuit['content'], \PDO::PARAM_STR);
+        $statement->bindValue('map', $circuit['map'], \PDO::PARAM_STR);
+        $statement->bindValue('trace', $circuit['trace'], \PDO::PARAM_STR);
+        $statement->bindValue('picture', $picture, \PDO::PARAM_STR);
         return $statement->execute();
     }
 
@@ -52,21 +52,19 @@ class CircuitManager extends AbstractManager
             $query = "INSERT INTO circuit_organism (`circuit_id`, `organism_id`)
             VALUES (:circuit_id, :organism_id)";
             $statement = $this->pdo->prepare($query);
-            $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
-            $statement->bindValue('organism_id', $organismId, \PDO::PARAM_STR);
+            $statement->bindValue('circuit_id', $circuitId);
+            $statement->bindValue('organism_id', $organismId);
             $statement->execute();
         }
     }
 
-    public function updateCircuitOrganism($circuitId, $organismIds): void
+    public function deleteCircuitOrganism($circuitId)
     {
-        foreach ($organismIds as $organismId) {
-            $query = "UPDATE circuit_organism SET `organism_id` = :organism_id WHERE `circuit_id` = :circuit_id";
-            $statement = $this->pdo->prepare($query);
-            $statement->bindValue('circuit_id', $circuitId, PDO::PARAM_INT);
-            $statement->bindValue('organism_id', $organismId, PDO::PARAM_STR);
-            $statement->execute();
-        }
+        $query = "DELETE FROM circuit_organism WHERE `circuit_id` = :circuit_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 
     public function saveCircuitLandscape($circuitId, $landscapeIds): void
@@ -75,20 +73,19 @@ class CircuitManager extends AbstractManager
             $query = "INSERT INTO circuit_landscape (`circuit_id`, `landscape_id`)
             VALUES (:circuit_id, :landscape_id)";
             $statement = $this->pdo->prepare($query);
-            $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
-            $statement->bindValue('landscape_id', $landscapeId, \PDO::PARAM_STR);
+            $statement->bindValue('circuit_id', $circuitId);
+            $statement->bindValue('landscape_id', $landscapeId);
             $statement->execute();
         }
     }
-    public function updateCircuitLandscape($circuitId, $landscapeIds): void
+
+    public function deleteCircuitLandscape($circuitId)
     {
-        foreach ($landscapeIds as $landscapeId) {
-            $query = "UPDATE circuit_landscape SET `landscape_id` = :landscape_id WHERE `circuit_id` = :circuit_id";
-            $statement = $this->pdo->prepare($query);
-            $statement->bindValue('circuit_id', $circuitId, PDO::PARAM_INT);
-            $statement->bindValue('landscape_id', $landscapeId, PDO::PARAM_STR);
-            $statement->execute();
-        }
+        $query = "DELETE FROM circuit_landscape WHERE `circuit_id` = :circuit_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('circuit_id', $circuitId, \PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 
     public function selectOrganisms($id)

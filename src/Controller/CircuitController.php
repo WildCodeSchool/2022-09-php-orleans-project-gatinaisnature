@@ -160,7 +160,7 @@ class CircuitController extends AbstractController
         $landscapeManager = new LandscapeManager();
 
         $circuit = $circuitManager->selectOneById($id);
-        $circuit['id'] = $id;
+        $id = $circuit['id'];
         $organisms = $organismManager->selectAll();
         $landscapes = $landscapeManager->selectAll();
 
@@ -199,8 +199,11 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->updateCircuit($circuit, $id, $uploadFinalName);
-                $circuitManager->updateCircuitOrganism($id, $circuit['organisms']);
-                $circuitManager->updateCircuitLandscape($id, $circuit['landscapes']);
+
+                $circuitManager->deleteCircuitOrganism($id);
+                $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
+                $circuitManager->deleteCircuitLandscape($id);
+                $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
 
                 header('Location: /circuits');
             }
