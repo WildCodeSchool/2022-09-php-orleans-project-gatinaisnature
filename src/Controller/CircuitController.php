@@ -197,10 +197,7 @@ class CircuitController extends AbstractController
                 $circuitManager->updateCircuit($circuit, $id, $uploadFinalName);
                 $this->editLandScapeOrganism($id, $circuit);
 
-                $circuitManager->deleteCircuitOrganism($id);
-                $circuitManager->saveCircuitOrganism($id, $circuit['organisms']);
-                $circuitManager->deleteCircuitLandscape($id);
-                $circuitManager->saveCircuitLandscape($id, $circuit['landscapes']);
+                $this->editLandScapeOrganism($id, $circuit);
 
                 header('Location: /circuits');
             }
