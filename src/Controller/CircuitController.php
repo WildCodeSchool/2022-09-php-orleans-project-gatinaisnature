@@ -69,6 +69,7 @@ class CircuitController extends AbstractController
             if (empty($errors)) {
                 move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFileDest);
                 $circuitManager->saveCircuit($circuit, $uploadFinalName);
+
                 $lastInsertedId = $circuitManager->selectLastId();
                 $circuitManager->saveCircuitOrganism($lastInsertedId['id'], $circuit['organisms']);
                 $circuitManager->saveCircuitLandscape($lastInsertedId['id'], $circuit['landscapes']);
