@@ -37,7 +37,7 @@
 											Editer
 										</a>
 									</div>
-									<form action="/admin/circuits/supprimer" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+									<form action="/admin/circuits/supprimer" method="POST">
 										<input type="hidden" name="id" value="{{ circuit.id }}">
 										<button type="button" class="btn btn-outline-danger d-flex justify-content-center align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modalDelete">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewbox="0 0 16 16">
