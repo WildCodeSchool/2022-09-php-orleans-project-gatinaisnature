@@ -172,25 +172,25 @@ INSERT INTO
         `picture`
     )
 VALUES (
-        'Reparation des nids de chouette',
+        'Réparation des nids de chouette',
         '2022-12-22',
         'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
         '15',
         null
     ), (
-        'Repas de Noel avec l\'association',
+        'Repas de Noël avec l\'association',
         '2023-12-23',
         'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
         '20',
         null
     ), (
-        'Visite de la foret de Longchamps',
+        'Visite de la forêt de Longchamps',
         '2023-01-02',
         'visite en foret',
         '12',
         null
     ), (
-        'Visite des forets alentours',
+        'Visite des forêts alentours',
         '2023-02-28',
         'ta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia',
         '8.50',
@@ -237,21 +237,21 @@ VALUES (
         'Le Loing et le canal de Briare à Montcresson',
         5.5,
         'Tracé Jaune',
-        'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
+        'Le départ du circuit se situe à l\’église de Montcresson : se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy. Le circuit de base (5.5 km), tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide : reine des prés, salicaire commune, épilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème Est, Montargis',
         null
     ), (
         'Canal de Briare',
         7,
         'Tracé Orange',
-        'Le circuit complémentaire, 7 km, tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest, il permettra d\’observer des paysages typiques plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois, dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
+        'Le circuit complémentaire (7 km), tracé en orange, longe le canal de Briare vers le sud et contourne le Château de la Forest. Il permettra d\’observer des paysages typiques du plateau du Gâtinais ainsi que la flore et la faune des zones mélangées de cultures et de bois. Dans le parc du Château, de nombreux trous de pics sont visibles dans les vieux arbres.',
         'Carte IGN 1/25.000 ème Est, Montargis',
         null
     ), (
         'La vallée de la Cléry à Saint-Hilaire-les-Andrésis et Chantecoq',
         6.5,
         'Tracé Jaune',
-        'Le départ du circuit se situe à l\’église de Montcresson, se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy.Le circuit de base, 5,5 kms, tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide: reine des prés, salicaire commune, epilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
+        'Le départ du circuit se situe à l\’église de Montcresson : se garer sur le parking derrière l\’église. Les sols rencontrés sont principalement des alluvions (anciennes ou récentes) et de l\’argile à silex vers la ferme de Toisy. Le circuit de base (5.5 km), tracé en jaune sur la carte, part de l\’église en direction du canal de Briare, emprunte la D117 pour traverser le canal et tourne à gauche avant le pont sur le Loing. Suivre ce chemin jusqu\’à Montambert. On longe un étang puis une zone inondable plantée de peupliers, avec la possibilité de surprendre, toute l\’année, un grèbe castagneux, une gallinule poule d\’eau, un héron cendré ou même un chevreuil. On trouve également toutes les plantes courantes vivant en milieu humide : reine des prés, salicaire commune, épilobe hirsute, grand consoude, etc… qui fleurissent en juin-juillet.',
         'Carte IGN 1/25.000 ème 2519 Ouest Château-Renard',
         null
     );

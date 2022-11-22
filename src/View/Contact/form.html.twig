@@ -48,24 +48,24 @@
 										{% endif %}
 
 										<div class="mb-4">
-											<label for="lastname" class="form-label">Nom:</label>
+											<label for="lastname" class="form-label">Nom :</label>
 											<input type="text" class="form-control form-control-lg" name="lastname" id="lastname" placeholder="Cécile" value="{{contact.lastname ?? ''}}" required>
 										</div>
 
 										<div class="mb-4">
-											<label for="firstname" class="form-label">Prénom:</label>
+											<label for="firstname" class="form-label">Prénom :</label>
 											<input type="text" class="form-control form-control-lg" name="firstname" id="firstname" placeholder="Heske" value="{{contact.firstname ?? '' }}" required>
 										</div>
 
 										<div class="mb-4">
-											<label class="form-label" for="email">Adresse e-mail:</label>
+											<label class="form-label" for="email">Adresse e-mail :</label>
 											<input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="cecile.heske@gatinais.fr" value="{{contact.email ?? ''}}" required>
 										</div>
 
 										<div class="mb-4">
-											<label class="form-label" for="subject">Sujet du Message</label>
+											<label class="form-label" for="subject">Sujet du message :</label>
 											<select class="form-select form-select-lg" name="subject" id="subject" aria-label="Default select example" required>
-												<option selected>Choisissez votre question:</option>
+												<option selected>Choisissez votre question :</option>
 												<option value="1">Question à l'Association</option>
 												<option value="2">Adhérer à l'Association</option>
 												<option value="3">Oiseaux Blessés</option>
@@ -75,7 +75,7 @@
 										</div>
 
 										<div class="mb-4">
-											<label class="form-label" for="message">Message:</label>
+											<label class="form-label" for="message">Message :</label>
 											<textarea class="form-control form-control-lg" id="message" name="message" rows="6" placeholder="Je souhaite adhérer à votre association." value="{{contact.message ?? ''}}" required></textarea>
 										</div>
 
