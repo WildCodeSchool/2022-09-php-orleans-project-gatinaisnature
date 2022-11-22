@@ -13,7 +13,7 @@
 				<div class="card card-event bg-success col-10 col-sm-3 p-0 m-auto mb-4">
 					<img class="eventsImg img-responsive rounded" src={{ event.picture_link is null ? '/assets/images/imgPlaceHolder.jpg' : event.picture_link}} alt="eventPicture">
 					<div class="card-body">
-						<h3 class="card-title text-center">{{event.date}}</h3>
+						<h3 class="card-title text-center">{{event.date|date("d/m/Y")}}</h3>
 						<p class="card-text text-center fst-italic">{{event.title}}</p>
 						<p class="card-text fw-bold text-center">{{event.cost}}€/pers</p>
 					</div>
