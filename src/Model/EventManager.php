@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use PDO;
+use DateTime;
 
 class EventManager extends AbstractManager
 {
