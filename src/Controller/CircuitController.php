@@ -104,6 +104,17 @@ class CircuitController extends AbstractController
         if (!empty($circuit['trace']) && strlen($circuit['trace']) > $maxTraceLength) {
             $errors[] = 'Le tracé doit être inférieur à 20 caractères !';
         }
+
+        if (!empty($circuit['size'])) {
+            $regex = "/[0-9.,]/";
+            if (!preg_match($regex, $circuit['size'])) {
+                $errors[] = 'Veuillez rentrer un nombre pour la longueur !';
+            }
+
+            if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
+                $errors[] = 'La longueur du circuit doit être un nombre positif !';
+            }
+        }
         return $errors;
     }
 
@@ -129,9 +140,6 @@ class CircuitController extends AbstractController
             $errors[] = 'La distance du circuit est requise !';
         }
 
-        if (!filter_var($circuit['size'], FILTER_VALIDATE_FLOAT) && $circuit['size'] <= 0) {
-            $errors[] = 'La longueur du circuit doit être un nombre positif !';
-        }
         return $errors;
     }
 
