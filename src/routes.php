@@ -32,7 +32,7 @@ return [
     'admin/especes/ajouter' => ['OrganismController', 'add'],
     'admin/especes/editer' => ['OrganismController', 'edit', ['id']],
     'admin/especes/supprimer' => ['OrganismController', 'delete'],
-    'paysages' => ['LandscapeController', 'index',],
+    'paysages' => ['LandscapeController', 'index'],
     'admin/paysages/index' => ['LandscapeController', 'indexLandscapeAdmin'],
     'admin/paysages/ajouter' => ['LandscapeController', 'add'],
     'admin/paysages/editer' => ['LandscapeController', 'edit', ['id']],
