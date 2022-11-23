@@ -35,9 +35,9 @@
 	<div class="mb-4">
 		<label class="form-label" for="trace">Tracé :</label>
 		<select class="form-select" name="trace" id="trace" aria-label="Default select example" required>
-			<option>Jaune</option>
-			<option>Orange</option>
-			<option>Rouge</option>
+			<option value="Tracé Jaune">Jaune</option>
+			<option value"Tracé Orange">Orange</option>
+			<option value="Tracé Rouge">Rouge</option>
 		</select>
 	</div>
 	<div class="mb-4">
@@ -61,4 +61,4 @@
 		</select>
 	</div>
 	<div>
-		<img src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : "/uploads/" ~ circuit.picture}} </div> <button class="btn btn-primary">Mettre à jour</button> </form> {% endblock %}
+		<imgMettre src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : "/uploads/" ~ circuit.picture}} </div> <button class="btn btn-primary"> à jour</button> </form> {% endblock %}
