@@ -1,7 +1,7 @@
 {% extends "layoutAdmin.html.twig" %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/../assets/css/organism.css">
+	<link rel="stylesheet" href="/assets/css/organism.css">
 {% endblock %}
 
 {% block title %}
@@ -10,9 +10,24 @@
 {% endblock %}
 
 {% block content %}
-	{% include "formAdminEdit.html.twig" %}
-{% endblock %}
-
-{% block titleForm %}
-	Formulaire d'édition d'espèces
+	<section class="section-form">
+		<div class="container h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg vh-100">
+						<div class="row g-0">
+							<div class="col-md-6 col-lg-5 d-block custom-block">
+								<img class="w-100 h-100" src={{organism.picture is null ? "/assets/images/imgPlaceHolder.jpg" : organism.picture}} alt="Image de l'espèce">
+							</div>
+							<div class="col-md-6 col-lg-7 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+									{% include "formAdminOrga.html.twig" with {'title': 'Édition espèces admin'} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
