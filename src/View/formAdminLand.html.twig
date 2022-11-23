@@ -1,4 +1,5 @@
 <form action="" method="post" enctype="multipart/form-data">
+	<input type="hidden" value="{{ landscape.id }}" name="id">
 	{% if errors %}
 		<ul class="alert alert-danger" role="alert">
 			{% for error in errors %}
