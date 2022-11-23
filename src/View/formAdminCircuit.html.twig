@@ -35,24 +35,21 @@
 
 	<div class="mb-4">
 		<label class="form-label" for="trace">Tracé :</label>
-		<input type="text" class="form-control form-control-lg" name="trace" id="trace" placeholder="Orange" value="{{circuit.trace ?? ''}}" required>
+		<select class="form-select form-select-lg" name="trace" id="trace" aria-label="Default select example" required>
+			<option value="Tracé Jaune">Jaune</option>
+			<option value"Tracé Orange">Orange</option>
+			<option value="Tracé Rouge">Rouge</option>
+		</select>
 	</div>
 
 	<div class="mb-4">
-		<label class="form-label" for="map">Carte :</label>
-		<input type="text" class="form-control form-control-lg" name="map" id="map" placeholder="Carte IGN 1/25.000 ème Est" value="{{circuit.map ?? ''}}" required>
-	</div>
-
-	<div class="mb-4">
-		<label for="picture" class="form-label">Image:
-		</label>
+		<label for="picture" class="form-label">Image :</label>
 		<input type="file" name="picture" id="picture" class="form-control form-control-lg" value="{{circuit.picture ?? ''}}" required>
 	</div>
 
 	<div class="mb-4">
-		<label class="form-label" for="organisms">Espèces visibles sur le circuit :</label>
+		<label class="form-label" for="organisms">Espèces visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs espèces):</label>
 		<select class="form-select form-select-lg" name="organisms[]" id="organisms" aria-label="Default select example" multiple>
-			<option>Gardez la touche Ctrl appuyée pour choisir plusieurs espèces :</option>
 			{% for organism in organisms %}
 				<option value="{{ organism.id }}">{{ organism.name }}</option>
 			{% endfor %}
@@ -60,9 +57,8 @@
 	</div>
 
 	<div class="mb-4">
-		<label class="form-label" for="landscapes">Paysages visibles sur le circuit :</label>
+		<label class="form-label" for="landscapes">Paysages visibles sur le circuit (gardez la touche Ctrl appuyée pour choisir plusieurs paysages):</label>
 		<select class="form-select form-select-lg" name="landscapes[]" id="landscapes" aria-label="Default select example" multiple>
-			<option>Gardez la touche Ctrl appuyée pour choisir plusieurs paysages :</option>
 			{% for landscape in landscapes %}
 				<option value="{{ landscape.id }}">{{ landscape.title }}</option>
 			{% endfor %}

@@ -19,18 +19,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="mb-4">
-						<label class="form-label" for="landscapes">Paysages visibles sur le circuit :</label>
-						<select class="form-select" name="landscapes[]" id="landscapes" aria-label="Default select example" multiple>
-							<option>Gardez la touche Ctrl appuyée pour choisir plusieurs paysages :</option>
-							{% for landscape in landscapes %}
-								<option value="{{ landscape.id }}">{{ landscape.title }}</option>
-							{% endfor %}
-						</select>
-					</div>
-					<button type="submit" class="btn bg-primary text-white col-md-2 mb-4">ENVOYER</button>
-				</form>
+				</div>
 			</div>
-		</div>
-	</section>
-{% endblock %}
+		</section>
+	{% endblock %}
