@@ -6,32 +6,28 @@
 
 {% block title %}
 	{{parent()}}
-	| Activités
+	| Éditer Activités
 {% endblock %}
 
 {% block content %}
-<ul>
-{% for error in errors %}
-  <li>{{error}}</li>
-{% endfor %}
-</ul>
-<form action="" method="post" enctype="multipart/form-data" class="container">
-   <input type="hidden" value="{{ activity.id }}" name="id">
-    <div class="mb-3">	
-      <label for="title" class="form-label">Titre :</label>
-      <input type="text" name="title" id="title" class="form-control" value ="{{activity.title}}" placeholder="Titre à renseigner">
-    </div>
-    </div class="mb-3">
-      <label for="description" class="form-label">Description :</label>
-      <input type="text" name="description" id="description" class="form-control" value ="{{activity.description}}" placeholder="Ajouter Descriptif">
-    </div>
-    <div class="mb-3">
-      <label for="picture" class="form-label">Image :</label>
-      <input type="file" name="picture" id="picture" value ="{{activity.picture}}" class="form-control">
-    </div>
-    <div>
-			<img class="activityImg w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : "/uploads/" ~ activity.picture }} alt="activityPicture">
-    </div>
-    <button class="btn btn-primary">Mettre à jour</button>
-</form>
+	<section class="section-form">
+		<div class="container h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg vh-100">
+						<div class="row g-0">
+							<div class="col-md-6 col-lg-5 d-block custom-block">
+								<img class="w-100 h-100 rounded" src={{ activity.picture is null ? '/assets/images/imgPlaceHolder.jpg' : "/uploads/" ~ activity.picture }} alt="activityPicture">
+							</div>
+							<div class="col-md-6 col-lg-7 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+									{% include "formAdminActivity.html.twig" with {'title': 'Éditer activité admin', 'btn': 'Mettre à jour'} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
