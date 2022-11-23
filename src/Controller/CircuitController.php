@@ -73,7 +73,7 @@ class CircuitController extends AbstractController
                 $lastInsertedId = $circuitManager->selectLastId();
                 $this->addLandScapeOrganism($lastInsertedId['id'], $circuit);
 
-                header('Location: /circuits');
+                header('Location: /admin/circuits/index');
             }
         }
 
@@ -210,7 +210,7 @@ class CircuitController extends AbstractController
 
                 $this->editLandScapeOrganism($id, $circuit);
 
-                header('Location: /circuits');
+                header('Location: /admin/circuits/index');
             }
         }
 
