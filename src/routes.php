@@ -41,4 +41,5 @@ return [
     'contact' => ['ContactController', 'index',['answer']],
     'login' => ['LoginController', 'login'],
     'logout' => ['LoginController', 'logout'],
+    'error' => ['LoginController', 'error'],
 ];
