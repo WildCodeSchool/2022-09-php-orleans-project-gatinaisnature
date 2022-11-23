@@ -217,7 +217,6 @@ CREATE TABLE
         `title` VARCHAR(255) NOT NULL,
         `size` DECIMAL(4, 1) NOT NULL,
         `content` TEXT,
-        `map` VARCHAR(100),
         `trace` VARCHAR(20),
         `picture` VARCHAR(255)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
