@@ -2,15 +2,6 @@
     height: 700px;
 }
 
-.block-form a {
-    text-decoration: none;
-    color: var(--bs-white);
-}
-
-.section-land{
-    height: 100vh;
-}
-
-.landscapeImg img{
-    object-fit: cover;
+.custom-block img{
+    object-fit: contain;
 }

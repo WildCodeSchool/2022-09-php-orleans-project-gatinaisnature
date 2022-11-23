@@ -1,71 +1,33 @@
 {% extends 'layoutAdmin.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/circuits.css">
+	<link rel="stylesheet" href="/assets/css/circuit-index.css">
 {% endblock %}
 
 {% block title %}
 	{{ parent() }}
-	| Circuits
+	| Éditer Circuits
 {% endblock %}
 
 {% block content %}
-	<h1>Éditer Circuit Admin</h1>
-	<ul>
-		{% for error in errors %}
-			<li>{{error}}</li>
-		{% endfor %}
-	</ul>
-	<form action="" method="post" enctype="multipart/form-data" class="container">
-
-		<input type="hidden" value="{{ activity.id }}" name="id">
-		<div class="mb-4 mt-4">
-			<label for="title" class="form-label">Titre :</label>
-			<input type="text" class="form-control" name="title" id="title" placeholder="Canal de Briare" value="{{circuit.title ?? ''}}" required>
+	<section class="section-form">
+		<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg">
+						<div class="row g-0">
+							<div class="col-md-6 col-lg-5 d-block custom-block">
+								<img src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : "/uploads/" ~ circuit.picture}} class="w-100 h-100">
+							</div>
+							<div class="col-md-6 col-lg-7 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+									{% include "formAdminCircuit.html.twig" with {'title': 'Éditer circuit admin'} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="mb-4">
-			<label for="size" class="form-label">Longueur (en km) :</label>
-			<input type="text" class="form-control" name="size" id="size" placeholder="7.0" value="{{circuit.size ?? ''}}" required>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="content">Description :</label>
-			<textarea class="form-control" name="content" id="content" placeholder="Description du circuit..." required>
-				{{- circuit.content ?? '' -}}
-			</textarea>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="map">Carte :</label>
-			<input type="text" class="form-control" name="map" id="map" placeholder="Carte IGN 1/25.000 ème Est" value="{{circuit.map ?? ''}}" required>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="trace">Tracé :</label>
-			<input type="text" class="form-control" name="trace" id="trace" placeholder="Orange" value="{{circuit.trace ?? ''}}" required>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="picture">Image :</label>
-			<input type="file" class="form-control" name="picture" id="picture" value="{{circuit.picture ?? ''}}" required>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="organisms">Espèces visibles sur le circuit :</label>
-			<select class="form-select" name="organisms[]" id="organisms" aria-label="Default select example" multiple>
-				<option>Gardez la touche Ctrl appuyée pour choisir plusieurs espèces :</option>
-				{% for organism in organisms %}
-					<option value="{{ organism.id }}">{{ organism.name }}</option>
-				{% endfor %}
-			</select>
-		</div>
-		<div class="mb-4">
-			<label class="form-label" for="landscapes">Paysages visibles sur le circuit :</label>
-			<select class="form-select" name="landscapes[]" id="landscapes" aria-label="Default select example" multiple>
-				<option>Gardez la touche Ctrl appuyée pour choisir plusieurs paysages :</option>
-				{% for landscape in landscapes %}
-					<option value="{{ landscape.id }}">{{ landscape.title }}</option>
-				{% endfor %}
-			</select>
-		</div>
-		<div>
-			<img src={{circuit.picture is null ? '/assets/images/imgPlaceHolderCircuit.jpg' : "/uploads/" ~ circuit.picture}} 
-		</div>
-		<button class="btn btn-primary">Mettre à jour</button>
-	</form>
+	</section>
 {% endblock %}
