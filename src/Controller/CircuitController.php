@@ -80,7 +80,7 @@ class CircuitController extends AbstractController
         return $this->twig->render('Circuits/add.html.twig', [
             'errors' => $errors,
             'organisms' => $organisms,
-            'landscapes' => $landscapes
+            'landscapes' => $landscapes,
         ]);
     }
 

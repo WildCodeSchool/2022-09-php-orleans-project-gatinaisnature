@@ -28,6 +28,7 @@
     filter: grayscale(75%);
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+    object-fit: cover;
 }
 
 .card a:hover img{

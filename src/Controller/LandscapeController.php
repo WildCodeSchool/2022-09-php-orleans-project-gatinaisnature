@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CircuitManager;
 use App\Model\LandscapeManager;
 use App\Controller\AbstractController;
 
