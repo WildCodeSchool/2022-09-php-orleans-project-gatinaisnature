@@ -19,6 +19,7 @@ class OrganismController extends AbstractController
 
     public function add()
     {
+        $this->isAuthorized();
         $organism = [];
         $errors = [];
 
@@ -82,6 +83,7 @@ class OrganismController extends AbstractController
 
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $organism = [];
         $errors = [];
 
@@ -112,6 +114,7 @@ class OrganismController extends AbstractController
 
     public function delete()
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $organismManager = new OrganismManager();

@@ -13,6 +13,7 @@ class EventController extends AbstractController
 
     public function indexAdmin(): string
     {
+        $this->isAuthorized();
         $eventManager = new EventManager();
         $events = $eventManager->selectAll('title');
 
@@ -75,6 +76,7 @@ class EventController extends AbstractController
 
     public function add()
     {
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -111,6 +113,7 @@ class EventController extends AbstractController
 
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
@@ -147,6 +150,7 @@ class EventController extends AbstractController
     }
     public function delete(): void
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $eventManager = new EventManager();

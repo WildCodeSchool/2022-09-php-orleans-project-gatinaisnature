@@ -20,6 +20,7 @@ class CircuitController extends AbstractController
 
     public function indexCircuitsAdmin(): string
     {
+        $this->isAuthorized();
         $circuitManager = new CircuitManager();
         $circuits = $circuitManager->selectAll('title');
 
@@ -28,6 +29,7 @@ class CircuitController extends AbstractController
 
     public function addCircuit()
     {
+        $this->isAuthorized();
         $circuitManager = new CircuitManager();
         $organismManager = new OrganismManager();
         $landscapeManager = new LandscapeManager();
@@ -160,6 +162,7 @@ class CircuitController extends AbstractController
 
     public function editCircuit(int $id): ?string
     {
+        $this->isAuthorized();
         $circuitManager = new CircuitManager();
         $organismManager = new OrganismManager();
         $landscapeManager = new LandscapeManager();
@@ -234,6 +237,7 @@ class CircuitController extends AbstractController
 
     public function removeCircuit()
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $circuitManager = new CircuitManager();
