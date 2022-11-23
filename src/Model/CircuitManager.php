@@ -102,7 +102,7 @@ class CircuitManager extends AbstractManager
 
     public function selectLandscapes($id)
     {
-        $query = "SELECT l.title, l.description, l.picture_link FROM landscape l 
+        $query = "SELECT l.id, l.title, l.description, l.picture_link FROM landscape l 
         JOIN circuit_landscape cl ON cl.landscape_id = l.id
         JOIN circuit c ON cl.circuit_id = c.id WHERE c.id = :id";
         $statement = $this->pdo->prepare($query);
