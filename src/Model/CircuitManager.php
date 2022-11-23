@@ -10,13 +10,12 @@ class CircuitManager extends AbstractManager
 
     public function saveCircuit($circuit, $picture): void
     {
-        $query = "INSERT INTO circuit (`title`, `size`, `content`, `map`, `trace`, `picture`)
-        VALUES (:title, :size, :content, :map, :trace, :picture)";
+        $query = "INSERT INTO circuit (`title`, `size`, `content`, `trace`, `picture`)
+        VALUES (:title, :size, :content, :trace, :picture)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('title', $circuit['title'], \PDO::PARAM_STR);
         $statement->bindValue('size', $circuit['size'], \PDO::PARAM_STR);
         $statement->bindValue('content', $circuit['content'], \PDO::PARAM_STR);
-        $statement->bindValue('map', $circuit['map'], \PDO::PARAM_STR);
         $statement->bindValue('trace', $circuit['trace'], \PDO::PARAM_STR);
         $statement->bindValue('picture', $picture, \PDO::PARAM_STR);
         $statement->execute();
@@ -33,14 +32,13 @@ class CircuitManager extends AbstractManager
 
     public function updateCircuit(array $circuit, int $id, $picture)
     {
-        $query = " SET `title` = :title, `size` = :size, `content` = :content, 
-        `map` = :map, `trace` = :trace, `picture` = :picture WHERE id=:id";
+        $query = " SET `title` = :title, `size` = :size, `content` = :content,
+        `trace` = :trace, `picture` = :picture WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . $query);
         $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->bindValue('title', $circuit['title'], \PDO::PARAM_STR);
         $statement->bindValue('size', $circuit['size'], \PDO::PARAM_STR);
         $statement->bindValue('content', $circuit['content'], \PDO::PARAM_STR);
-        $statement->bindValue('map', $circuit['map'], \PDO::PARAM_STR);
         $statement->bindValue('trace', $circuit['trace'], \PDO::PARAM_STR);
         $statement->bindValue('picture', $picture, \PDO::PARAM_STR);
         return $statement->execute();
