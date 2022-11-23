@@ -1,42 +1,30 @@
-
 {% extends 'layoutAdmin.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/activity.css">
+	<link rel="stylesheet" href="/assets/css/event-index.css">
 {% endblock %}
+
 {% block title %}
 	{{parent()}}
-	| Évènements
+	| Ajouter Évènements
 {% endblock %}
 
 {% block content %}
-<h1>Ajout évènement admin</h1>
-<ul>
-{% for error in errors %}
-  <li>{{error}}</li>
-{% endfor %}
-</ul>
-<form action="" method="post" enctype="multipart/form-data" class="container">
-    <div class="mb-3">	
-      <label for="title" class="form-label">Titre :</label>
-      <input type="text" name="title" id="title" class="form-control" placeholder="Titre à renseigner">
-    </div>
-    <div class="mb-3">
-      <label for="date" class="form-label">Date :</label>
-      <input type="date" name="date" id="date" class="form-control" placeholder="1/1/2021">
-    </div>
-    <div class="mb-3">
-      <label for="description" class="form-label">Description :</label>
-      <input type="text" name="description" id="description" class="form-control" placeholder="Ajouter Descriptif">
-    </div>
-    <div class="mb-3">
-      <label for="cost" class="form-label">Coût :</label>
-      <input type="text" name="cost" id="cost" class="form-control" placeholder="Ajouter Cout">
-    </div>
-    <div class="mb-3">
-      <label for="picture" class="form-label">Image :</label>
-      <input type="file" name="picture" id="picture" class="form-control">
-    </div>
-    <button class="btn btn-primary">Ajouter</button>
-</form>
+	<section class="section-form">
+		<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col col-xl-10">
+					<div class="card shadow-lg vh-100">
+						<div class="row g-0">
+							<div class="col-md-10 col-lg-11 m-auto d-flex align-items-center">
+								<div class="card-body p-4 p-lg-5 text-black">
+									{% include "formAdminEvent.html.twig" with {'title': 'Ajout évènement admin', 'btn': 'Ajouter'} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

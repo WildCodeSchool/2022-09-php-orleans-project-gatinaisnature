@@ -18,6 +18,10 @@ class LoginController extends AbstractController
                 $errors[] = 'L\'adresse e-mail est obligatoire';
             }
 
+            if (empty($profils['password'])) {
+                $errors[] = 'Le mot de passe est obligatoire';
+            }
+
             if (!filter_var($profils['email'], FILTER_VALIDATE_EMAIL)) {
                 $errors[] = 'L\'adresse e-mail n\'a pas le bon format';
             }
@@ -25,7 +29,7 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $user = $userManager->selectOneByEmail($profils['email']);
             if ($user === false) {
-                $errors[] = 'L\'adresse e-mail est inconnu';
+                $errors[] = 'L\'adresse e-mail est inconnue';
             } elseif (!password_verify($profils['password'], $user['password'])) {
                 $errors[] = 'Le mot de passe est incorrect';
             }
@@ -48,5 +52,10 @@ class LoginController extends AbstractController
             unset($_SESSION['user_id']);
         }
         header('Location: /');
+    }
+
+    public function error()
+    {
+        return $this->twig->render('Errors/error.html.twig');
     }
 }

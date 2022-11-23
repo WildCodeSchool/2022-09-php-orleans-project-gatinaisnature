@@ -26,6 +26,7 @@ class LandscapeController extends AbstractController
 
     public function indexLandscapeAdmin(): string
     {
+        $this->isAuthorized();
         $landscapeManager = new LandscapeManager();
         $landscapes = $landscapeManager->selectAll('title');
 
@@ -34,6 +35,7 @@ class LandscapeController extends AbstractController
 
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $landscapeManager = new LandscapeManager();
         $landscape = $landscapeManager->selectOneById($id);
@@ -43,10 +45,11 @@ class LandscapeController extends AbstractController
             $errors = $this->getFormErrors($landscape, $errors);
 
             // create the image file to put it in the upload folder (without versioning)
-            $targetDir = "./assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
             $allowedExtension = ['jpg','png','webp'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
@@ -59,7 +62,7 @@ class LandscapeController extends AbstractController
             // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $landscapeManager = new LandscapeManager();
-                    $landscapeManager->update($landscape, $targetFile);
+                    $landscapeManager->update($landscape, $uploadFinalName);
                     header('Location: /admin/paysages/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
@@ -89,7 +92,7 @@ class LandscapeController extends AbstractController
 
     public function add()
     {
-
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -97,26 +100,27 @@ class LandscapeController extends AbstractController
             $errors = $this->getFormErrors($landscape, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
             $allowedExtension = ['jpg','png','jpeg','webp'];
             if (!in_array($imageFileType, $allowedExtension)) {
-                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
+                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $landscapeManager = new LandscapeManager();
-                    $landscapeManager->insert($landscape['title'], $landscape['description'], $targetFile);
+                    $landscapeManager->insert($landscape['title'], $landscape['description'], $uploadFinalName);
                     header('Location: /admin/paysages/index');
                 } else {
-                    $errors[] = 'Le fichier image n\'a pu être ajouté';
+                    $errors[] = 'Le fichier image n\'a pu être ajouté !';
                 }
             }
         }
@@ -124,6 +128,7 @@ class LandscapeController extends AbstractController
     }
     public function delete(): void
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $landscapeManager = new LandscapeManager();

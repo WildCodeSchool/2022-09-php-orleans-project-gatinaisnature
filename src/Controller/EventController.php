@@ -13,6 +13,7 @@ class EventController extends AbstractController
 
     public function indexAdmin(): string
     {
+        $this->isAuthorized();
         $eventManager = new EventManager();
         $events = $eventManager->selectAll('title');
 
@@ -75,6 +76,7 @@ class EventController extends AbstractController
 
     public function add()
     {
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -82,23 +84,24 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png','webp'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg', 'png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
-                    $eventManager->insert($event, $targetFile);
+                    $eventManager->insert($event, $uploadFinalName);
                     header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
@@ -110,6 +113,7 @@ class EventController extends AbstractController
 
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
@@ -118,23 +122,24 @@ class EventController extends AbstractController
             $errors = $this->getFormErrors($event, $errors);
 
             // create the image file to put it in the upload folder (without versioning)
-            $targetDir = "assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png','webp'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg', 'png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
                 $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' MO !';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $eventManager = new EventManager();
-                    $eventManager->update($event, $targetFile);
+                    $eventManager->update($event, $uploadFinalName);
                     header('Location: /admin/evenements/index');
                 } else {
                     $errors[] = 'Le fichier image n\'a pu être ajouté !';
@@ -145,6 +150,7 @@ class EventController extends AbstractController
     }
     public function delete(): void
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $eventManager = new EventManager();

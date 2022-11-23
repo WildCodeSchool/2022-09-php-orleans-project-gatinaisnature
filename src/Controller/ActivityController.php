@@ -31,6 +31,7 @@ class ActivityController extends AbstractController
      */
     public function indexAdmin(): string
     {
+        $this->isAuthorized();
         $activityManager = new ActivityManager();
         $activities = $activityManager->selectAll('title');
 
@@ -39,16 +40,16 @@ class ActivityController extends AbstractController
     public function getFormErrors(array $activity, array $errors): array
     {
         if (!isset($activity['title']) || empty($activity['title'])) {
-            $errors[] = 'Le titre doit être complété';
+            $errors[] = 'Le titre doit être complété !';
         }
         if (!isset($activity['title']) || strlen($activity['title']) > self::MAX_LENGTH_TITLE) {
-            $errors[] = 'Le titre ne doit pas faire plus de ' . self::MAX_LENGTH_TITLE . ' caractères';
+            $errors[] = 'Le titre ne doit pas faire plus de ' . self::MAX_LENGTH_TITLE . ' caractères !';
         }
         if (empty($activity['description'])) {
-            $errors[] = 'La description doit être complétée';
+            $errors[] = 'La description doit être complétée !';
         }
         if (!isset($activity['description']) || empty($activity['description'])) {
-            $errors[] = 'La description est requise';
+            $errors[] = 'La description est requise !';
         }
 
         return $errors;
@@ -56,7 +57,7 @@ class ActivityController extends AbstractController
 
     public function add()
     {
-
+        $this->isAuthorized();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -64,26 +65,27 @@ class ActivityController extends AbstractController
             $errors = $this->getFormErrors($activity, $errors);
 
             // creer le fichier image pour le mettre dans le folder upload (ce folder ne sera pas versioné)
-            $targetDir = "./assets/uploads/";
+            $targetDir = "uploads/";
             $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
             $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-            $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
-            $allowedExtension = ['jpg','png'];
+            $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uploadFinalName;
+            $allowedExtension = ['jpg','png', 'webp', 'jpeg'];
             if (!in_array($imageFileType, $allowedExtension)) {
-                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
+                $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
             }
             if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000 . ' Ko';
+                $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . ' Mo !';
             }
 
             if (empty($errors)) {
                 // move image to upload folder
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
                     $activityManager = new ActivityManager();
-                    $activityManager->insert($activity['title'], $activity['description'], $targetFile);
+                    $activityManager->insert($activity['title'], $activity['description'], $uploadFinalName);
                     header('Location: /admin/activites/index');
                 } else {
-                    $errors[] = 'Le fichier image n\'a pu être ajouté';
+                    $errors[] = 'Le fichier image n\'a pu être ajouté !';
                 }
             }
         }
@@ -95,6 +97,7 @@ class ActivityController extends AbstractController
      */
     public function edit(int $id)
     {
+        $this->isAuthorized();
         $errors = [];
         $activityManager = new ActivityManager();
         $activity = $activityManager->selectOneById($id);
@@ -104,27 +107,29 @@ class ActivityController extends AbstractController
 
             // create the image file to put it in the upload folder (without versioning)
             $targetFile = '';
+            $uploadFinalName = '';
             if ($_FILES['picture']['name'] > 0) {
-                $targetDir = "assets/uploads/";
+                $targetDir = "uploads/";
                 $imageFileType = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
                 $imageFileName = pathinfo($_FILES['picture']['name'])['filename'];
-                $targetFile = $targetDir . uniqid($imageFileName) . '.' . $imageFileType;
+                $uploadFinalName = uniqid($imageFileName) . '.' . $imageFileType;
+                $targetFile = $targetDir . $uploadFinalName;
                 $allowedExtension = ['jpg','png','jpeg','webp'];
                 if (!in_array($imageFileType, $allowedExtension)) {
-                    $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension);
+                    $errors[] = 'L\'image doit être de type ' . implode(", ", $allowedExtension) . ' !';
                 }
                 if ($_FILES['picture']['size'] > self::MAX_PICTURE_SIZE) {
-                    $errors[] = 'L\'image doit avoir une taille maximale de ' . self::MAX_PICTURE_SIZE / 1000000 . 'Mo';
+                    $errors[] = 'L\'image doit avoir une taille maximum de ' . self::MAX_PICTURE_SIZE / 1000000 . 'Mo';
                 }
             }
             if (empty($errors)) {
                 // move image to upload folder
                 if ($_FILES['picture']['size'] > 0) {
                     if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetFile)) {
-                        $activityManager->update($activity, $targetFile);
+                        $activityManager->update($activity, $uploadFinalName);
                         header('Location: /admin/activites/index');
                     } else {
-                        $errors[] = 'Le fichier image n\'a pu être ajouté';
+                        $errors[] = 'Le fichier image n\'a pu être ajouté !';
                     }
                 }
             }
@@ -134,6 +139,7 @@ class ActivityController extends AbstractController
 
     public function delete()
     {
+        $this->isAuthorized();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $activityManager = new ActivityManager();
